@@ -6,11 +6,11 @@ using System.Web;
 
 namespace UNIverse.Models
 {
-    public class UserPost
+    public class University
     {
         [Key]
-        public int PostId { get; set; }
-        public string content { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int UniversityId { get; set; }
+        public string Name { get; set; }
+        public string EmailEnding { get; set; }
     }
 }

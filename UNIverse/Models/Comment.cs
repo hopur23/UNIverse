@@ -6,11 +6,12 @@ using System.Web;
 
 namespace UNIverse.Models
 {
-    public class UserPost
+    public class Comment
     {
         [Key]
-        public int PostId { get; set; }
-        public string content { get; set; }
-        public System.DateTime DateCreated { get; set; }
+        public int CommentId { get; set; }
+        public string Content { get; set; }
+        // PostId
+        // CommentId
     }
 }

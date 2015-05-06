@@ -11,6 +11,9 @@ namespace UNIverse.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public System.DateTime Birthday { get; set; }
+        public string Description { get; set; }
+        // UniversityId
 
      /*   public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager,
             string authenticationType)
@@ -25,6 +28,9 @@ namespace UNIverse.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<UserPost> UserPosts { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<University> Universities { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection")

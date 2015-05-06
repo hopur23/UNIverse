@@ -171,9 +171,16 @@
     <Compile Include="Migrations\201505052152323_Siggi.Designer.cs">
       <DependentUpon>201505052152323_Siggi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505061325441_AddingTables.cs" />
+    <Compile Include="Migrations\201505061325441_AddingTables.Designer.cs">
+      <DependentUpon>201505061325441_AddingTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\University.cs" />
     <Compile Include="Models\UserPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -241,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505052152323_Siggi.resx">
       <DependentUpon>201505052152323_Siggi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505061325441_AddingTables.resx">
+      <DependentUpon>201505061325441_AddingTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
