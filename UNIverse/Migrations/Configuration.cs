@@ -5,7 +5,7 @@ namespace UNIverse.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<UNIverse.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<UNIverse.Models.IdentityModels>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace UNIverse.Migrations
             ContextKey = "UNIverse.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(UNIverse.Models.ApplicationDbContext context)
+        protected override void Seed(UNIverse.Models.IdentityModels context)
         {
             //  This method will be called after migrating to the latest version.
 
