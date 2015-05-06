@@ -11,7 +11,7 @@ namespace UNIverse.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public System.DateTime Birthday { get; set; }
+        //public System.DateTime Birthday { get; set; }
         public string Description { get; set; }
         // UniversityId
 
