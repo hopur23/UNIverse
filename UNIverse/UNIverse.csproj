@@ -177,6 +177,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Entities\University.cs" />
     <Compile Include="Models\Entities\Post.cs" />
+    <Compile Include="Models\RegularExpressionValidator.cs" />
     <Compile Include="Models\ViewModels\CommentViewModel.cs" />
     <Compile Include="Models\ViewModels\FriendListViewModel.cs" />
     <Compile Include="Models\ViewModels\GroupViewModel.cs" />
@@ -237,7 +238,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Account\Login2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

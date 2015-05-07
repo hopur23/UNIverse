@@ -19,6 +19,7 @@ namespace UNIverse.Models
         public List<Post> Posts { get; set; }
         public string Description { get; set; }
         public string ProfilePicturePath { get; set; }
+        public string Email { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

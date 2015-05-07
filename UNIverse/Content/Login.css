@@ -1,14 +1,70 @@
 ﻿body {
-    background-color: red;
+    background: #eeeeee;
+}
+
+#container
+{
+    width:400px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#container img
+{
+    margin-left: 40px;;
+}
+
+#loginform
+{
+    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
 }
 
 h2
 {
-    color: green;
+    color: #2C607C;
 }
 
-#loginForm
+#login
 {
-    background-color: green;
+    background-color: orange;
+    padding: 10px;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid #000000;
+}
 
+
+#registerform
+{
+    width:400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+#register
+{
+    background-color: #4AA0CF;
+    padding: 10px;
+    border-radius: 25px 25px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+    border: 0px solid #000000;
+}
+
+
+.btn-default {
+    background-color: #e68a00;
+    border-color: #e68a00;
+    color: #333333;
+}
+
+.btn-default:hover {
+    background-color: orange;
+    border-color: orange;
+    color: #333333;
 }

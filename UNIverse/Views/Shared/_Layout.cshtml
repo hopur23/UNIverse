@@ -14,7 +14,7 @@
             <div class="logo"><img src="http://i60.tinypic.com/30kg26r.jpg" alt="UNIverse logo"/></div>
             <ul id="menu">
                 <li>
-                    <a href="@Url.Action("Friends", "Home")">
+                    <a href="@Url.Action("FriendList", "Home")">
                         <i class="glyphicon glyphicon-th-list"> Friends</i>
                         <span class="sr-only">Friends</span>
                     </a>
@@ -35,7 +35,7 @@
                         <i class="glyphicon glyphicon-pencil"></i>
                         <span class="sr-only">Edit</span></a></li>
                 <li>
-                    <a href="@Url.Action("About", "About")">
+                    <a href=" javascript:document.getelementbyid('logoutform').submit()">
                         <i class="glyphicon glyphicon-lock"></i>
                         <span class="sr-only">Log Out</span>
                     </a>
@@ -46,7 +46,7 @@
                         <span class="sr-only">Edit</span>
                     </a>
                 </li>
-                @*  @Html.Partial("_LoginPartial")*@
+                  @Html.Partial("_LoginPartial")
             </ul>
         </div>
     </section>
