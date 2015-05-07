@@ -21,21 +21,21 @@ namespace UNIverse.Models
         public string ProfilePicturePath { get; set; }
     }
 
-    public class IdentityModels : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<University> Universities { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
-        public IdentityModels()
+        public ApplicationDbContext()
             : base("DefaultConnection")
         {
         }
 
-        public static IdentityModels Create()
+        public static ApplicationDbContext Create()
         {
-            return new IdentityModels();
+            return new ApplicationDbContext();
         }
     }
 }

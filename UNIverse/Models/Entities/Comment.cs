@@ -13,5 +13,6 @@ namespace UNIverse.Models
         public ApplicationUser Owner { get; set; }
         public Post Parent { get; set; }
         public string Content { get; set; }
+
     }
 }

@@ -170,26 +170,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505031954431_InitialCreate.cs" />
-    <Compile Include="Migrations\201505031954431_InitialCreate.Designer.cs">
-      <DependentUpon>201505031954431_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505052152323_Siggi.cs" />
-    <Compile Include="Migrations\201505052152323_Siggi.Designer.cs">
-      <DependentUpon>201505052152323_Siggi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505061325441_AddingTables.cs" />
-    <Compile Include="Migrations\201505061325441_AddingTables.Designer.cs">
-      <DependentUpon>201505061325441_AddingTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505061330381_SmáFix.cs" />
-    <Compile Include="Migrations\201505061330381_SmáFix.Designer.cs">
-      <DependentUpon>201505061330381_SmáFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505061504151_fixes.cs" />
-    <Compile Include="Migrations\201505061504151_fixes.Designer.cs">
-      <DependentUpon>201505061504151_fixes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -265,23 +245,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505031954431_InitialCreate.resx">
-      <DependentUpon>201505031954431_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505052152323_Siggi.resx">
-      <DependentUpon>201505052152323_Siggi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505061325441_AddingTables.resx">
-      <DependentUpon>201505061325441_AddingTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505061330381_SmáFix.resx">
-      <DependentUpon>201505061330381_SmáFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505061504151_fixes.resx">
-      <DependentUpon>201505061504151_fixes.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
