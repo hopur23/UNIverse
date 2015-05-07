@@ -46,6 +46,7 @@
                         <span class="sr-only">Edit</span>
                     </a>
                 </li>
+                @*  @Html.Partial("_LoginPartial")*@
             </ul>
         </div>
     </section>
@@ -78,5 +79,9 @@
                         <p>Hópur 23 - Verklegt Námskeið 2 | 2015 | Háskólinn í Reykjavík</p>
                     </div>
             </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>

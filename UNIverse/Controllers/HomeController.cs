@@ -6,10 +6,16 @@ using System.Web.Mvc;
 
 namespace UNIverse.Controllers
 {
-   // [Authorize]
+    [Authorize]
     public class HomeController : Controller
     {
-        [Authorize]
+        [AllowAnonymous]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+       // [Authorize]
         public ActionResult Index()
         {
         
