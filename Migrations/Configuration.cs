@@ -9,7 +9,7 @@ namespace UNIverse.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
             ContextKey = "UNIverse.Models.ApplicationDbContext";
         }
 
