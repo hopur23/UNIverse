@@ -2,43 +2,81 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <section id="header">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            <div class="logo"><img src="http://i60.tinypic.com/30kg26r.jpg" alt="UNIverse logo"/></div>
+            <ul id="menu">
+                <li>
+                    <a href="@Url.Action("Friends", "Home")">
+                        <i class="glyphicon glyphicon-th-list"> Friends</i>
+                        <span class="sr-only">Friends</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Profile", "Home")">
+                        <i class="glyphicon glyphicon-user"> Profile</i>
+                        <span class="sr-only">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Search", "Home")">
+                        <i class="glyphicon glyphicon-search"></i>
+                        <span class="sr-only">Search</span>
+                    </a>
+                </li>
+                <li><a href="@Url.Action("About", "About")">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                        <span class="sr-only">Edit</span></a></li>
+                <li>
+                    <a href="@Url.Action("About", "About")">
+                        <i class="glyphicon glyphicon-lock"></i>
+                        <span class="sr-only">Log Out</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("About", "About")">
+                        <i class="glyphicon glyphicon-question-sign"></i>
+                        <span class="sr-only">Edit</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </section>
+    <div class="container">
+        <section id="main">
+            @RenderBody()
+        </section>
+        <section id="sidebar">
+            <ul class="nav">
+                <li>@Html.ActionLink("Newsfeed", "Index", "NewsFeed")</li>
+                <li>@Html.ActionLink("Groups", "Index", "Groups")</li>
+                    <ul class="navnav">
+                        <li>List of goups</li>
+                        <li>List of goups</li>
+                        <li>List of goups</li>
+                        <li>List of goups</li>
+                    </ul>
+                <li>@Html.ActionLink("Useful Things", "Index", "UsefulThings")</li>
+                    <ul class="navnav">
+                        <li>@Html.ActionLink("Tilboð / Auglýsingar", "Index", "Tilbod")</li>
+                        <li>@Html.ActionLink("Íbúðir í Reykjavík", "Index", "Ibudir")</li>
+                        <li><a href="http://hr.ingur.is/">HRingurinn</a></li>
+                        <li>@Html.ActionLink("Skiptibókamarkaður", "Index", "Skiptibok")</li>
+                    </ul>
+            </ul>
+            </section>
+        </div>
+            <div id="footer">
+                <div class="container">
+                        <p>Hópur 23 - Verklegt Námskeið 2 | 2015 | Háskólinn í Reykjavík</p>
+                    </div>
+            </div>
 </body>
 </html>

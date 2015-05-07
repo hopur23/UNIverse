@@ -1,42 +1,187 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿body
+{
+font: "Trebuchet MS", Verdana, sans-serif;
+background-color: #5c87b2;
+color: #696969;
+margin: 0 auto;
+}
+h1
+{
+border-bottom: 3px solid #cc9900;
+font: Georgia, serif;
+color: #996600;
+}
+#main
+{
+/*padding: 20px;*/
+background-color: #ffffff;
+width: 75%;
+float: right;
+margin-left: auto;
+margin-right: auto;
+padding-left: 15px;
+min-height: 300px;
+}
+a
+{
+color: #034af3; 
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+#header
+{
+background-color: red;
+    height: 40px;
+    margin-top: 0;
+    width: 100%;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+#footer
+{
+    border-top: 2px solid #FDD06A;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    padding-top: 10px;
+    width: 100%;
 }
 
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
+.container
+{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.field-validation-valid {
-    display: none;
+.logo
+{
+    background-color: blue;
+    height: 30px;
+    width: 100px;
+    float: left;
+}
+/*Sidebar.........*/
+#sidebar
+{
+    width: 25%;
+    float: left;
+    margin-top: 40px;
 }
 
-input.input-validation-error {
-    border: 1px solid #b94a48;
+
+
+/* Menu Styles ------------------------------*/ 
+ul#menu
+{
+    float: right;
+    font-size: 15px;
+    margin-top: 7px;
+    color: black;
+    padding: 0;
+    position: relative;
+}
+ul#menu li
+{
+display: inline;
+}
+ul#menu li a 
+{
+/*background-color: #e8eef4;*/
+padding: 1px 12px;
+text-decoration: none;
+color: black;
+/*line-height: 2.8em;*/
+/*CSS3 properties*/
+/*border-radius: 4px 4px 0 0;*/
+}
+ul#menu li a:hover
+{
+background-color: #ffffff;
+border-radius: 4px;
+} 
+/* Forms Styles ------------------------------*/ 
+fieldset
+{
+padding-left: 12px;
+} 
+fieldset label
+{
+display: block;
+padding: 4px;
+}
+input[type="text"], input[type="password"]
+{
+width: 300px;
+}
+input[type="submit"]
+{
+padding: 4px;
+}
+/* Data Styles ------------------------------*/ 
+table.data
+{
+background-color:#ffffff;
+border:1px solid #c3c3c3;
+border-collapse:collapse;
+width:100%;
+}
+table.data th
+{
+background-color:#e8eef4;
+border:1px solid #c3c3c3;
+padding:3px;
+}
+table.data td 
+{
+border:1px solid #c3c3c3;
+padding:3px;
 }
 
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
 
-.validation-summary-errors {
-    color: #b94a48;
+/* Navigation in sidebar */
+ul.nav
+{
+    margin-top: 7px;
+    color: black;
+    background-color: #FDD06A;
+    width: 100%;
+    border-top: 1px solid #FBB007;
 }
+ul.nav li a 
+{
+    border-left: 1px solid #FBB007;
+    border-right: 1px solid #FBB007;
+    border-bottom: 1px solid #FBB007;
+    color: black;
+    padding: 5px 12px;
+    text-decoration: none;
+}
+ul.nav li a:hover
+{
+background-color: #ffffff;
+} 
 
-.validation-summary-valid {
-    display: none;
+ul.nav ul.navnav
+{
+    color: black;
+    background-color: #FEF1D2;
+    width: 100%;
+    list-style-type:none;
+    /*border-top: 1px solid #FBB007;*/
 }
+ul.nav ul.navnav li a 
+{
+    line-height: 9px;
+}
+ul.nav ul.navnav li a 
+{
+    border: none;
+    color: black;
+    padding: 3px 0;
+    text-decoration: none;
+}
+ul.nav ul.navnav li a:hover
+{
+    color: #FF0000;
+    background-color: #FEF1D2;
+} 
