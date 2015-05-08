@@ -11,7 +11,7 @@ namespace UNIverse.Services
         private static ApplicationDbContext context = ApplicationDbContext.Instance;
 
         private static ServiceWrapper instance;
-        public static ServiceWrapper Instance
+        public static ServiceWrapper Services
         {
             get
             {
@@ -22,7 +22,6 @@ namespace UNIverse.Services
                 return instance;
             }
         }
-
         private static PostService postSvc;
         public PostService PostService
         {

@@ -13,23 +13,31 @@ namespace UNIverse.Controllers
     public class UserController : Controller
     {
 
-       // public ActionResult Index()
-        //{
-        //}
+        public ActionResult Index(string userId)
+        {
+            if(userId != null)
+            {
+                ApplicationUser user = new ApplicationUser();
+                user = ServiceWrapper.Services.UserService.GetUserById(userId);
+                if(user == null)
+                {
+                    // TODO: Hafa flotta 404 síðu
+                    return View("Error");
+                }
+
+                UserProfileViewModel viewModel = new UserProfileViewModel();
+
+                viewModel.Name = user.FirstName + " " + user.LastName;
+                viewModel.Email = user.Email;
+                viewModel.Posts = user.Posts;
+                return View(viewModel);
+            }
+            return View("Error");
+            
+        }
         public ActionResult Friends()
         {
             return View();
-        }
-
-        public ActionResult Profile(string userId)
-        {
-            ApplicationUser user = new ApplicationUser();
-            user = ServiceWrapper.Instance.UserService.GetUserById(userId);
-
-            UserProfileViewModel viewModel = new UserProfileViewModel();
-
-            viewModel.Name = user.FirstName + " " + user.LastName;
-            return View(viewModel);
         }
 
         [HttpGet]

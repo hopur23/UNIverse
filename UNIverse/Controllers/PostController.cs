@@ -24,7 +24,7 @@ namespace UNIverse.Controllers
         {
             Post post = new Post();
 
-            post.Author = ServiceWrapper.Instance.UserService.GetUserById(this.User.Identity.GetUserId());
+            post.Author = ServiceWrapper.Services.UserService.GetUserById(this.User.Identity.GetUserId());
             post.Body = viewModel.Body;
             post.Comments = new List<Comment>();
             post.DateCreated = DateTime.Now;
@@ -33,7 +33,7 @@ namespace UNIverse.Controllers
             // TODO: Implement Group Tags
             //post.Tag = viewModel.Tag;
 
-            ServiceWrapper.Instance.PostService.AddPost(post);
+            ServiceWrapper.Services.PostService.AddPost(post);
 
             // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("Index", "Home");

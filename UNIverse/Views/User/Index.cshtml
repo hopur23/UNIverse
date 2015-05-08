@@ -1,0 +1,29 @@
+﻿@model UNIverse.Models.ViewModels.UserProfileViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-md-6 col-md-push-6">
+    <h2>@Model.Name</h2>
+    <h4>Profile info goes here...</h4>
+</div>
+
+<div class="col-md-6 col-md-pull-6">
+    <h4>User posts</h4>
+    <!-- TODO: Nota partial view fyrir newsfeed og gera frekar RenderPartial.
+        Ef að Model.Posts verður breytt frá List<Post> yfir í List<PostViewModel>
+        er hægt að gera það svona: (at)Html.RenderPartial("_newsfeed", Model.Posts)-->
+    @foreach (var item in Model.Posts)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="label label-default">
+                    @item.DateCreated
+                </div>
+                <h4>@item.Author.UserName</h4>
+            </div>
+            <div class="panel-body">@item.Body</div>
+        </div>
+    }
+</div>

@@ -15,7 +15,7 @@ namespace UNIverse.Controllers
         public ActionResult Index()
         {
             // TODO: Nota ViewModel í staðinn (þarf mögulega að hafa með einhver ID? Til dæmis post ID eða user ID, til að hægt sé að opna userinn eða postinn)
-            List<Post> model = ServiceWrapper.Instance.PostService.GetAllPosts();
+            List<Post> model = ServiceWrapper.Services.PostService.GetAllPosts();
             return View(model);
         }
 

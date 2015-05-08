@@ -13,6 +13,7 @@ namespace UNIverse.Models.ViewModels
         public string Description { get; set; }
         public string ProfilePicturePath { get; set; }
         public int Age { get; set; }
+
         public List<Post> Posts { get; set; }
         public List<ApplicationUser> Friends { get; set; }
         public List<Group> Groups { get; set; }
