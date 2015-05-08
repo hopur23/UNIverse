@@ -6,24 +6,12 @@ using UNIverse.Models;
 
 namespace UNIverse.Services
 {
-    public class ServiceWrapper
+    public static class ServiceWrapper
     {
         private static ApplicationDbContext context = ApplicationDbContext.Instance;
 
-        private static ServiceWrapper instance;
-        public static ServiceWrapper Services
-        {
-            get
-            {
-                if(instance == null)
-                {
-                    instance = new ServiceWrapper();
-                }
-                return instance;
-            }
-        }
         private static PostService postSvc;
-        public PostService PostService
+        public static PostService PostService
         {
             get
             {
@@ -36,7 +24,7 @@ namespace UNIverse.Services
         }
 
         private static UserService userSvc;
-        public UserService UserService
+        public static UserService UserService
         {
             get
             {
@@ -49,7 +37,7 @@ namespace UNIverse.Services
         }
 
         private static GroupService groupSvc;
-        public GroupService GroupService
+        public static GroupService GroupService
         {
             get
             {

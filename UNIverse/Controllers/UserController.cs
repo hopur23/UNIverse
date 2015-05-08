@@ -18,7 +18,8 @@ namespace UNIverse.Controllers
             if(userId != null)
             {
                 ApplicationUser user = new ApplicationUser();
-                user = ServiceWrapper.Services.UserService.GetUserById(userId);
+                user = ServiceWrapper.UserService.GetUserById(userId);
+                //user = ServiceWrapper.Services.UserService.GetUserById(userId);
                 if(user == null)
                 {
                     // TODO: Hafa flotta 404 síðu
