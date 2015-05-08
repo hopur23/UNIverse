@@ -1,5 +1,21 @@
-﻿@{ViewBag.Title = "Home Page";}
+﻿@model List<UNIverse.Models.Post>
+
+@{ViewBag.Title = "Home Page";}
 
 <h1>Welcome to UNIverse</h1>
 
-<p>Put Home Page content here</p>
+@Html.ActionLink("New Post", "New", "Post")
+
+@foreach (var item in Model)
+{
+    // TODO: Error check (ef modelið eða item er null)
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="label label-default">
+                @item.DateCreated
+            </div>
+            <h4>@item.Author.UserName</h4>
+        </div>
+        <div class="panel-body">@item.Body</div>
+    </div>
+}

@@ -7,7 +7,7 @@ namespace UNIverse.Models.ViewModels
 {
     public class CommentViewModel
     {
-        public string Content { get; set; }
-        public ApplicationUser Owner { get; set; }
+        public string Body { get; set; }
+        public string AuthorName { get; set; }
     }
 }

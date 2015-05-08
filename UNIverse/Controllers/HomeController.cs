@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UNIverse.Models;
+using UNIverse.Services;
 
 namespace UNIverse.Controllers
 {
@@ -18,8 +20,9 @@ namespace UNIverse.Controllers
        // [Authorize]
         public ActionResult Index()
         {
-        
-            return View();
+            // TODO: Nota ViewModel í staðinn (þarf mögulega að hafa með einhver ID? Til dæmis post ID eða user ID, til að hægt sé að opna userinn eða postinn)
+            List<Post> model = ServiceWrapper.Instance.PostService.GetAllPosts();
+            return View(model);
         }
 
         public ActionResult About()

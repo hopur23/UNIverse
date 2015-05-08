@@ -9,11 +9,12 @@ namespace UNIverse.Models
     public class University
     {
         [Key]
-        public int UniversityId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<ApplicationUser> Members { get; set; }
-        public List<Group> Groups { get; set; }
         public string EmailEnding { get; set; }
+
+        public virtual List<ApplicationUser> Members { get; set; }
+        public virtual List<Group> Groups { get; set; }
     }
 }

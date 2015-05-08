@@ -9,12 +9,13 @@ namespace UNIverse.Models
     public class Post
     {
         [Key]
-        public int PostId { get; set; }
-        public ApplicationUser Owner { get; set; }
-        public Group ParentGroup { get; set; }
+        public int Id { get; set; }
+        public string Body { get; set; }
         public string Tag { get; set; }
-        public List<Comment> Comments { get; set; }
-        public string content { get; set; }
         public System.DateTime DateCreated { get; set; }
+
+        public virtual ApplicationUser Author { get; set; }
+        public virtual Group ParentGroup { get; set; }
+        public virtual List<Comment> Comments { get; set; }
     }
 }

@@ -7,9 +7,10 @@ namespace UNIverse.Models.ViewModels
 {
     public class PostViewModel
     {
-        public string Content { get; set; }
-        public ApplicationUser Owner { get; set; }
-        public string ImagePath { get; set; }
-        public List<Comment> Comments { get; set; }
+        public string Body { get; set; }
+        public ApplicationUser Author { get; set; }
+
+        public List<CommentViewModel> Comments { get; set; }
+        
     }
 }

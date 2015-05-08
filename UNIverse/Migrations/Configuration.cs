@@ -9,8 +9,7 @@ namespace UNIverse.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "UNIverse.Models.ApplicationDbContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(UNIverse.Models.ApplicationDbContext context)
