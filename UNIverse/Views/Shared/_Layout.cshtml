@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,7 +22,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Profile", "User")">
+                    <a href="@Url.Action("Profile", "User", new { userId = User.Identity.GetUserId() })">
                         <i class="glyphicon glyphicon-user"> Profile</i>
                         <span class="sr-only">Profile</span>
                     </a>

@@ -1,2 +1,16 @@
-﻿body {
+﻿h2
+{
+    color: red;
+}
+
+
+body {
+
+    color: blue;
+}
+
+
+#fullName {
+
+    color:green;
 }

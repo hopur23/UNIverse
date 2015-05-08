@@ -1,20 +1,48 @@
-﻿@model UNIverse.Models.ViewModels.UserProfileViewModel
+﻿@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using UNIverse.Models;
+@model UNIverse.Models.ViewModels.UserProfileViewModel
+
+
 
 @{
     ViewBag.Title = "Profile";
 }
 
-<h2>Profile</h2>
-<head>
-    <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
-</head>
-<body>
-    <div id="Name"></div>
-    <h3>"User.Identity.GetUserName()"</h3>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title</title>
+        <link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        
+        <h2>Profile</h2>
+        <div id="fullName">
+        
+           @Model.Name
+           
 
+        </div>
+        <div id="aboutMe">
+            <p>About Me</p>
 
-</body>
+        </div>
+        <div id="university">
+            <p>University</p>
+
+        </div>
+        <div id="department">
+            <p>Department</p>
+
+        </div>
+        
+        <div id="profilePicture">
+            <p>Profile Picture </p>
+
+        </div>
+    </body>
+</html>
 
 
 
