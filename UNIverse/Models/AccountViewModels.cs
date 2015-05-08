@@ -5,7 +5,7 @@ namespace UNIverse.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Email")]
         public string UserName { get; set; }
     }
 
@@ -46,14 +46,10 @@ namespace UNIverse.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
-
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         [RegularExpression("^\\w+([-+.']\\w+)*@ru.is$", ErrorMessage = "You must register with a university email")]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
