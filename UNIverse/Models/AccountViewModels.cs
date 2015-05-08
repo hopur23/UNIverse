@@ -46,6 +46,16 @@ namespace UNIverse.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "First Name")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "You must write a name with only letters")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "You must write a name with only letters")]
+        public string LastName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         [RegularExpression("^\\w+([-+.']\\w+)*@ru.is$", ErrorMessage = "You must register with a university email")]

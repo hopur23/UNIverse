@@ -83,6 +83,8 @@ namespace UNIverse.Controllers
             {
                 var user = new ApplicationUser() { 
                     UserName = model.UserName,
+                    LastName = model.LastName,
+                    FirstName = model.FirstName
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
