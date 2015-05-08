@@ -11,13 +11,7 @@ namespace UNIverse.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        [AllowAnonymous]
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-       // [Authorize]
+       
         public ActionResult Index()
         {
             // TODO: Nota ViewModel í staðinn (þarf mögulega að hafa með einhver ID? Til dæmis post ID eða user ID, til að hægt sé að opna userinn eða postinn)
