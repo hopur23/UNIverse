@@ -1,7 +1,32 @@
-﻿@model UNIverse.Models.ViewModels.UserProfileViewModel
+﻿@using Microsoft.AspNet.Identity;
+@model UNIverse.Models.RegisterViewModel
 @{
     ViewBag.Title = "Edit";
 }
+<h2> Update your profile</h2>
 
-<h2>Edit</h2>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+        <div id="Name">
+                <h3> Welcome @User.Identity.Name </h3>
+        </div>
+        <div id="photoContainer">
+            <img src="" alt="Photo change" />
+            <button id="changePhoto">Change Photo</button>
+        </div>
+        <div>
+            <form>
+                <textarea id="AboutTextarea">Write something </textarea>
+                <input type="submit" value="Change about me" />
+            </form>
+            <p>
+                @Html.ActionLink("Change Password ", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </p>
+        </div>
+    </body>
+</html>
