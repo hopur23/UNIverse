@@ -1,4 +1,5 @@
-﻿@model UNIverse.Models.ViewModels.UserProfileViewModel
+﻿@using Microsoft.AspNet.Identity;
+@model UNIverse.Models.ViewModels.UserProfileViewModel
 
 @{
     ViewBag.Title = "Profile";
@@ -11,9 +12,7 @@
 </head>
 <body>
     <div id="Name"></div>
-    <h3>"User.Identity.GetUserName()"</h3>
-
-
+    @User.Identity.Name
 </body>
 
 
