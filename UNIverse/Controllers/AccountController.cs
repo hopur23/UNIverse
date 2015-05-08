@@ -23,7 +23,10 @@ namespace UNIverse.Controllers
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             UserManager = userManager;
+            var userValidator = UserManager.UserValidator as UserValidator<ApplicationUser>;
+            userValidator.AllowOnlyAlphanumericUserNames = false;
         }
+    
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
@@ -53,7 +56,7 @@ namespace UNIverse.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Invalid email or password.");
                 }
             }
 
@@ -80,7 +83,6 @@ namespace UNIverse.Controllers
             {
                 var user = new ApplicationUser() { 
                     UserName = model.UserName,
-                    Email = model.Email
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
