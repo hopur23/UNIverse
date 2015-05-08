@@ -24,6 +24,21 @@ namespace UNIverse.Services
             return posts;
         }
 
+        public Post GetPostById(int id)
+        {
+            var post = (from p in m_db.Posts
+                        where p.Id == id
+                        select p).SingleOrDefault();
+
+            return post;
+        }
+
+        public void AddComment(Comment comment)
+        {
+            m_db.Comments.Add(comment);
+            m_db.SaveChanges();
+        }
+
         public void AddPost(Post post)
         {
             m_db.Posts.Add(post);

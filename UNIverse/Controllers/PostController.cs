@@ -40,5 +40,42 @@ namespace UNIverse.Controllers
             // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public ActionResult AddComment(int? postId)
+        {
+            if(postId.HasValue)
+            {
+                var viewModel = new CommentViewModel()
+                {
+                    AuthorId = this.User.Identity.GetUserId(),
+                    ParentId = postId.Value,
+                };
+
+                return View(viewModel);
+            }
+            // TODO: Flottari error síða eða flottari villumeðhöndlun
+            return View("Error");
+        }
+
+        [HttpPost]
+        public ActionResult AddComment(CommentViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var comment = new Comment()
+                {
+                    Body = model.Body,
+                    Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()),
+                    Parent = ServiceWrapper.PostService.GetPostById(model.ParentId),
+                };
+
+                ServiceWrapper.PostService.AddComment(comment);
+
+                // TODO: Redirect til baka í póstinn sjálfann. Á eftir að útfæra single post view (þar sem hægt er að sjá post og öll komment sem fylgja).
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+        }
     }
 }

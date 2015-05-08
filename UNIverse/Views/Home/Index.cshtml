@@ -17,5 +17,15 @@
             <h4>@item.Author.UserName</h4>
         </div>
         <div class="panel-body">@item.Body</div>
+        <hr />
+        @Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)
+        @foreach(var comment in item.Comments)
+        {
+            <h4>@comment.Author.FirstName</h4>
+            <p>@comment.Body</p>
+            <hr />
+        }
+        
+        
     </div>
 }
