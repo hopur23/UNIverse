@@ -32,11 +32,17 @@ namespace UNIverse.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Edit()
+        [HttpGet]
+        public ActionResult Edit(string userId)
         {
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Edit()
+        {
+            return View();
+        }
 
     }
 }

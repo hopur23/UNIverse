@@ -9,6 +9,12 @@
             <i class="glyphicon glyphicon-lock"></i>
             <span class="sr-only">Log Out</span>
         </a>
+
+         <ul class="nav navbar-nav navbar-right">
+             <li>
+                 @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+             </li>
+         </ul>
      </li>
     }
 }
