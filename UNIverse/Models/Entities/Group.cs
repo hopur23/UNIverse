@@ -14,7 +14,8 @@ namespace UNIverse.Models
         public string Description { get; set; }
 
         public virtual University ParentUniversity { get; set; }
-        public virtual List<ApplicationUser> Administrators { get; set; }
+        public virtual ApplicationUser Administrator { get; set; }
         public virtual List<ApplicationUser> Members { get; set; }
+        public virtual List<Post> Posts { get; set; }
     }
 }

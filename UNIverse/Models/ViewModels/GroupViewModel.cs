@@ -12,5 +12,6 @@ namespace UNIverse.Models.ViewModels
         public string GroupPicturePath { get; set; }
         public List<Post> Posts { get; set; }
         public List<ApplicationUser> Members { get; set; }
+        public ApplicationUser Administrator { get; set; }
     }
 }
