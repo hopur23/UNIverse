@@ -49,11 +49,7 @@ namespace UNIverse.Models
         public DbSet<Group> Groups { get; set; }
         public DbSet<University> Universities { get; set; }
         public DbSet<Comment> Comments { get; set; }
-<<<<<<< HEAD
-        
-=======
         public DbSet<Department> Departments { get; set; }
->>>>>>> 5db7c4d0e5830d5a91b2898ef0577157b21c88cc
 
         public ApplicationDbContext()
             : base("DefaultConnection")
