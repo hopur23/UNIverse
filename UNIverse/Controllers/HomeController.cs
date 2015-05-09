@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UNIverse.Models;
+using UNIverse.Models.ViewModels;
 using UNIverse.Services;
 
 namespace UNIverse.Controllers
@@ -14,9 +15,9 @@ namespace UNIverse.Controllers
        
         public ActionResult Index()
         {
-            // TODO: Nota ViewModel í staðinn (þarf mögulega að hafa með einhver ID? Til dæmis post ID eða user ID, til að hægt sé að opna userinn eða postinn)
-            List<Post> model = ServiceWrapper.PostService.GetAllPosts();
-            //List<Post> model = ServiceWrapper.Services.PostService.GetAllPosts();
+            // TODO: Sækja frekar latest posts frekar en alla. Implementa filters
+            var model = ServiceWrapper.PostService.GetAllPosts();
+
             return View(model);
         }
 

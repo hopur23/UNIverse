@@ -12,7 +12,6 @@ namespace UNIverse.Controllers
 {
     public class UserController : Controller
     {
-
         public ActionResult Index(string userId)
         {
             if(userId != null)

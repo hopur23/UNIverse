@@ -66,7 +66,7 @@ namespace UNIverse.Controllers
                 var comment = new Comment()
                 {
                     Body = model.Body,
-                    Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()),
+                    Author = ServiceWrapper.UserService.GetUserById(model.AuthorId),
                     Parent = ServiceWrapper.PostService.GetPostById(model.ParentId),
                 };
 

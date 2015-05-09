@@ -1,31 +1,9 @@
 ﻿@model List<UNIverse.Models.Post>
-
+<!--TODO: Mögulega búa til FrontPageViewModel-->
 @{ViewBag.Title = "Home Page";}
 
 <h1>Welcome to UNIverse</h1>
 
 @Html.ActionLink("New Post", "New", "Post")
 
-@foreach (var item in Model)
-{
-    // TODO: Error check (ef modelið eða item er null)
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="label label-default">
-                @item.DateCreated
-            </div>
-            <h4>@item.Author.UserName</h4>
-        </div>
-        <div class="panel-body">@item.Body</div>
-        <hr />
-        @Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)
-        @foreach(var comment in item.Comments)
-        {
-            <h4>@comment.Author.FirstName</h4>
-            <p>@comment.Body</p>
-            <hr />
-        }
-        
-        
-    </div>
-}
+@{Html.RenderPartial("_NewsfeedPartial", Model);}

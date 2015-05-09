@@ -14,16 +14,5 @@
     <!-- TODO: Nota partial view fyrir newsfeed og gera frekar RenderPartial.
         Ef að Model.Posts verður breytt frá List<Post> yfir í List<PostViewModel>
         er hægt að gera það svona: (at)Html.RenderPartial("_newsfeed", Model.Posts)-->
-    @foreach (var item in Model.Posts)
-    {
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="label label-default">
-                    @item.DateCreated
-                </div>
-                <h4>@item.Author.UserName</h4>
-            </div>
-            <div class="panel-body">@item.Body</div>
-        </div>
-    }
+    @{Html.RenderPartial("_NewsfeedPartial", Model.Posts);}
 </div>

@@ -1,0 +1,17 @@
+﻿@model List<UNIverse.Models.Post>
+
+@foreach (var item in Model)
+{
+    <div class="well">
+        <!--TODO: Hafa full name á author og allt sem þarf inni í PostViewModel-->
+        <h3>@(item.Author.FirstName + "" + item.Author.LastName)</h3>
+        <p>@item.Body</p>
+        @Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)
+        <hr />
+        @foreach(var comment in item.Comments)
+        {
+            <h4>@(comment.Author.FirstName + " " + comment.Author.LastName)</h4>
+            <p>@comment.Body</p>
+        }
+    </div>
+}
