@@ -18,6 +18,12 @@ namespace UNIverse.Controllers
             return View(model); 
         }
 
+        public ActionResult View(int id)
+        {
+            Group model = ServiceWrapper.GroupService.GetGroupById(id);
+            return View(model);
+        }
+
         [HttpGet]
         public ActionResult Create()
         {
@@ -37,10 +43,31 @@ namespace UNIverse.Controllers
             group.Posts = new List<Post>();
             group.Administrator = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
 
+            group.Members.Add(ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()));
             ServiceWrapper.GroupService.AddGroup(group);
 
             // TODO: Ákveða hvert á að redirecta user
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Group");
+        }
+
+
+        [HttpGet]
+        public ActionResult Join()
+        {
+            GroupViewModel viewModel = new GroupViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Join(int id)
+        {
+            var group = ServiceWrapper.GroupService.GetGroupById(id);
+            var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
+
+            ServiceWrapper.GroupService.AddMemberToGroup(group, user);
+
+            // TODO: Ákveða hvert á að redirecta user
+            return RedirectToAction("Index", "Group");
         }
 
     }

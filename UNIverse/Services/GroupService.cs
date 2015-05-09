@@ -33,9 +33,21 @@ namespace UNIverse.Services
             return group;
         }
 
+        public List<ApplicationUser> GetUsersByGroupId(int id)
+        {
+            var group = GetGroupById(id);
+            return group.Members;
+        }
+
         public void AddGroup(Group group)
         {
             m_db.Groups.Add(group);
+            m_db.SaveChanges();
+        }
+
+        public void AddMemberToGroup(Group group, ApplicationUser user)
+        {
+            group.Members.Add(user);
             m_db.SaveChanges();
         }
 
