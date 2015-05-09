@@ -16,11 +16,7 @@ namespace UNIverse.Models
         public string Description { get; set; }
         public string EmailEnding { get; set; }
 
-<<<<<<< HEAD
-        
-=======
         public virtual List<Department> Departments { get; set; }
->>>>>>> 5db7c4d0e5830d5a91b2898ef0577157b21c88cc
         public virtual List<ApplicationUser> Members { get; set; }
         public virtual List<Group> Groups { get; set; }
     }
