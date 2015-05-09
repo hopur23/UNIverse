@@ -14,5 +14,30 @@ namespace UNIverse.Services
         {
             m_db = context;
         }
+
+        public List<Group> GetAllGroups()
+        {
+            var groups = (from p in m_db.Groups
+                         orderby p.Name descending
+                         select p).ToList();
+
+            return groups;
+        }
+
+        public Group GetGroupById(int id)
+        {
+            var group = (from p in m_db.Groups
+                        where p.Id == id
+                        select p).SingleOrDefault();
+
+            return group;
+        }
+
+        public void AddGroup(Group group)
+        {
+            m_db.Groups.Add(group);
+            m_db.SaveChanges();
+        }
+
     }
 }

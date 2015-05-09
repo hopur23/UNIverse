@@ -47,12 +47,10 @@ namespace UNIverse.Models
     {
         [Required]
         [Display(Name = "First Name")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "You must write a name with only letters")]
         public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
-        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "You must write a name with only letters")]
         public string LastName { get; set; }
 
         [Required]
