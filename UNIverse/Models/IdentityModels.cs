@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using UNIverse.Models.Entities;
 
 
 namespace UNIverse.Models
@@ -20,7 +21,7 @@ namespace UNIverse.Models
         public string Description { get; set; }
         public string ProfilePicturePath { get; set; }
 
-        
+        public virtual Department Department { get; set; }
         public virtual List<ApplicationUser> Friends { get; set; }
         public virtual List<Group> Groups { get; set; }
         public virtual List<Post> Posts { get; set; }
@@ -48,7 +49,11 @@ namespace UNIverse.Models
         public DbSet<Group> Groups { get; set; }
         public DbSet<University> Universities { get; set; }
         public DbSet<Comment> Comments { get; set; }
+<<<<<<< HEAD
         
+=======
+        public DbSet<Department> Departments { get; set; }
+>>>>>>> 5db7c4d0e5830d5a91b2898ef0577157b21c88cc
 
         public ApplicationDbContext()
             : base("DefaultConnection")
