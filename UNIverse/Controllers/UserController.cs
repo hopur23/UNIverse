@@ -31,6 +31,10 @@ namespace UNIverse.Controllers
                 viewModel.Name = user.FirstName + " " + user.LastName;
                 viewModel.Email = user.Email;
                 viewModel.Posts = user.Posts;
+                viewModel.Department = user.Department;
+                viewModel.Description = user.Description;
+                viewModel.ProfilePicturePath = user.ProfilePicturePath;
+                
                 return View(viewModel);
             }
             return View("Error");
