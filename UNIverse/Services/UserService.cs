@@ -23,5 +23,11 @@ namespace UNIverse.Services
 
             return user;
         }
+
+        public void AddGroupToUser(Group group, ApplicationUser user)
+        {
+            user.Groups.Add(group);
+            m_db.SaveChanges();
+        }
     }
 }

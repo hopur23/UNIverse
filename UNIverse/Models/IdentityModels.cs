@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using UNIverse.Models.Entities;
@@ -49,6 +50,23 @@ namespace UNIverse.Models
         public DbSet<University> Universities { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Department> Departments { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Group>()
+                .HasMany(c => c.Members).WithMany(i => i.Groups)
+                .Map(t => t.MapLeftKey("GroupID")
+                    .MapRightKey("UserID")
+                    .ToTable("GroupMembers"));
+
+           /* modelBuilder.Entity<ApplicationUser>()
+                .HasMany(c => c.Friends).WithMany(i => i.Friends)
+                .Map(t => t.MapLeftKey("User1ID")
+                    .MapRightKey("User2ID")
+                    .ToTable("Friends"));*/
+        }
 
         public ApplicationDbContext()
             : base("DefaultConnection")
