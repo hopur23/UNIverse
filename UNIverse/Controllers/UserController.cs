@@ -29,7 +29,7 @@ namespace UNIverse.Controllers
 
                 viewModel.Name = user.FirstName + " " + user.LastName;
                 viewModel.Email = user.Email;
-                viewModel.Posts = user.Posts;
+                viewModel.Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList();
                 return View(viewModel);
             }
             return View("Error");

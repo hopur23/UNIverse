@@ -247,6 +247,7 @@
     <Content Include="Views\Group\Create.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Shared\_NewsfeedPartial.cshtml" />
+    <Content Include="Views\Shared\_NewPostPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
