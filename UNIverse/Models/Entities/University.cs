@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using UNIverse.Models.Entities;
 
 namespace UNIverse.Models
 {
@@ -14,6 +15,7 @@ namespace UNIverse.Models
         public string Description { get; set; }
         public string EmailEnding { get; set; }
 
+        public virtual List<Department> Departments { get; set; }
         public virtual List<ApplicationUser> Members { get; set; }
         public virtual List<Group> Groups { get; set; }
     }
