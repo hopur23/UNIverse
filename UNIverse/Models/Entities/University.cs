@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
+
 namespace UNIverse.Models
 {
     public class University
@@ -14,6 +15,7 @@ namespace UNIverse.Models
         public string Description { get; set; }
         public string EmailEnding { get; set; }
 
+        
         public virtual List<ApplicationUser> Members { get; set; }
         public virtual List<Group> Groups { get; set; }
     }
