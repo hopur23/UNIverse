@@ -25,12 +25,13 @@ namespace UNIverse.Controllers
             Post post = new Post();
 
             post.Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
+            //post.ParentGroup = ServiceWrapper.GroupService.GetGroupById(1);
             //post.Author = ServiceWrapper.Services.UserService.GetUserById(this.User.Identity.GetUserId());
             post.Body = viewModel.Body;
             post.Comments = new List<Comment>();
             post.DateCreated = DateTime.Now;
             // TODO: Implement Groups
-            //post.ParentGroup = viewModel.Group;
+           // post.ParentGroup = viewModel.Group;
             // TODO: Implement Group Tags
             //post.Tag = viewModel.Tag;
 

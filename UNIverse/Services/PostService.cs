@@ -18,10 +18,9 @@ namespace UNIverse.Services
         public List<Post> GetAllPosts()
         {
             var posts = (from p in m_db.Posts
-                         orderby p.DateCreated descending
-                         select p).ToList();
-
-            return posts;
+                            orderby p.DateCreated descending
+                            select p).ToList();
+            return posts;    
         }
 
         public Post GetPostById(int id)

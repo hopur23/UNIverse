@@ -14,7 +14,7 @@
         foreach (var item in Model.Groups)
         {
             <ul>
-                <li>@item.Name</li>
+                <li>@Html.ActionLink(@item.Name, "View", "Group", new { id=item.Id }, null)</li>
             </ul>
         }
     }

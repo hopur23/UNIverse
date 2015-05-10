@@ -53,23 +53,19 @@ namespace UNIverse.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Entity<Group>()
-                .HasMany(c => c.Members).WithMany(i => i.Groups)
+                 .HasMany<ApplicationUser>(u => u.Members).WithMany(i => i.Groups)
                 .Map(t => t.MapLeftKey("GroupID")
                     .MapRightKey("UserID")
                     .ToTable("GroupMembers"));
-
-           /* modelBuilder.Entity<ApplicationUser>()
-                .HasMany(c => c.Friends).WithMany(i => i.Friends)
-                .Map(t => t.MapLeftKey("User1ID")
-                    .MapRightKey("User2ID")
-                    .ToTable("Friends"));*/
         }
 
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("LocalDatabase")
         {
         }
     }

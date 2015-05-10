@@ -12,16 +12,88 @@ namespace UNIverse.Controllers
 {
     public class GroupController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            List<Group> model = ServiceWrapper.GroupService.GetAllGroups();
+            List<Group> model = new List<Group>();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = ServiceWrapper.GroupService.GetAllGroups(searchString);
+                return View(model);
+            }
+
+            model = ServiceWrapper.GroupService.GetAllGroups();
+
             return View(model); 
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id.HasValue)
+            {
+                int realId = id.Value;
+                var model = ServiceWrapper.GroupService.GetGroupById(realId);
+
+                Group g = new Group();
+
+                g.Id = model.Id;
+                g.Name = model.Name;
+                g.Description = model.Description;
+                g.Administrator = model.Administrator;
+                g.Members = model.Members;
+                g.Posts = model.Posts;
+
+                return View(g);
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Group n)
+        {
+            if (ModelState.IsValid)
+            {
+                Group group = new Group();
+                group.Id = n.Id;
+                group.Name = n.Name;
+                group.Description = n.Description;
+                group.Administrator = n.Administrator;
+                group.Members = n.Members;
+                group.Posts = n.Posts;
+                ServiceWrapper.GroupService.EditGroup(group);
+                return RedirectToAction("View", "Group", new { id = group.Id });
+            }
+            else
+            {
+                return View(n);
+            }
         }
 
         public ActionResult View(int id)
         {
-            Group model = ServiceWrapper.GroupService.GetGroupById(id);
-            return View(model);
+            Group group = ServiceWrapper.GroupService.GetGroupById(id);
+            GroupViewModel viewModel = new GroupViewModel();
+            viewModel.isAdmin = false;
+            viewModel.inGroup = false;
+
+            if(ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()) == group.Administrator)
+            {
+                viewModel.isAdmin = true;
+            }
+
+            if(ServiceWrapper.GroupService.UserInGroup(group.Id, this.User.Identity.GetUserId()))
+            {
+                viewModel.inGroup = true;
+            }
+
+            viewModel.Name = group.Name;
+            viewModel.Description = group.Description;
+            viewModel.Members = group.Members;
+            viewModel.Posts = group.Posts;
+            viewModel.Id = group.Id;
+            
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -52,7 +124,7 @@ namespace UNIverse.Controllers
            // ServiceWrapper.UserService.AddGroupToUser(group, ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()));
 
             // TODO: Ákveða hvert á að redirecta user
-            return RedirectToAction("Index", "Group");
+            return RedirectToAction("View", "Group", new { id = group.Id });
         }
 
 
@@ -66,20 +138,28 @@ namespace UNIverse.Controllers
           //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
             // TODO: Ákveða hvert á að redirecta user
-            return RedirectToAction("Index", "Group");
+            return RedirectToAction("View", "Group", new { id = group.Id });
         }
 
-      /*  [HttpPost]
-        public ActionResult Join(int id)
+        [HttpGet]
+        public ActionResult Leave(int id)
         {
             var group = ServiceWrapper.GroupService.GetGroupById(id);
             var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
 
-            ServiceWrapper.GroupService.AddMemberToGroup(group, user);
+            if (user == group.Administrator)
+            {
+                return RedirectToAction("Index", "Group");
+            }
+
+            ServiceWrapper.GroupService.RemoveMemberFromGroup(group, user);
+            //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
             // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("Index", "Group");
-        }*/
+        }
+
+        
 
     }
 }

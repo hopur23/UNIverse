@@ -1,17 +1,9 @@
-﻿@model UNIverse.Models.Group
+﻿@model UNIverse.Models.ViewModels.GroupViewModel
 
-<div>
-    <h4>Group</h4>
+<div class="col-md-6 col-md-push-6">
+    <h4>@Html.DisplayFor(model => model.Name)</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -20,19 +12,49 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
-    <p>Members</p>
-        @foreach (var item in Model.Members)
+    @if (Model.inGroup)
+    {
+        <p>Members</p>
+        foreach (var item in Model.Members)
         {
             <ul>
                 <li>@item.FirstName @item.LastName</li>
             </ul>
         }
-       
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <input type="button" value="JoinReal" onclick="location.href='@Url.Action("Join", "Group", new { id = Model.Id })'" />
-    <input type="submit" value="Join" class="btn btn-default" />
-    @Html.ActionLink("Join", "Join", new { id = Model.Id }) |
+    }
+
+
+    
+
+    @if (Model.isAdmin)
+    {
+        <p>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</p>
+    }
+
+    @if ((!Model.isAdmin) && Model.inGroup)
+    {
+        <input type="button" value="Leave" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" />
+    }
+
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
+
+<div class="container col-md-6 col-md-pull-6">
+    @if (Model.inGroup)
+    { 
+        <h4>Group posts</h4>
+        Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel());
+        Html.RenderPartial("_NewsfeedPartial", Model.Posts);
+    }
+
+    @if (!Model.inGroup)
+    {
+        <h4>Members <input type="button" value="Join" onclick="location.href='@Url.Action("Join", "Group", new { id = Model.Id })'" /></h4>
+        foreach (var item in Model.Members)
+        {
+            <ul>
+                <li>@item.FirstName @item.LastName</li>
+            </ul>
+        }
+    }
+</div>
