@@ -59,7 +59,6 @@ namespace UNIverse.Models
         {
         }
 
-        /*
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -67,7 +66,8 @@ namespace UNIverse.Models
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.FriendRequests)
                 .WithRequired(f => f.Sender)
-                .HasForeignKey(f => f.SenderId);
+                .HasForeignKey(f => f.SenderId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<FriendRequest>()
                 .HasKey(f => new { f.SenderId, f.ReceiverId });
@@ -77,6 +77,5 @@ namespace UNIverse.Models
                 .WithMany()
                 .HasForeignKey(f => f.ReceiverId);
         }
-         * */
     }
 }

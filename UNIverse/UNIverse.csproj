@@ -170,22 +170,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505101335357_start.cs" />
-    <Compile Include="Migrations\201505101335357_start.Designer.cs">
-      <DependentUpon>201505101335357_start.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505101446078_birthday-dix.cs" />
-    <Compile Include="Migrations\201505101446078_birthday-dix.Designer.cs">
-      <DependentUpon>201505101446078_birthday-dix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505101553468_friends.cs" />
-    <Compile Include="Migrations\201505101553468_friends.Designer.cs">
-      <DependentUpon>201505101553468_friends.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505101628387_friendreq.cs" />
-    <Compile Include="Migrations\201505101628387_friendreq.Designer.cs">
-      <DependentUpon>201505101628387_friendreq.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -276,20 +260,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505101335357_start.resx">
-      <DependentUpon>201505101335357_start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505101446078_birthday-dix.resx">
-      <DependentUpon>201505101446078_birthday-dix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505101553468_friends.resx">
-      <DependentUpon>201505101553468_friends.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505101628387_friendreq.resx">
-      <DependentUpon>201505101628387_friendreq.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
