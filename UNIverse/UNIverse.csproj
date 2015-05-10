@@ -174,10 +174,23 @@
     <Compile Include="Migrations\201505101335357_start.Designer.cs">
       <DependentUpon>201505101335357_start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505101446078_birthday-dix.cs" />
+    <Compile Include="Migrations\201505101446078_birthday-dix.Designer.cs">
+      <DependentUpon>201505101446078_birthday-dix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505101553468_friends.cs" />
+    <Compile Include="Migrations\201505101553468_friends.Designer.cs">
+      <DependentUpon>201505101553468_friends.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505101628387_friendreq.cs" />
+    <Compile Include="Migrations\201505101628387_friendreq.Designer.cs">
+      <DependentUpon>201505101628387_friendreq.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
     <Compile Include="Models\Entities\Department.cs" />
+    <Compile Include="Models\Entities\FriendRequest.cs" />
     <Compile Include="Models\Entities\Group.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Entities\University.cs" />
@@ -252,6 +265,7 @@
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Shared\_NewsfeedPartial.cshtml" />
     <Content Include="Views\Shared\_NewPostPartial.cshtml" />
+    <Content Include="Views\Home\AllUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -266,6 +280,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201505101335357_start.resx">
       <DependentUpon>201505101335357_start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505101446078_birthday-dix.resx">
+      <DependentUpon>201505101446078_birthday-dix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505101553468_friends.resx">
+      <DependentUpon>201505101553468_friends.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505101628387_friendreq.resx">
+      <DependentUpon>201505101628387_friendreq.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

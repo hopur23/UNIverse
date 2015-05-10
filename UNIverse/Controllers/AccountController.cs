@@ -81,7 +81,9 @@ namespace UNIverse.Controllers
         {
             if (ModelState.IsValid)
             {
+                // TODO: Hafa val fyrir fæðingardag í register view, setja það í birthday.
                 var user = new ApplicationUser() { 
+                    Birthday = DateTime.Now,
                     UserName = model.UserName,
                     Email = model.UserName,
                     LastName = model.LastName,

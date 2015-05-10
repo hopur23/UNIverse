@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using UNIverse.Models;
 using UNIverse.Models.ViewModels;
 using UNIverse.Services;
+using UNIverse.Models.Entities;
 
 namespace UNIverse.Controllers
 {
@@ -16,8 +17,7 @@ namespace UNIverse.Controllers
         {
             if(userId != null)
             {
-                ApplicationUser user = new ApplicationUser();
-                user = ServiceWrapper.UserService.GetUserById(userId);
+                var user = ServiceWrapper.UserService.GetUserById(userId);
                 //user = ServiceWrapper.Services.UserService.GetUserById(userId);
                 if(user == null)
                 {
@@ -25,7 +25,7 @@ namespace UNIverse.Controllers
                     return View("Error");
                 }
 
-                UserProfileViewModel viewModel = new UserProfileViewModel();
+                var viewModel = new UserProfileViewModel();
 
                 viewModel.Name = user.FirstName + " " + user.LastName;
                 viewModel.Email = user.Email;
@@ -50,6 +50,36 @@ namespace UNIverse.Controllers
         public ActionResult Edit()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddFriend(string email)
+        {
+            if(email != null)
+            {
+                var receiver = ServiceWrapper.UserService.GetUserByEmail(email);
+                var sender = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
+
+                if (receiver == null || sender == null)
+                {
+                    return View("Error");
+                }
+                
+                var request = new FriendRequest()
+                {
+                    Sender = sender,
+                    SenderId = sender.Id,
+                    Receiver = receiver,
+                    ReceiverId = receiver.Id,
+                    RequestDate = DateTime.Now,
+                    IsAccepted = false
+                };
+
+                ServiceWrapper.UserService.AddFriendRequest(request);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View("Error");
         }
 
     }

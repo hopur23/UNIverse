@@ -35,5 +35,11 @@ namespace UNIverse.Controllers
             return View();
         }
 
+        public ActionResult AllUsers()
+        {
+            IEnumerable<ApplicationUser> model = ServiceWrapper.UserService.GetAllUsers();
+            return View(model);
+        }
+
     }
 }

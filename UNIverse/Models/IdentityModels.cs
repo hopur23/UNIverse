@@ -24,7 +24,7 @@ namespace UNIverse.Models
         public string ProfilePicturePath { get; set; }
 
         public virtual Department Department { get; set; }
-        public virtual List<ApplicationUser> Friends { get; set; }
+        public virtual List<FriendRequest> FriendRequests { get; set; }
         public virtual List<Group> Groups { get; set; }
         public virtual List<Post> Posts { get; set; }
     }
@@ -52,10 +52,31 @@ namespace UNIverse.Models
         public DbSet<University> Universities { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Department> Departments { get; set; }
+        public DbSet<FriendRequest> FriendRequests { get; set; }
 
         public ApplicationDbContext()
             : base("LocalDatabase")
         {
         }
+
+        /*
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.FriendRequests)
+                .WithRequired(f => f.Sender)
+                .HasForeignKey(f => f.SenderId);
+
+            modelBuilder.Entity<FriendRequest>()
+                .HasKey(f => new { f.SenderId, f.ReceiverId });
+
+            modelBuilder.Entity<FriendRequest>()
+                .HasRequired(f => f.Receiver)
+                .WithMany()
+                .HasForeignKey(f => f.ReceiverId);
+        }
+         * */
     }
 }

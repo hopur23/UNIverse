@@ -4,10 +4,7 @@
 
 <h1>Welcome to UNIverse</h1>
 
-
-@*
-    @Html.ActionLink("New Post", "New", "Post")
-*@
+@Html.ActionLink("View Users", "AllUsers")
 
 @{Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel());}
 
