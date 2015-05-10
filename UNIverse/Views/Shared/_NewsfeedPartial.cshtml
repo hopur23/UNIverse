@@ -1,0 +1,25 @@
+﻿@model List<UNIverse.Models.Post>
+
+@foreach (var item in Model)
+{
+    // TODO: Setja styling dót í sér skrá. Þetta er bara próf
+    <div class="well">
+        <div>
+            <h4>
+                @Html.ActionLink(item.Author.FirstName + " " + item.Author.LastName, "Index", "User", new { userId = item.Author.Id }, null)
+            </h4>
+            <div style="margin-top: -10px; margin-bottom: 10px;"><small>@item.DateCreated</small></div>
+        </div>
+        
+        <p>@item.Body</p>
+        <small>@Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)</small>
+        <hr />
+        @foreach (var comment in item.Comments)
+        {
+            
+            <div style="padding-bottom: 5px;">
+                <small><strong>@(comment.Author.FirstName + " " + comment.Author.LastName)</strong> @comment.Body</small><br />
+            </div>
+        }
+    </div>
+}

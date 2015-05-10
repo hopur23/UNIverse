@@ -170,10 +170,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505091338140_add-department.cs" />
-    <Compile Include="Migrations\201505091338140_add-department.Designer.cs">
-      <DependentUpon>201505091338140_add-department.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -252,6 +248,8 @@
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Group\View.cshtml" />
     <Content Include="Views\Group\Join.cshtml" />
+    <Content Include="Views\Shared\_NewsfeedPartial.cshtml" />
+    <Content Include="Views\Shared\_NewPostPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -262,11 +260,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505091338140_add-department.resx">
-      <DependentUpon>201505091338140_add-department.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
