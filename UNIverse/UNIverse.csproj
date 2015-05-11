@@ -261,6 +261,7 @@
     <Content Include="Views\Shared\_NewPostPartial.cshtml" />
     <Content Include="Views\Group\Edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Post\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

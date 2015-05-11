@@ -32,6 +32,16 @@ namespace UNIverse.Services
             return post;
         }
 
+        public void EditPost(Post post)
+        {
+            Post g = ServiceWrapper.PostService.GetPostById(post.Id);
+            if (g != null)
+            {
+                g.Body = post.Body;
+                m_db.SaveChanges();
+            }
+        }
+
         public void AddComment(Comment comment)
         {
             m_db.Comments.Add(comment);
@@ -41,6 +51,19 @@ namespace UNIverse.Services
         public void AddPost(Post post)
         {
             m_db.Posts.Add(post);
+            m_db.SaveChanges();
+        }
+
+        public void DeletePost(Post post)
+        {
+            if (post.Comments != null)
+            {
+                foreach (var item in post.Comments)
+                {
+                    m_db.Comments.Remove(item);
+                }
+            }
+            m_db.Posts.Remove(post);
             m_db.SaveChanges();
         }
     }

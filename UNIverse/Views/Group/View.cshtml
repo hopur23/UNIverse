@@ -43,7 +43,7 @@
     @if (Model.inGroup)
     { 
         <h4>Group posts</h4>
-        Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel());
+        Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel() { groupId = Model.Id });
         Html.RenderPartial("_NewsfeedPartial", Model.Posts);
     }
 

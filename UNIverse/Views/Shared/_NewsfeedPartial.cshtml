@@ -1,4 +1,5 @@
-﻿@model List<UNIverse.Models.Post>
+﻿@using Microsoft.AspNet.Identity;
+@model List<UNIverse.Models.Post>
 
 @foreach (var item in Model)
 {
@@ -12,7 +13,14 @@
         </div>
         
         <p>@item.Body</p>
+        @if (item.Author.Id == User.Identity.GetUserId())
+        { 
+            <small>@Html.ActionLink("Edit", "Edit", "Post", new { Id = item.Id }, null)</small>
+    //<input type="button" value="Leave" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" />
+            <small><a href="@Url.Action("DeletePost", "Post", new { Id = item.Id })">Delete status</a></small>
+        }
         <small>@Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)</small>
+        
         <hr />
         @foreach (var comment in item.Comments)
         {

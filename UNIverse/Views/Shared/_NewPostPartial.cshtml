@@ -9,6 +9,7 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
+            @Html.HiddenFor(model => model.groupId) 
             <div class="col-md-12">
                 @Html.TextAreaFor(model => model.Body, new { @cols = "50", @rows = "4", @placeholder = "Enter status...", @style = "resize: none;"})
                 @Html.ValidationMessageFor(model => model.Body)
