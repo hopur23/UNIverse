@@ -18,9 +18,19 @@ namespace UNIverse.Services
         public List<Group> GetAllGroups()
         {
             var groups = (from p in m_db.Groups
-                         orderby p.Name descending
-                         select p).ToList();
+                          orderby p.Name descending
+                          select p).ToList();
 
+            return groups;
+        }
+
+        public List<Group> GetAllGroups(string searchString)
+        {
+            var groups = (from p in m_db.Groups
+                            where p.Name.Contains(searchString)
+                            orderby p.Name ascending
+                            select p).ToList();
+                
             return groups;
         }
 
@@ -33,9 +43,53 @@ namespace UNIverse.Services
             return group;
         }
 
+        public List<ApplicationUser> GetUsersByGroupId(int id)
+        {
+            var group = GetGroupById(id);
+            return group.Members;
+        }
+
+        public bool UserInGroup(int GroupId, string UserId)
+        {
+            List<ApplicationUser> allUsers = GetUsersByGroupId(GroupId);
+
+            foreach (var item in allUsers)
+	        {
+		        if(item.Id == UserId)
+                {
+                    return true;
+                }
+	        }
+
+            return false;
+        }
+
         public void AddGroup(Group group)
         {
             m_db.Groups.Add(group);
+            m_db.SaveChanges();
+        }
+
+        public void EditGroup(Group group)
+        {
+            Group g = ServiceWrapper.GroupService.GetGroupById(group.Id);
+            if (g != null)
+            {
+                g.Name = group.Name;
+                g.Description = group.Description;
+                m_db.SaveChanges();
+            }
+        }
+
+        public void AddMemberToGroup(Group group, ApplicationUser user)
+        {
+            group.Members.Add(user);
+            m_db.SaveChanges();
+        }
+
+        public void RemoveMemberFromGroup(Group group, ApplicationUser user)
+        {
+            group.Members.Remove(user);
             m_db.SaveChanges();
         }
 

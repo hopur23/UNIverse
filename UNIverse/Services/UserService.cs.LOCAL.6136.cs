@@ -16,25 +16,6 @@ namespace UNIverse.Services
             m_db = context;
         }
 
-        public List<ApplicationUser> GetAllUsers()
-        {
-            var user = (from u in m_db.Users
-                        orderby u.FirstName ascending
-                        select u).ToList();
-            return user;
-        }
-
-        public List<ApplicationUser> GetAllUsers(string searchString)
-        {
-            var users = (from p in m_db.Users
-                          where p.FirstName.Contains(searchString) || 
-                          p.LastName.Contains(searchString)
-                          orderby p.FirstName ascending
-                          select p).ToList();
-
-            return users;
-        }
-
         public ApplicationUser GetUserById(string id)
         {
             var user = (from u in m_db.Users
@@ -44,10 +25,12 @@ namespace UNIverse.Services
             return user;
         }
 
-        public void AddGroupToUser(Group group, ApplicationUser user)
+        public IEnumerable<ApplicationUser> GetAllUsers()
         {
-            user.Groups.Add(group);
-            m_db.SaveChanges();
+            var users = (from u in m_db.Users
+                         select u).ToList();
+
+            return users;
         }
 
         public ApplicationUser GetUserByEmail(string email)

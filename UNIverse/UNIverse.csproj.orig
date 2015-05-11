@@ -171,9 +171,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505111445209_bull.cs" />
-    <Compile Include="Migrations\201505111445209_bull.Designer.cs">
-      <DependentUpon>201505111445209_bull.cs</DependentUpon>
+    <Compile Include="Migrations\201505111231342_start.cs" />
+    <Compile Include="Migrations\201505111231342_start.Designer.cs">
+      <DependentUpon>201505111231342_start.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -256,8 +256,8 @@
     <Content Include="Views\Group\View.cshtml" />
     <Content Include="Views\Shared\_NewsfeedPartial.cshtml" />
     <Content Include="Views\Shared\_NewPostPartial.cshtml" />
-    <Content Include="Views\Group\Edit.cshtml" />
     <Content Include="Views\Home\AllUsers.cshtml" />
+    <Content Include="Views\Group\Edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
   </ItemGroup>
@@ -273,8 +273,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505111445209_bull.resx">
-      <DependentUpon>201505111445209_bull.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505111231342_start.resx">
+      <DependentUpon>201505111231342_start.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505101545598_Stuff.resx">
+      <DependentUpon>201505101545598_Stuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505101609329_Fix.resx">
+      <DependentUpon>201505101609329_Fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

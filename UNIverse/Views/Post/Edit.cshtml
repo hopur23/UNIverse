@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNet.Identity;
+@model UNIverse.Models.Post
+
+@if (Model.Author.Id == User.Identity.GetUserId())
+{ 
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    
+        <div class="form-horizontal">
+            <h4>Edit your status</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Body)
+                    @Html.ValidationMessageFor(model => model.Body)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tag, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tag)
+                    @Html.ValidationMessageFor(model => model.Tag)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <p>Sorry, You cannot edit a post that isn't yours</p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -21,6 +21,20 @@ namespace UNIverse.Controllers
             return View(model);
         }
 
+        public ActionResult Search(string searchString)
+        {
+            SearchViewModel model = new SearchViewModel();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model.Groups = ServiceWrapper.GroupService.GetAllGroups(searchString);
+                model.Users = ServiceWrapper.UserService.GetAllUsers(searchString);
+                return View(model);
+            }
+
+            return View(model); 
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using UNIverse.Models;
-using UNIverse.Models.Entities;
 
 namespace UNIverse.Services
 {
@@ -47,21 +46,6 @@ namespace UNIverse.Services
         public void AddGroupToUser(Group group, ApplicationUser user)
         {
             user.Groups.Add(group);
-            m_db.SaveChanges();
-        }
-
-        public ApplicationUser GetUserByEmail(string email)
-        {
-            var user = (from u in m_db.Users
-                        where u.Email == email
-                        select u).SingleOrDefault();
-
-            return user;
-        }
-
-        public void AddFriendRequest(FriendRequest request)
-        {
-            m_db.FriendRequests.Add(request);
             m_db.SaveChanges();
         }
     }

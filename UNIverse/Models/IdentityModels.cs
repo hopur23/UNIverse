@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using UNIverse.Models.Entities;
@@ -54,14 +55,17 @@ namespace UNIverse.Models
         public DbSet<Department> Departments { get; set; }
         public DbSet<FriendRequest> FriendRequests { get; set; }
 
-        public ApplicationDbContext()
-            : base("LocalDatabase")
-        {
-        }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<Group>()
+                 .HasMany<ApplicationUser>(u => u.Members).WithMany(i => i.Groups)
+                .Map(t => t.MapLeftKey("GroupID")
+                    .MapRightKey("UserID")
+                    .ToTable("GroupMembers"));
 
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.FriendRequests)
@@ -76,6 +80,11 @@ namespace UNIverse.Models
                 .HasRequired(f => f.Receiver)
                 .WithMany()
                 .HasForeignKey(f => f.ReceiverId);
+        }
+
+        public ApplicationDbContext()
+            : base("LocalDatabase")
+        {
         }
     }
 }

@@ -25,12 +25,21 @@ namespace UNIverse.Controllers
             Post post = new Post();
 
             post.Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
+
+            if(viewModel.groupId.HasValue)
+            {
+                int realId = viewModel.groupId.Value;
+                viewModel.ParentGroup = ServiceWrapper.GroupService.GetGroupById(realId);
+            }
+            //post.ParentGroup = ServiceWrapper.GroupService.GetGroupById(1);
             //post.Author = ServiceWrapper.Services.UserService.GetUserById(this.User.Identity.GetUserId());
             post.Body = viewModel.Body;
             post.Comments = new List<Comment>();
             post.DateCreated = DateTime.Now;
+            post.ParentGroup = viewModel.ParentGroup;
+
             // TODO: Implement Groups
-            //post.ParentGroup = viewModel.Group;
+           // post.ParentGroup = viewModel.Group;
             // TODO: Implement Group Tags
             //post.Tag = viewModel.Tag;
 
@@ -76,6 +85,64 @@ namespace UNIverse.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id.HasValue)
+            {
+                int realId = id.Value;
+                var model = ServiceWrapper.PostService.GetPostById(realId);
+
+                Post g = new Post();
+
+                g.Id = model.Id;
+                g.Author = model.Author;
+                g.Body = model.Body;
+                g.Comments = model.Comments;
+                g.DateCreated = model.DateCreated;
+                g.ParentGroup = model.ParentGroup;
+
+                return View(g);
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Post n)
+        {
+            if (ModelState.IsValid)
+            {
+                Post post = new Post();
+                post.Id = n.Id;
+                post.Author = n.Author;
+                post.Body = n.Body;
+                post.Comments = n.Comments;
+                post.DateCreated = n.DateCreated;
+                post.ParentGroup = n.ParentGroup;
+                ServiceWrapper.PostService.EditPost(post);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View(n);
+            }
+        }
+
+        public ActionResult DeletePost(int? id)
+        {
+            if (id.HasValue)
+            {
+                int realId = id.Value;
+                var post = ServiceWrapper.PostService.GetPostById(realId);
+
+                ServiceWrapper.PostService.DeletePost(post);
+            }
+            //  ServiceWrapper.UserService.AddGroupToUser(group, user);
+
+            // TODO: Ákveða hvert á að redirecta user
+            return RedirectToAction("Index", "Group");
         }
     }
 }

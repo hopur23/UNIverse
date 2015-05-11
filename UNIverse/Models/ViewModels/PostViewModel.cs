@@ -16,6 +16,9 @@ namespace UNIverse.Models.ViewModels
 
         public ApplicationUser Author { get; set; }
         public List<Comment> Comments { get; set; }
+        public Group ParentGroup { get; set; }
+
+        public int? groupId { get; set; }
         
     }
 }

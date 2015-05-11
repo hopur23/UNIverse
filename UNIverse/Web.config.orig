@@ -9,9 +9,15 @@
     <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
   <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 --></configSections>
   <connectionStrings>
-   <add name="DefaultConnection" connectionString="Data Source=hrnem.ru.is;Initial Catalog=VERK2015_H23;User ID=VERK2015_H23_usr;Password=grayjam28" providerName="System.Data.SqlClient" />
+<<<<<<< HEAD
+    <add name="DefaultConnection" connectionString="Data Source=hrnem.ru.is;Initial Catalog=VERK2015_H23;User ID=VERK2015_H23_usr;Password=grayjam28" providerName="System.Data.SqlClient" />
     <add name="LocalDatabase" connectionString="Data Source=(LocalDb)\v11.0;MultipleActiveResultSets=True;Integrated Security=True"
       providerName="System.Data.SqlClient" /> 
+=======
+   <add name="DefaultConnection" connectionString="Data Source=hrnem.ru.is;Initial Catalog=VERK2015_H23;User ID=VERK2015_H23_usr;Password=grayjam28" providerName="System.Data.SqlClient" />
+   <add name="LocalDatabase" connectionString="Data Source=(LocalDb)\v11.0;MultipleActiveResultSets=True;Integrated Security=True" providerName="System.Data.SqlClient" />
+
+>>>>>>> c9318c804c34bde38de0c252e940d896c4bbd9f5
   </connectionStrings>
   <appSettings>
     <add key="webpages:Version" value="3.0.0.0" />

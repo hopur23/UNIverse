@@ -44,10 +44,13 @@ namespace UNIverse.Services
             return user;
         }
 
-        public void AddGroupToUser(Group group, ApplicationUser user)
+<<<<<<< HEAD
+        public IEnumerable<ApplicationUser> GetAllUsers()
         {
-            user.Groups.Add(group);
-            m_db.SaveChanges();
+            var users = (from u in m_db.Users
+                         select u).ToList();
+
+            return users;
         }
 
         public ApplicationUser GetUserByEmail(string email)
@@ -62,6 +65,11 @@ namespace UNIverse.Services
         public void AddFriendRequest(FriendRequest request)
         {
             m_db.FriendRequests.Add(request);
+=======
+        public void AddGroupToUser(Group group, ApplicationUser user)
+        {
+            user.Groups.Add(group);
+>>>>>>> c9318c804c34bde38de0c252e940d896c4bbd9f5
             m_db.SaveChanges();
         }
     }

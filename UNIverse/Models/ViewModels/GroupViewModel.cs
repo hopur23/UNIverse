@@ -13,5 +13,9 @@ namespace UNIverse.Models.ViewModels
         public List<Post> Posts { get; set; }
         public List<ApplicationUser> Members { get; set; }
         public ApplicationUser Administrator { get; set; }
+
+        public bool isAdmin { get; set; }
+        public bool inGroup { get; set; }
+        public int Id { get; set; }
     }
 }
