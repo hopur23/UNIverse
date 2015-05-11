@@ -25,9 +25,10 @@ namespace UNIverse.Models
         public string ProfilePicturePath { get; set; }
 
         public virtual Department Department { get; set; }
-        public virtual List<FriendRequest> FriendRequests { get; set; }
         public virtual List<Group> Groups { get; set; }
         public virtual List<Post> Posts { get; set; }
+        public virtual List<FriendRequest> FriendRequests { get; set; }
+        public virtual List<ApplicationUser> Friends { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -71,6 +72,14 @@ namespace UNIverse.Models
                 .WithRequired(f => f.Sender)
                 .HasForeignKey(f => f.SenderId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.Friends)
+                .WithMany()
+                .Map(t => t
+                    .MapLeftKey("UserId")
+                    .MapRightKey("FriendId")
+                    .ToTable("Friends"));
 
             modelBuilder.Entity<FriendRequest>()
                 .HasKey(f => new { f.SenderId, f.ReceiverId });

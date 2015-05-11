@@ -31,7 +31,9 @@ namespace UNIverse.Controllers
                     userId = user.Id,
                     Name = user.FirstName + " " + user.LastName,
                     Email = user.Email,
-                    FriendRequests = user.FriendRequests,
+                    ReceivedFriendRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(user.Id),
+                    SentFriendRequests = ServiceWrapper.FriendService.GetSentFriendRequests(user.Id),
+                    Friends = ServiceWrapper.FriendService.GetFriendsForUser(user.Id),
                     Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList(),
                     Groups = user.Groups.OrderByDescending(g => g.Name).ToList()
                 };
@@ -87,6 +89,5 @@ namespace UNIverse.Controllers
             }
             return View("Error");
         }
-
     }
 }

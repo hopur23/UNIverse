@@ -4,9 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<p>Number of friend requests: @Model.FriendRequests.Count()</p>
+<p>Number of sent friend requests: @Model.SentFriendRequests.Count()</p>
+<p>Number of received friend requests: @Model.ReceivedFriendRequests.Count()</p>
+<p>Number of friends: @Model.Friends.Count()</p>
 
-@*TODO: Nota ID frekar en email sem færibreytu*@
 @using (Html.BeginForm("AddFriend", "User", new { userId = Model.userId }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -30,6 +31,28 @@
         }
     }
     <h3>Friends</h3>
+    @foreach(var friend in Model.Friends)
+    {
+        <h4>@(friend.FirstName + " " + friend.LastName)</h4>
+        <p>@friend.Email</p>
+        <hr />
+    }
+
+    <h3>Sent friend requests</h3>
+    @foreach (var request in Model.SentFriendRequests)
+    {
+        <h4>@(request.Receiver.FirstName + " " + request.Receiver.LastName)</h4>
+        <p>Request since @request.RequestDate</p>
+        <hr />
+    }
+
+    <h3>Received friend requests</h3>
+    @foreach (var request in Model.ReceivedFriendRequests)
+    {
+        <h4>@(request.Sender.FirstName + " " + request.Sender.LastName)</h4>
+        <p>Request since @request.RequestDate</p>
+        <hr />
+    }
 
 </div>
 

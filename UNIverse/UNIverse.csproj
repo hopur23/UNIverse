@@ -175,6 +175,10 @@
     <Compile Include="Migrations\201505111924560_begin.Designer.cs">
       <DependentUpon>201505111924560_begin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505111955212_friendstable.cs" />
+    <Compile Include="Migrations\201505111955212_friendstable.Designer.cs">
+      <DependentUpon>201505111955212_friendstable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -276,6 +280,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201505111924560_begin.resx">
       <DependentUpon>201505111924560_begin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505111955212_friendstable.resx">
+      <DependentUpon>201505111955212_friendstable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
