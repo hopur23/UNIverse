@@ -58,11 +58,5 @@ namespace UNIverse.Services
 
             return user;
         }
-
-        public void AddFriendRequest(FriendRequest request)
-        {
-            m_db.FriendRequests.Add(request);
-            m_db.SaveChanges();
-        }
     }
 }

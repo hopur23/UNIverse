@@ -17,21 +17,20 @@ namespace UNIverse.Services
             m_db = context;
         }
 
-        public FriendRequest GetFriendRequestById(int id)
-        {
-            var request = (from r in m_db.FriendRequests
-                           where r.Id == id
-                           select r).SingleOrDefault();
-
-            return request;
-        }
-
         // Get all friend requests the specified user is involved in (either
         // sender or receiver)
-        public IEnumerable<FriendRequest> GetFriendRequestsByUser(string id)
+        public IEnumerable<FriendRequest> GetAllFriendRequests(string id)
         {
             var requests = (from r in m_db.FriendRequests
                             where (r.Receiver.Id == id || r.Sender.Id == id)
+                            select r).ToList();
+            return requests;
+        }
+
+        public IEnumerable<FriendRequest> GetReceivedFriendRequests(string userId)
+        {
+            var requests = (from r in m_db.FriendRequests
+                            where r.Receiver.Id == userId
                             select r).ToList();
             return requests;
         }

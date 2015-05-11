@@ -7,13 +7,13 @@ namespace UNIverse.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class start : IMigrationMetadata
+    public sealed partial class begin : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(start));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(begin));
         
         string IMigrationMetadata.Id
         {
-            get { return "201505111231342_start"; }
+            get { return "201505111924560_begin"; }
         }
         
         string IMigrationMetadata.Source

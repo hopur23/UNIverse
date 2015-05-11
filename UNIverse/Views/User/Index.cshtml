@@ -4,14 +4,14 @@
     ViewBag.Title = "Index";
 }
 
+<p>Number of friend requests: @Model.FriendRequests.Count()</p>
+
 @*TODO: Nota ID frekar en email sem færibreytu*@
-@using (Html.BeginForm("AddFriend", "User", FormMethod.Post))
+@using (Html.BeginForm("AddFriend", "User", new { userId = Model.userId }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-
-    @Html.HiddenFor(model => model.Email)
-
+    
     <input type="submit" value="Add Friend" class="btn btn-default" />
 }
 
@@ -29,6 +29,8 @@
             </ul>
         }
     }
+    <h3>Friends</h3>
+
 </div>
 
 <div class="container col-md-6 col-md-pull-6">

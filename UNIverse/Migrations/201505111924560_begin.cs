@@ -3,12 +3,12 @@ namespace UNIverse.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class bull : DbMigration
+    public partial class begin : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Comment",
+                "dbo.Comments",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -17,7 +17,7 @@ namespace UNIverse.Migrations
                         Author_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Post", t => t.Parent_Id)
+                .ForeignKey("dbo.Posts", t => t.Parent_Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Author_Id)
                 .Index(t => t.Parent_Id)
                 .Index(t => t.Author_Id);
@@ -41,8 +41,8 @@ namespace UNIverse.Migrations
                         Department_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.University", t => t.University_Id)
-                .ForeignKey("dbo.Department", t => t.Department_Id)
+                .ForeignKey("dbo.Universities", t => t.University_Id)
+                .ForeignKey("dbo.Departments", t => t.Department_Id)
                 .Index(t => t.University_Id)
                 .Index(t => t.Department_Id);
             
@@ -94,7 +94,7 @@ namespace UNIverse.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Department",
+                "dbo.Departments",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -102,11 +102,11 @@ namespace UNIverse.Migrations
                         ParentUniversity_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.University", t => t.ParentUniversity_Id)
+                .ForeignKey("dbo.Universities", t => t.ParentUniversity_Id)
                 .Index(t => t.ParentUniversity_Id);
             
             CreateTable(
-                "dbo.University",
+                "dbo.Universities",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -117,7 +117,7 @@ namespace UNIverse.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Group",
+                "dbo.Groups",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -128,12 +128,12 @@ namespace UNIverse.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Administrator_Id)
-                .ForeignKey("dbo.University", t => t.ParentUniversity_Id)
+                .ForeignKey("dbo.Universities", t => t.ParentUniversity_Id)
                 .Index(t => t.Administrator_Id)
                 .Index(t => t.ParentUniversity_Id);
             
             CreateTable(
-                "dbo.Post",
+                "dbo.Posts",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -145,17 +145,16 @@ namespace UNIverse.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Author_Id)
-                .ForeignKey("dbo.Group", t => t.ParentGroup_Id)
+                .ForeignKey("dbo.Groups", t => t.ParentGroup_Id)
                 .Index(t => t.Author_Id)
                 .Index(t => t.ParentGroup_Id);
             
             CreateTable(
-                "dbo.FriendRequest",
+                "dbo.FriendRequests",
                 c => new
                     {
                         SenderId = c.String(nullable: false, maxLength: 128),
                         ReceiverId = c.String(nullable: false, maxLength: 128),
-                        Id = c.Int(nullable: false),
                         IsAccepted = c.Boolean(nullable: false),
                         RequestDate = c.DateTime(nullable: false),
                     })
@@ -173,7 +172,7 @@ namespace UNIverse.Migrations
                         UserID = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.GroupID, t.UserID })
-                .ForeignKey("dbo.Group", t => t.GroupID, cascadeDelete: true)
+                .ForeignKey("dbo.Groups", t => t.GroupID, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserID, cascadeDelete: true)
                 .Index(t => t.GroupID)
                 .Index(t => t.UserID);
@@ -182,52 +181,52 @@ namespace UNIverse.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Comment", "Author_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.FriendRequest", "SenderId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.FriendRequest", "ReceiverId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "Department_Id", "dbo.Department");
-            DropForeignKey("dbo.AspNetUsers", "University_Id", "dbo.University");
-            DropForeignKey("dbo.Post", "ParentGroup_Id", "dbo.Group");
-            DropForeignKey("dbo.Comment", "Parent_Id", "dbo.Post");
-            DropForeignKey("dbo.Post", "Author_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Group", "ParentUniversity_Id", "dbo.University");
+            DropForeignKey("dbo.Comments", "Author_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.FriendRequests", "SenderId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.FriendRequests", "ReceiverId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUsers", "Department_Id", "dbo.Departments");
+            DropForeignKey("dbo.AspNetUsers", "University_Id", "dbo.Universities");
+            DropForeignKey("dbo.Posts", "ParentGroup_Id", "dbo.Groups");
+            DropForeignKey("dbo.Comments", "Parent_Id", "dbo.Posts");
+            DropForeignKey("dbo.Posts", "Author_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Groups", "ParentUniversity_Id", "dbo.Universities");
             DropForeignKey("dbo.GroupMembers", "UserID", "dbo.AspNetUsers");
-            DropForeignKey("dbo.GroupMembers", "GroupID", "dbo.Group");
-            DropForeignKey("dbo.Group", "Administrator_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Department", "ParentUniversity_Id", "dbo.University");
+            DropForeignKey("dbo.GroupMembers", "GroupID", "dbo.Groups");
+            DropForeignKey("dbo.Groups", "Administrator_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Departments", "ParentUniversity_Id", "dbo.Universities");
             DropForeignKey("dbo.AspNetUserClaims", "User_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.GroupMembers", new[] { "UserID" });
             DropIndex("dbo.GroupMembers", new[] { "GroupID" });
-            DropIndex("dbo.FriendRequest", new[] { "ReceiverId" });
-            DropIndex("dbo.FriendRequest", new[] { "SenderId" });
-            DropIndex("dbo.Post", new[] { "ParentGroup_Id" });
-            DropIndex("dbo.Post", new[] { "Author_Id" });
-            DropIndex("dbo.Group", new[] { "ParentUniversity_Id" });
-            DropIndex("dbo.Group", new[] { "Administrator_Id" });
-            DropIndex("dbo.Department", new[] { "ParentUniversity_Id" });
+            DropIndex("dbo.FriendRequests", new[] { "ReceiverId" });
+            DropIndex("dbo.FriendRequests", new[] { "SenderId" });
+            DropIndex("dbo.Posts", new[] { "ParentGroup_Id" });
+            DropIndex("dbo.Posts", new[] { "Author_Id" });
+            DropIndex("dbo.Groups", new[] { "ParentUniversity_Id" });
+            DropIndex("dbo.Groups", new[] { "Administrator_Id" });
+            DropIndex("dbo.Departments", new[] { "ParentUniversity_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "User_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "Department_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "University_Id" });
-            DropIndex("dbo.Comment", new[] { "Author_Id" });
-            DropIndex("dbo.Comment", new[] { "Parent_Id" });
+            DropIndex("dbo.Comments", new[] { "Author_Id" });
+            DropIndex("dbo.Comments", new[] { "Parent_Id" });
             DropTable("dbo.GroupMembers");
-            DropTable("dbo.FriendRequest");
-            DropTable("dbo.Post");
-            DropTable("dbo.Group");
-            DropTable("dbo.University");
-            DropTable("dbo.Department");
+            DropTable("dbo.FriendRequests");
+            DropTable("dbo.Posts");
+            DropTable("dbo.Groups");
+            DropTable("dbo.Universities");
+            DropTable("dbo.Departments");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Comment");
+            DropTable("dbo.Comments");
         }
     }
 }

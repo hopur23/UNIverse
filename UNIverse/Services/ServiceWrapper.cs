@@ -48,5 +48,18 @@ namespace UNIverse.Services
                 return groupSvc;
             }
         }
+
+        private static FriendService friendSvc;
+        public static FriendService FriendService
+        {
+            get
+            {
+                if (friendSvc == null)
+                {
+                    friendSvc = new FriendService(context);
+                }
+                return friendSvc;
+            }
+        }
     }
 }

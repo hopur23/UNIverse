@@ -59,10 +59,9 @@ namespace UNIverse.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
             modelBuilder.Entity<Group>()
-                 .HasMany<ApplicationUser>(u => u.Members).WithMany(i => i.Groups)
+                 .HasMany<ApplicationUser>(u => u.Members)
+                 .WithMany(i => i.Groups)
                 .Map(t => t.MapLeftKey("GroupID")
                     .MapRightKey("UserID")
                     .ToTable("GroupMembers"));

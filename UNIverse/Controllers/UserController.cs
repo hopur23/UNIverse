@@ -18,19 +18,24 @@ namespace UNIverse.Controllers
             if(userId != null)
             {
                 var user = ServiceWrapper.UserService.GetUserById(userId);
-                //user = ServiceWrapper.Services.UserService.GetUserById(userId);
+                // Hér er userinn aðeins kominn með þær friend requests sem hann sjálfur hefur sent.
+
                 if(user == null)
                 {
                     // TODO: Hafa flotta 404 síðu
                     return View("Error");
                 }
 
-                var viewModel = new UserProfileViewModel();
+                var viewModel = new UserProfileViewModel()
+                {
+                    userId = user.Id,
+                    Name = user.FirstName + " " + user.LastName,
+                    Email = user.Email,
+                    FriendRequests = user.FriendRequests,
+                    Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList(),
+                    Groups = user.Groups.OrderByDescending(g => g.Name).ToList()
+                };
 
-                viewModel.Name = user.FirstName + " " + user.LastName;
-                viewModel.Email = user.Email;
-                viewModel.Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList();
-                viewModel.Groups = user.Groups.OrderByDescending(p => p.Name).ToList();
                 return View(viewModel);
             }
             return View("Error");
@@ -54,11 +59,11 @@ namespace UNIverse.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddFriend(string email)
+        public ActionResult AddFriend(string userId)
         {
-            if(email != null)
+            if (userId != null)
             {
-                var receiver = ServiceWrapper.UserService.GetUserByEmail(email);
+                var receiver = ServiceWrapper.UserService.GetUserById(userId);
                 var sender = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
 
                 if (receiver == null || sender == null)
@@ -76,7 +81,7 @@ namespace UNIverse.Controllers
                     IsAccepted = false
                 };
 
-                ServiceWrapper.UserService.AddFriendRequest(request);
+                ServiceWrapper.FriendService.AddFriendRequest(request);
 
                 return RedirectToAction("Index", "Home");
             }
