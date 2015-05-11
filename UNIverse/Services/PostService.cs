@@ -58,7 +58,7 @@ namespace UNIverse.Services
         {
             if (post.Comments != null)
             {
-                foreach (var item in post.Comments)
+                foreach (var item in post.Comments.ToList())
                 {
                     m_db.Comments.Remove(item);
                 }
