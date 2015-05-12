@@ -163,5 +163,17 @@ namespace UNIverse.Controllers
             }
             return View("Error");
         }
+
+        [HttpPost]
+        public ActionResult RemoveFriend(string userId)
+        {
+            /*
+            if(userId != null)
+            {
+                ServiceWrapper.FriendService.GetAllFriendRequests()
+            }
+             * */
+            return View("Error");
+        }
     }
 }
