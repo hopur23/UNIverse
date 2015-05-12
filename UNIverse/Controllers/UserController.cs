@@ -65,26 +65,55 @@ namespace UNIverse.Controllers
         {
             if (userId != null)
             {
+                // Fetch the user and yourself from the database.
                 var receiver = ServiceWrapper.UserService.GetUserById(userId);
                 var sender = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
 
+                // Either the user does not exist or you are not authenticated. Return an error view.
                 if (receiver == null || sender == null)
                 {
                     return View("Error");
                 }
-                
-                var request = new FriendRequest()
+
+                // Check if there is already a friend request between the users in the system
+                var req = ServiceWrapper.FriendService.FindRequestBetween(sender.Id, receiver.Id);
+
+                // Already exists a request
+                if(req != null)
                 {
-                    Sender = sender,
-                    SenderId = sender.Id,
-                    Receiver = receiver,
-                    ReceiverId = receiver.Id,
-                    RequestDate = DateTime.Now,
-                    IsAccepted = false
-                };
+                    // Is the other user the receiver?
+                    // Nothing happens, you can't send two requests and you can't accept it on behalf of the other user.
+                    // Redirect the user to the other user's profile.
+                    // This should never happen under regular circumstances, the option to add a friend on an already
+                    // added friend should not be available.
+                    if(req.Receiver.Id == userId)
+                    {
+                        return RedirectToAction("Index", new { userId = userId });
 
-                ServiceWrapper.FriendService.AddFriendRequest(request);
+                    }
+                    // If you got here, you are the receiver.
+                    // Is the request pending? Then accept it.
+                    if(req.IsAccepted == false)
+                    {
+                        req.IsAccepted = true;
+                        ServiceWrapper.FriendService.UpdateFriendRequest(req);
+                    }
+                }
+                // No previous friend request was found. Create a new pending one.
+                else
+                {
+                    var request = new FriendRequest()
+                    {
+                        Sender = sender,
+                        SenderId = sender.Id,
+                        Receiver = receiver,
+                        ReceiverId = receiver.Id,
+                        RequestDate = DateTime.Now,
+                        IsAccepted = false
+                    };
 
+                    ServiceWrapper.FriendService.AddFriendRequest(request);
+                }
                 return RedirectToAction("Index", "Home");
             }
             return View("Error");

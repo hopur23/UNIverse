@@ -47,6 +47,22 @@ namespace UNIverse.Services
         }
 
         /// <summary>
+        /// Finds all friend requests between User 1 and User 2. Should only exist 0 or 1.
+        /// Returns the request if found, else null.
+        /// </summary>
+        /// <param name="user1Id">User 1 ID</param>
+        /// <param name="user2Id">User 2 ID</param>
+        /// <returns></returns>
+        public FriendRequest FindRequestBetween(string user1Id, string user2Id)
+        {
+            var request = (from r in m_db.FriendRequests
+                           where (r.Sender.Id == user1Id && r.Receiver.Id == user2Id)
+                              || (r.Sender.Id == user2Id && r.Receiver.Id == user1Id)
+                           select r).SingleOrDefault();
+            return request;
+        }
+
+        /// <summary>
         /// Gets a list of all sent friend requests that are still pending, ordered by newest request first.
         /// </summary>
         /// <param name="id">User ID</param>
