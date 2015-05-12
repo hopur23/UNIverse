@@ -38,6 +38,8 @@ namespace UNIverse.Services
             if (g != null)
             {
                 g.Body = post.Body;
+                g.ImagePath = post.ImagePath;
+                g.Tag = post.Tag;
                 m_db.SaveChanges();
             }
         }
@@ -56,13 +58,13 @@ namespace UNIverse.Services
 
         public void DeletePost(Post post)
         {
-            if (post.Comments != null)
+         /*   if (post.Comments != null)
             {
                 foreach (var item in post.Comments.ToList())
                 {
                     m_db.Comments.Remove(item);
                 }
-            }
+            }*/
             m_db.Posts.Remove(post);
             m_db.SaveChanges();
         }

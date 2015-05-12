@@ -12,6 +12,17 @@ namespace UNIverse.Controllers
 {
     public class PostController : Controller
     {
+        public List<SelectListItem> GetTags()
+        {
+            List<SelectListItem> TagList = new List<SelectListItem> {
+                new SelectListItem { Value = "", Text = "-Select-", Selected = true },
+                new SelectListItem { Value = "Baekur", Text = "Bækur" },
+                new SelectListItem { Value = "Party", Text = "Party" }
+            };
+            ViewBag.Tags = new SelectList(TagList, "Value", "Text", "");
+            return TagList;
+        }
+
         [HttpGet]
         public ActionResult New()
         {
@@ -37,6 +48,8 @@ namespace UNIverse.Controllers
             post.Comments = new List<Comment>();
             post.DateCreated = DateTime.Now;
             post.ParentGroup = viewModel.ParentGroup;
+            post.ImagePath = viewModel.ImagePath;
+            post.Tag = viewModel.Tag;
 
             // TODO: Implement Groups
            // post.ParentGroup = viewModel.Group;
@@ -53,6 +66,7 @@ namespace UNIverse.Controllers
         [HttpGet]
         public ActionResult AddComment(int? postId)
         {
+            
             if(postId.HasValue)
             {
                 var viewModel = new CommentViewModel()
@@ -90,6 +104,7 @@ namespace UNIverse.Controllers
         [HttpGet]
         public ActionResult Edit(int? id)
         {
+
             if (id.HasValue)
             {
                 int realId = id.Value;
@@ -103,6 +118,8 @@ namespace UNIverse.Controllers
                 g.Comments = model.Comments;
                 g.DateCreated = model.DateCreated;
                 g.ParentGroup = model.ParentGroup;
+                g.ImagePath = model.ImagePath;
+                g.Tag = model.Tag;
 
                 return View(g);
             }
@@ -112,6 +129,7 @@ namespace UNIverse.Controllers
         [HttpPost]
         public ActionResult Edit(Post n)
         {
+
             if (ModelState.IsValid)
             {
                 Post post = new Post();
@@ -121,6 +139,8 @@ namespace UNIverse.Controllers
                 post.Comments = n.Comments;
                 post.DateCreated = n.DateCreated;
                 post.ParentGroup = n.ParentGroup;
+                post.ImagePath = n.ImagePath;
+                post.Tag = n.Tag;
                 ServiceWrapper.PostService.EditPost(post);
                 return RedirectToAction("Index", "Home");
             }

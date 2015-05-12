@@ -38,11 +38,17 @@ namespace UNIverse.Controllers
                     Groups = user.Groups.OrderByDescending(g => g.Name).ToList()
                 };
 
+<<<<<<< HEAD
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
+=======
+                viewModel.Name = user.FirstName + " " + user.LastName;
+                viewModel.Email = user.Email;
+                viewModel.Posts = user.Posts;
                 viewModel.Department = user.Department;
                 viewModel.Description = user.Description;
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 
+>>>>>>> cd221c8d70199f091c9d2028b4345f4edaec5817
                 return View(viewModel);
             }
             return View("Error");
@@ -105,7 +111,6 @@ namespace UNIverse.Controllers
         {
             if (userId != null)
             {
-                // User is trying to add himself as a friend. Redirect to his profile.
                 if(userId == this.User.Identity.GetUserId())
                 {
                     return RedirectToAction("Index", new { userId = userId });

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using UNIverse.Models.Entities;
 
+
 namespace UNIverse.Models
 {
     public class University

@@ -1,6 +1,7 @@
 ﻿@using Microsoft.AspNet.Identity;
 @model List<UNIverse.Models.Post>
 
+<link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
 @foreach (var item in Model)
 {
     // TODO: Setja styling dót í sér skrá. Þetta er bara próf
@@ -8,10 +9,21 @@
         <div>
             <h4>
                 @Html.ActionLink(item.Author.FirstName + " " + item.Author.LastName, "Index", "User", new { userId = item.Author.Id }, null)
-            </h4>
+            </h4>   
+                @if (item.ParentGroup != null)
+                {
+                    <div class="group">
+                        <p>Posted in group: @item.ParentGroup.Name</p>
+                    </div>
+                }
             <div style="margin-top: -10px; margin-bottom: 10px;"><small>@item.DateCreated</small></div>
         </div>
-        
+        @if (item.ImagePath != null)
+        {
+            <div class="newsFeedPic">
+                <img src="@Url.Content(item.ImagePath)" alt="Image not found" />
+            </div>
+        }
         <p>@item.Body</p>
         @if (item.Author.Id == User.Identity.GetUserId())
         { 
@@ -20,6 +32,11 @@
             <small><a href="@Url.Action("DeletePost", "Post", new { Id = item.Id })">Delete status</a></small>
         }
         <small>@Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)</small>
+
+        @if (item.Tag != "")
+        {
+             <p>Tagged under: @item.Tag</p>
+        }
         
         <hr />
         @foreach (var comment in item.Comments)
@@ -31,3 +48,4 @@
         }
     </div>
 }
+

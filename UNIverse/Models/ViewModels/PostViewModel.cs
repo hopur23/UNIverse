@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace UNIverse.Models.ViewModels
 {
@@ -17,8 +18,10 @@ namespace UNIverse.Models.ViewModels
         public ApplicationUser Author { get; set; }
         public List<Comment> Comments { get; set; }
         public Group ParentGroup { get; set; }
+        public string Tag { get; set; }
 
         public int? groupId { get; set; }
-        
+        public string ImagePath { get; set; }
+        public List<SelectListItem> Tags { get; set; }        
     }
 }

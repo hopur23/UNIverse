@@ -185,3 +185,16 @@ ul.nav ul.navnav li a:hover
     color: #FF0000;
     background-color: #FEF1D2;
 } 
+
+.profilepic img
+{
+    max-width: 300px;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.group
+{
+    font-weight: bold;
+    margin-bottom: 5px;
+}

@@ -43,6 +43,7 @@ namespace UNIverse.Controllers
                 g.Administrator = model.Administrator;
                 g.Members = model.Members;
                 g.Posts = model.Posts;
+                g.GroupPicturePath = model.GroupPicturePath;
 
                 return View(g);
             }
@@ -58,6 +59,7 @@ namespace UNIverse.Controllers
                 group.Id = n.Id;
                 group.Name = n.Name;
                 group.Description = n.Description;
+                group.GroupPicturePath = n.GroupPicturePath;
                 group.Administrator = n.Administrator;
                 group.Members = n.Members;
                 group.Posts = n.Posts;
@@ -73,27 +75,35 @@ namespace UNIverse.Controllers
         public ActionResult View(int id)
         {
             Group group = ServiceWrapper.GroupService.GetGroupById(id);
-            GroupViewModel viewModel = new GroupViewModel();
-            viewModel.isAdmin = false;
-            viewModel.inGroup = false;
-
-            if(ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()) == group.Administrator)
+            if (group != null)
             {
-                viewModel.isAdmin = true;
-            }
+                GroupViewModel viewModel = new GroupViewModel();
+                viewModel.isAdmin = false;
+                viewModel.inGroup = false;
 
-            if(ServiceWrapper.GroupService.UserInGroup(group.Id, this.User.Identity.GetUserId()))
+                if (ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()) == group.Administrator)
+                {
+                    viewModel.isAdmin = true;
+                }
+
+                if (ServiceWrapper.GroupService.UserInGroup(group.Id, this.User.Identity.GetUserId()))
+                {
+                    viewModel.inGroup = true;
+                }
+
+                viewModel.Name = group.Name;
+                viewModel.Description = group.Description;
+                viewModel.Members = group.Members;
+                viewModel.Posts = group.Posts;
+                viewModel.Id = group.Id;
+                viewModel.GroupPicturePath = group.GroupPicturePath;
+
+                return View(viewModel);
+            }
+            else
             {
-                viewModel.inGroup = true;
+                return View("Error");
             }
-
-            viewModel.Name = group.Name;
-            viewModel.Description = group.Description;
-            viewModel.Members = group.Members;
-            viewModel.Posts = group.Posts;
-            viewModel.Id = group.Id;
-            
-            return View(viewModel);
         }
 
         [HttpGet]
@@ -114,7 +124,7 @@ namespace UNIverse.Controllers
             group.Members = new List<ApplicationUser>();
             group.Posts = new List<Post>();
             group.Administrator = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
-
+            group.GroupPicturePath = viewModel.GroupPicturePath;
            
             group.Members.Add(ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()));
 

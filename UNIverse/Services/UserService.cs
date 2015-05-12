@@ -44,6 +44,19 @@ namespace UNIverse.Services
             return user;
         }
 
+        public void EditUser(ApplicationUser user)
+        {
+            ApplicationUser upd = GetUserById(user.Id);
+            if (upd != null)
+            {
+                upd.FirstName = user.FirstName;
+                upd.LastName = user.LastName;
+                upd.Description = user.Description;
+                upd.ProfilePicturePath = user.ProfilePicturePath;
+                m_db.SaveChanges();
+            }
+        }
+
         public void AddGroupToUser(Group group, ApplicationUser user)
         {
             user.Groups.Add(group);
@@ -57,12 +70,6 @@ namespace UNIverse.Services
                         select u).SingleOrDefault();
 
             return user;
-        }
-
-        public void AddFriendRequest(FriendRequest request)
-        {
-            m_db.FriendRequests.Add(request);
-            m_db.SaveChanges();
         }
     }
 }

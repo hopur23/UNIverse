@@ -45,12 +45,26 @@ namespace UNIverse.Services
         }
 
 <<<<<<< HEAD
-        public IEnumerable<ApplicationUser> GetAllUsers()
+        
+=======
+        public void EditUser(ApplicationUser user)
         {
-            var users = (from u in m_db.Users
-                         select u).ToList();
+            ApplicationUser upd = GetUserById(user.Id);
+            if (upd != null)
+            {
+                upd.FirstName = user.FirstName;
+                upd.LastName = user.LastName;
+                upd.Description = user.Description;
+                upd.ProfilePicturePath = user.ProfilePicturePath;
+                m_db.SaveChanges();
+            }
+        }
+>>>>>>> 0d7f04472e9752c665cd3b23dd24da798b40789e
 
-            return users;
+        public void AddGroupToUser(Group group, ApplicationUser user)
+        {
+            user.Groups.Add(group);
+            m_db.SaveChanges();
         }
 
         public ApplicationUser GetUserByEmail(string email)
@@ -60,17 +74,6 @@ namespace UNIverse.Services
                         select u).SingleOrDefault();
 
             return user;
-        }
-
-        public void AddFriendRequest(FriendRequest request)
-        {
-            m_db.FriendRequests.Add(request);
-=======
-        public void AddGroupToUser(Group group, ApplicationUser user)
-        {
-            user.Groups.Add(group);
->>>>>>> c9318c804c34bde38de0c252e940d896c4bbd9f5
-            m_db.SaveChanges();
         }
     }
 }
