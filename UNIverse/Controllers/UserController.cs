@@ -39,6 +39,10 @@ namespace UNIverse.Controllers
                 };
 
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
+                viewModel.Department = user.Department;
+                viewModel.Description = user.Description;
+                viewModel.ProfilePicturePath = user.ProfilePicturePath;
+                
                 return View(viewModel);
             }
             return View("Error");
@@ -101,6 +105,7 @@ namespace UNIverse.Controllers
         {
             if (userId != null)
             {
+                // User is trying to add himself as a friend. Redirect to his profile.
                 if(userId == this.User.Identity.GetUserId())
                 {
                     return RedirectToAction("Index", new { userId = userId });

@@ -1,5 +1,6 @@
 ﻿@model UNIverse.Models.ViewModels.UserProfileViewModel
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -29,15 +30,20 @@
         }
     </div>
     <h2>@Model.Name</h2>
-    <h4>Profile info goes here...</h4>
+    <h4>School</h4>
+    <h4>School placeholder</h4>
+    <h4>Department</h4>
+    <h4>Department placeholder</h4>
+    <h4>About me</h4>
+    <h4>description placeholder</h4>
 
     <p>Groups</p>
     @if (Model.Groups != null)
     {
         foreach (var item in Model.Groups)
         {
-            <ul>
-                <li>@Html.ActionLink(@item.Name, "View", "Group", new { id=item.Id }, null)</li>
+            <ul>                
+            	<li>@Html.ActionLink(@item.Name, "View", "Group", new { id=item.Id }, null)</li>
             </ul>
         }
     }
