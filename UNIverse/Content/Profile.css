@@ -12,3 +12,42 @@
     max-width: 90%;
     overflow: hidden;
 }
+
+.info
+{
+    background-color:#FF6600;
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.groupsAndFriends
+{
+    background-color:#FF6600;
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.myRequests
+{
+    background-color:#FF6600;
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
