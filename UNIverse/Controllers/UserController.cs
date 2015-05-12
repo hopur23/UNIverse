@@ -39,7 +39,6 @@ namespace UNIverse.Controllers
                 };
 
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
-                viewModel.Department = user.Department;
                 viewModel.Description = user.Description;
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 
