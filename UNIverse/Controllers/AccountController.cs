@@ -81,13 +81,16 @@ namespace UNIverse.Controllers
         {
             if (ModelState.IsValid)
             {
-                // TODO: Hafa val fyrir fæðingardag í register view, setja það í birthday.
                 var user = new ApplicationUser() { 
-                    Birthday = DateTime.Now,
-                    UserName = model.UserName,
-                    Email = model.UserName,
                     LastName = model.LastName,
-                    FirstName = model.FirstName
+                    FirstName = model.FirstName,
+                    // UserName acts also as email
+                    Email = model.UserName,
+                    UserName = model.UserName,
+                    // Birthday is used as a register date
+                    Birthday = DateTime.Now,
+                    // Default placeholder for profile picture
+                    ProfilePicturePath = Url.Content("~/Content/images/no-profile.jpg")
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
