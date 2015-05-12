@@ -95,6 +95,8 @@ namespace UNIverse.Controllers
                 user.LastName = model.LastName;
                 user.Description = model.Description;
                 user.Posts = model.Posts;
+                // If user inputs nothing in the profile picture path box,
+                // use the placeholder image.
                 if(model.ProfilePicturePath == null) {
                     user.ProfilePicturePath = "/Content/images/no-profile.jpg";
                 }
