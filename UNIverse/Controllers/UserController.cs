@@ -95,7 +95,12 @@ namespace UNIverse.Controllers
                 user.LastName = model.LastName;
                 user.Description = model.Description;
                 user.Posts = model.Posts;
-                user.ProfilePicturePath = model.ProfilePicturePath;
+                if(model.ProfilePicturePath == null) {
+                    user.ProfilePicturePath = "/Content/images/no-profile.jpg";
+                }
+                else {
+                    user.ProfilePicturePath = model.ProfilePicturePath;
+                }
                 user.Email = model.Email;
                 user.UserName = model.UserName;
                 ServiceWrapper.UserService.EditUser(user);
