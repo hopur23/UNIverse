@@ -23,6 +23,27 @@ namespace UNIverse.Services
             return posts;    
         }
 
+        public List<Post> GetAllPostsForProfileWall(string id)
+        {
+            var posts = (from p in m_db.Posts
+                         where (p.ParentGroup == null) && (p.Author.Id == id)
+                         orderby p.DateCreated descending
+                         select p).ToList();
+            return posts;
+        }
+
+        public List<Post> GetAllPostsFromFriends(string id)
+        {
+            var posts = (from p in m_db.Posts
+                         from r in m_db.FriendRequests
+                         where (p.ParentGroup == null && p.Author.Id == id)
+                         || ((p.ParentGroup == null) && (((r.SenderId == p.Author.Id) && (r.ReceiverId == id)) 
+                         || ((r.ReceiverId == p.Author.Id) && (r.SenderId == id)) && (r.IsAccepted == true)))
+                         orderby p.DateCreated descending
+                         select p).Distinct().OrderByDescending(m=>m.DateCreated).ToList();
+            return posts;
+        }
+
         public Post GetPostById(int id)
         {
             var post = (from p in m_db.Posts

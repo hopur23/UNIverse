@@ -34,7 +34,7 @@ namespace UNIverse.Controllers
                     ReceivedFriendRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(user.Id),
                     SentFriendRequests = ServiceWrapper.FriendService.GetSentFriendRequests(user.Id),
                     Friends = ServiceWrapper.FriendService.GetFriendsForUser(user.Id),
-                    Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList(),
+                    Posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(user.Id),
                     Groups = user.Groups.OrderByDescending(g => g.Name).ToList()
                 };
 

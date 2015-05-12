@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using UNIverse.Models;
 using UNIverse.Models.ViewModels;
 using UNIverse.Services;
+using Microsoft.AspNet.Identity;
 
 namespace UNIverse.Controllers
 {
@@ -16,7 +17,7 @@ namespace UNIverse.Controllers
         public ActionResult Index()
         {
             // TODO: Sækja frekar latest posts frekar en alla. Implementa filters
-            var model = ServiceWrapper.PostService.GetAllPosts();
+            var model = ServiceWrapper.PostService.GetAllPostsFromFriends(this.User.Identity.GetUserId());
 
             return View(model);
         }
