@@ -48,18 +48,6 @@ namespace UNIverse.Controllers
             return View("Error");
             
         }
-        /*
-        public ActionResult Friends()
-        {
-            var model = new FriendListViewModel() {
-                Friends = ServiceWrapper.FriendService.GetFriendsForUser(this.User.Identity.GetUserId()),
-                ReceivedRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(this.User.Identity.GetUserId()),
-                SentRequests = ServiceWrapper.FriendService.GetSentFriendRequests(this.User.Identity.GetUserId()),
-            };
-
-            return PartialView("_FriendsList", model);
-        }
-        */
 
         public ActionResult Friends(string userId)
         {
