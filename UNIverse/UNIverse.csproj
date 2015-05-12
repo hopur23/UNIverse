@@ -166,7 +166,6 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,6 +177,14 @@
     <Compile Include="Migrations\201505101609329_Fix.cs" />
     <Compile Include="Migrations\201505101609329_Fix.Designer.cs">
       <DependentUpon>201505101609329_Fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505111717160_GroupPic.cs" />
+    <Compile Include="Migrations\201505111717160_GroupPic.Designer.cs">
+      <DependentUpon>201505111717160_GroupPic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505111733439_StatusPic.cs" />
+    <Compile Include="Migrations\201505111733439_StatusPic.Designer.cs">
+      <DependentUpon>201505111733439_StatusPic.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -251,7 +258,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Post\New.cshtml" />
     <Content Include="Views\User\Friends.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Post\AddComment.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />
@@ -262,6 +268,7 @@
     <Content Include="Views\Group\Edit.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +287,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505101609329_Fix.resx">
       <DependentUpon>201505101609329_Fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505111717160_GroupPic.resx">
+      <DependentUpon>201505111717160_GroupPic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505111733439_StatusPic.resx">
+      <DependentUpon>201505111733439_StatusPic.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

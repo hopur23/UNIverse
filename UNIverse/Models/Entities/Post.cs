@@ -13,6 +13,7 @@ namespace UNIverse.Models
         public string Body { get; set; }
         public string Tag { get; set; }
         public System.DateTime DateCreated { get; set; }
+        public string ImagePath { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
         public virtual Group ParentGroup { get; set; }

@@ -17,6 +17,12 @@
         </div>
 
         <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ImagePath, new { @cols = "45", @rows = "1", @placeholder = "Optional - Enter an image path..." })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-12">
                 <input type="submit" value="Post" formaction="@Url.Action("New", "Post")" style="margin-top: -18px;" class="btn btn-default" />
             </div>

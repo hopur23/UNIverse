@@ -77,6 +77,7 @@ namespace UNIverse.Services
             {
                 g.Name = group.Name;
                 g.Description = group.Description;
+                g.GroupPicturePath = group.GroupPicturePath;
                 m_db.SaveChanges();
             }
         }

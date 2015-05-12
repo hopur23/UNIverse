@@ -62,6 +62,11 @@ namespace UNIverse.Models
                 .Map(t => t.MapLeftKey("GroupID")
                     .MapRightKey("UserID")
                     .ToTable("GroupMembers"));
+
+          /*  modelBuilder.Entity<Post>()
+                .HasOptional(p => p.Comments)
+                .WithRequired(c => c.Body)
+                .WillCascadeOnDelete();*/
         }
 
         public ApplicationDbContext()

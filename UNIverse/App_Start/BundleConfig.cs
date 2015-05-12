@@ -25,7 +25,9 @@ namespace UNIverse
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/Login.css",
+                      "~/Content/Profile.css"));
         }
     }
 }

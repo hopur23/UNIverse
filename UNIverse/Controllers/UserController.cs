@@ -31,6 +31,7 @@ namespace UNIverse.Controllers
                 viewModel.Email = user.Email;
                 viewModel.Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList();
                 viewModel.Groups = user.Groups.OrderByDescending(p => p.Name).ToList();
+                viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 return View(viewModel);
             }
             return View("Error");
@@ -44,13 +45,47 @@ namespace UNIverse.Controllers
         [HttpGet]
         public ActionResult Edit(string userId)
         {
-            return View();
+            if (!String.IsNullOrEmpty(userId))
+            {
+                var model = ServiceWrapper.UserService.GetUserById(userId);
+
+                ApplicationUser g = new ApplicationUser();
+
+                g.Id = model.Id;
+                g.FirstName = model.FirstName;
+                g.LastName = model.LastName;
+                g.Description = model.Description;
+                g.Posts = model.Posts;
+                g.ProfilePicturePath = model.ProfilePicturePath;
+                g.Email = model.Email;
+                g.UserName = model.UserName;
+
+                return View(g);
+            }
+            return View("Error");
         }
 
         [HttpPost]
-        public ActionResult Edit()
+        public ActionResult Edit(ApplicationUser model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser();
+                user.Id = model.Id;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Description = model.Description;
+                user.Posts = model.Posts;
+                user.ProfilePicturePath = model.ProfilePicturePath;
+                user.Email = model.Email;
+                user.UserName = model.UserName;
+                ServiceWrapper.UserService.EditUser(user);
+                return RedirectToAction("Index", "User", new { userId = User.Identity.GetUserId() });
+            }
+            else
+            {
+                return View(model);
+            }
         }
 
     }

@@ -4,7 +4,18 @@
     ViewBag.Title = "Index";
 }
 
+<link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
 <div class="col-md-6 col-md-push-6">
+    <div class="profilepic">
+        @if (Model.ProfilePicturePath != null)
+        {
+            <img src="@Url.Content(Model.ProfilePicturePath)" alt="Profile pic not found" />
+        }
+        else
+        {
+            <img src="https://findyourtrainer.com/static/images/avatar.jpg" alt="Profile pic not found" />
+        }
+    </div>
     <h2>@Model.Name</h2>
     <h4>Profile info goes here...</h4>
 
@@ -27,3 +38,5 @@
         er hægt að gera það svona: (at)Html.RenderPartial("_newsfeed", Model.Posts)-->
     @{Html.RenderPartial("_NewsfeedPartial", Model.Posts);}
 </div>
+
+
