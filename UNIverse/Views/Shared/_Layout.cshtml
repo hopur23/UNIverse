@@ -16,7 +16,7 @@
             <div class="logo"><img src="http://i60.tinypic.com/30kg26r.jpg" alt="UNIverse logo"/></div>
             <ul id="menu">
                 <li>
-                    <a href="@Url.Action("Friends", "User")">
+                    <a href="@Url.Action("Friends", "User", new { userId = User.Identity.GetUserId() })">
                         <i class="glyphicon glyphicon-th-list"> Friends</i>
                         <span class="sr-only">Friends</span>
                     </a>

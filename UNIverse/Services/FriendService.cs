@@ -47,7 +47,7 @@ namespace UNIverse.Services
         }
 
         /// <summary>
-        /// Finds all friend requests between User 1 and User 2. Should only exist 0 or 1.
+        /// Finds the friend requests between User 1 and User 2. Can be either pending or accepted.
         /// Returns the request if found, else null.
         /// </summary>
         /// <param name="user1Id">User 1 ID</param>

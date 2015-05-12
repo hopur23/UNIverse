@@ -48,10 +48,29 @@ namespace UNIverse.Controllers
             return View("Error");
             
         }
-
+        /*
         public ActionResult Friends()
         {
-            return View();
+            var model = new FriendListViewModel() {
+                Friends = ServiceWrapper.FriendService.GetFriendsForUser(this.User.Identity.GetUserId()),
+                ReceivedRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(this.User.Identity.GetUserId()),
+                SentRequests = ServiceWrapper.FriendService.GetSentFriendRequests(this.User.Identity.GetUserId()),
+            };
+
+            return PartialView("_FriendsList", model);
+        }
+        */
+
+        public ActionResult Friends(string userId)
+        {
+            var viewModel = new FriendListViewModel()
+            {
+                Friends = ServiceWrapper.FriendService.GetFriendsForUser(userId),
+                ReceivedRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(userId),
+                SentRequests = ServiceWrapper.FriendService.GetSentFriendRequests(userId),
+            };
+
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -167,12 +186,17 @@ namespace UNIverse.Controllers
         [HttpPost]
         public ActionResult RemoveFriend(string userId)
         {
-            /*
             if(userId != null)
             {
-                ServiceWrapper.FriendService.GetAllFriendRequests()
+                // Find the request between the users
+                var request = ServiceWrapper.FriendService.FindRequestBetween(this.User.Identity.GetUserId(), userId);
+                // Check if the request exists. If so, remove it.
+                if(request != null)
+                {
+                    ServiceWrapper.FriendService.RemoveFriendRequest(request);
+                }
+                return RedirectToAction("Index", new { userId = userId });
             }
-             * */
             return View("Error");
         }
     }
