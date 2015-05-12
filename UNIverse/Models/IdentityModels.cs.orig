@@ -28,6 +28,7 @@ namespace UNIverse.Models
         public virtual List<Group> Groups { get; set; }
         public virtual List<Post> Posts { get; set; }
         public virtual List<FriendRequest> FriendRequests { get; set; }
+        public virtual List<ApplicationUser> Friends { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -66,11 +67,20 @@ namespace UNIverse.Models
                     .MapRightKey("UserID")
                     .ToTable("GroupMembers"));
 
+<<<<<<< HEAD
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.FriendRequests)
                 .WithRequired(f => f.Sender)
                 .HasForeignKey(f => f.SenderId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(u => u.Friends)
+                .WithMany()
+                .Map(t => t
+                    .MapLeftKey("UserId")
+                    .MapRightKey("FriendId")
+                    .ToTable("Friends"));
 
             modelBuilder.Entity<FriendRequest>()
                 .HasKey(f => new { f.SenderId, f.ReceiverId });
@@ -79,6 +89,12 @@ namespace UNIverse.Models
                 .HasRequired(f => f.Receiver)
                 .WithMany()
                 .HasForeignKey(f => f.ReceiverId);
+=======
+          /*  modelBuilder.Entity<Post>()
+                .HasOptional(p => p.Comments)
+                .WithRequired(c => c.Body)
+                .WillCascadeOnDelete();*/
+>>>>>>> 0d7f04472e9752c665cd3b23dd24da798b40789e
         }
 
         public ApplicationDbContext()

@@ -13,3 +13,17 @@ body {
 
     color:green;
 }
+
+.profilepic img
+{
+    max-width: 250px;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+/*............Newsfeed........*/
+.newsFeedPic img
+{
+    max-width: 90%;
+    overflow: hidden;
+}

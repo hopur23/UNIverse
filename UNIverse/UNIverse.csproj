@@ -166,18 +166,13 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505111924560_begin.cs" />
-    <Compile Include="Migrations\201505111924560_begin.Designer.cs">
-      <DependentUpon>201505111924560_begin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505111955212_friendstable.cs" />
-    <Compile Include="Migrations\201505111955212_friendstable.Designer.cs">
-      <DependentUpon>201505111955212_friendstable.cs</DependentUpon>
+    <Compile Include="Migrations\201505121216085_merge.cs" />
+    <Compile Include="Migrations\201505121216085_merge.Designer.cs">
+      <DependentUpon>201505121216085_merge.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -253,7 +248,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Post\New.cshtml" />
     <Content Include="Views\User\Friends.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Post\AddComment.cshtml" />
     <Content Include="Views\Group\Create.cshtml" />
@@ -265,6 +259,7 @@
     <Content Include="Views\Home\AllUsers.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -278,11 +273,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505111924560_begin.resx">
-      <DependentUpon>201505111924560_begin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505111955212_friendstable.resx">
-      <DependentUpon>201505111955212_friendstable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505121216085_merge.resx">
+      <DependentUpon>201505121216085_merge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

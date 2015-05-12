@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
+<<<<<<< HEAD
 <p>Number of sent friend requests: @Model.SentFriendRequests.Count()</p>
 <p>Number of received friend requests: @Model.ReceivedFriendRequests.Count()</p>
 <p>Number of friends: @Model.Friends.Count()</p>
@@ -17,6 +17,9 @@
     <input type="submit" value="Add Friend" class="btn btn-default" />
 }
 
+=======
+<link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
+>>>>>>> 0d7f04472e9752c665cd3b23dd24da798b40789e
 <div class="col-md-6 col-md-push-6">
     <div class="profilepic">
         @if (Model.ProfilePicturePath != null)

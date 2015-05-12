@@ -33,7 +33,7 @@
                         <span class="sr-only">Search</span>
                     </a>
                 </li>
-                <li><a href="@Url.Action("Edit", "User")">
+                <li><a href="@Url.Action("Edit", "User", new { userId = User.Identity.GetUserId() })">
                         <i class="glyphicon glyphicon-pencil"></i>
                         <span class="sr-only">Edit</span></a></li>
                 <li>
@@ -78,6 +78,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Content/css")
     @RenderSection("scripts", required: false)
 </body>
 </html>

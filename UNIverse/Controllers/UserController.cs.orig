@@ -15,7 +15,7 @@ namespace UNIverse.Controllers
     {
         public ActionResult Index(string userId)
         {
-            if (userId != null)
+            if(userId != null)
             {
                 var user = ServiceWrapper.UserService.GetUserById(userId);
                 // Hér er userinn aðeins kominn með þær friend requests sem hann sjálfur hefur sent.
@@ -38,13 +38,19 @@ namespace UNIverse.Controllers
                     Groups = user.Groups.OrderByDescending(g => g.Name).ToList()
                 };
 
+<<<<<<< HEAD
+=======
+                viewModel.Name = user.FirstName + " " + user.LastName;
+                viewModel.Email = user.Email;
+                viewModel.Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList();
+                viewModel.Groups = user.Groups.OrderByDescending(p => p.Name).ToList();
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
+>>>>>>> 0d7f04472e9752c665cd3b23dd24da798b40789e
                 return View(viewModel);
             }
             return View("Error");
             
         }
-
         public ActionResult Friends()
         {
             return View();
@@ -101,10 +107,6 @@ namespace UNIverse.Controllers
         {
             if (userId != null)
             {
-                if(userId == this.User.Identity.GetUserId())
-                {
-                    return RedirectToAction("Index", new { userId = userId });
-                }
                 // Fetch the user and yourself from the database.
                 var receiver = ServiceWrapper.UserService.GetUserById(userId);
                 var sender = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
