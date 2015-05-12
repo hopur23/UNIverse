@@ -3,7 +3,7 @@ namespace UNIverse.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class bull : DbMigration
+    public partial class begin : DbMigration
     {
         public override void Up()
         {
