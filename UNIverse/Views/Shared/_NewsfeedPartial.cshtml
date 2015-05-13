@@ -1,12 +1,12 @@
 ﻿@using Microsoft.AspNet.Identity;
 @model List<UNIverse.Models.Post>
 
-<link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
+<!--<link href="@Url.Content("~/Content/Newsfeed.css")" rel="stylesheet" type="text/css" />-->
 @foreach (var item in Model)
 {
     // TODO: Setja styling dót í sér skrá. Þetta er bara próf
-    <div class="well">
-        <div>
+    <div class="news-item">
+        <div class="news-header">
             <h4>
                 @Html.ActionLink(item.Author.FirstName + " " + item.Author.LastName, "Index", "User", new { userId = item.Author.Id }, null)
             </h4>   
@@ -20,8 +20,8 @@
         </div>
         @if (item.ImagePath != null)
         {
-            <div class="newsFeedPic">
-                <img src="@Url.Content(item.ImagePath)" alt="Image not found" />
+            <div class="col-md-4">
+                <img src="@Url.Content(item.ImagePath)" alt="Image not found" class="img-responsive"/>
             </div>
         }
         <p>@item.Body</p>

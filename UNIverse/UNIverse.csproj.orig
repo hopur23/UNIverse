@@ -171,19 +171,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
 <<<<<<< HEAD
-    <Compile Include="Migrations\201505122215444_seed.cs" />
-    <Compile Include="Migrations\201505122215444_seed.Designer.cs">
-      <DependentUpon>201505122215444_seed.cs</DependentUpon>
+    <Compile Include="Migrations\201505131757170_aypapi.cs" />
+    <Compile Include="Migrations\201505131757170_aypapi.Designer.cs">
+      <DependentUpon>201505131757170_aypapi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505122316016_more-users.cs" />
-    <Compile Include="Migrations\201505122316016_more-users.Designer.cs">
-      <DependentUpon>201505122316016_more-users.cs</DependentUpon>
 =======
-    <Compile Include="Migrations\201505121657145_blb.cs" />
-    <Compile Include="Migrations\201505121657145_blb.Designer.cs">
-      <DependentUpon>201505121657145_blb.cs</DependentUpon>
->>>>>>> 504b16d95f7fd0f1d5846cbe3616ab9c892fb408
-    </Compile>
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -204,6 +197,7 @@
     <Compile Include="Services\GroupService.cs" />
     <Compile Include="Services\PostService.cs" />
     <Compile Include="Services\ServiceWrapper.cs" />
+    <Compile Include="Services\UniversityService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -281,19 +275,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
-  <ItemGroup>
 <<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\201505122215444_seed.resx">
-      <DependentUpon>201505122215444_seed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505122316016_more-users.resx">
-      <DependentUpon>201505122316016_more-users.cs</DependentUpon>
-=======
-    <EmbeddedResource Include="Migrations\201505121657145_blb.resx">
-      <DependentUpon>201505121657145_blb.cs</DependentUpon>
->>>>>>> 504b16d95f7fd0f1d5846cbe3616ab9c892fb408
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201505131757170_aypapi.resx">
+      <DependentUpon>201505131757170_aypapi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+=======
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

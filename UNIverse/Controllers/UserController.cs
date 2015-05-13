@@ -39,11 +39,11 @@ namespace UNIverse.Controllers
                     School = user.University,
                     IsMyFriend = false
                     
-                };
-             if(ServiceWrapper.FriendService.GetFriendsForUser(this.User.Identity.GetUserId()).Contains(user) == true)
-                    {
-                        viewModel.IsMyFriend = true;
-                    }
+            };
+                if(ServiceWrapper.FriendService.GetFriendsForUser(this.User.Identity.GetUserId()).Contains(user)==true)
+                {
+                    viewModel.IsMyFriend = true;
+                }
 
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 viewModel.Description = user.Description;

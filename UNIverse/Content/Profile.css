@@ -1,20 +1,17 @@
 ﻿
-.profilepic img
-{
+.profilepic img {
     max-width: 250px;
     max-height: 200px;
     overflow: hidden;
 }
 
 /*............Newsfeed........*/
-.newsFeedPic img
-{
+.newsFeedPic img {
     max-width: 90%;
     overflow: hidden;
 }
 
-.info
-{
+.info{
     background-color:#FF6600;
     border-radius: 25px 25px 25px 25px;
     padding-right: 10px;
@@ -26,8 +23,7 @@
 
 }
 
-.Groups
-{
+.Groups{
     background-color:#FF6600;
     border-radius: 25px 25px 25px 25px;
     padding-right: 10px;
@@ -39,8 +35,7 @@
 
 }
 
-.Friends
-{
+.Friends{
     background-color:#FF6600;
     border-radius: 25px 25px 25px 25px;
     padding-right: 10px;
@@ -52,8 +47,7 @@
 
 }
 
-.myRequests
-{
+.myRequests{
     background-color:#FF6600;
     border-radius: 25px 25px 25px 25px;
     padding-right: 10px;
@@ -66,10 +60,15 @@
 }
 
 .profilepic img {
-
     margin: 0 auto;
 }
 
+.addFriend .btn-default{
+    background-color:#FF6600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
 .addFriend {
     width: 100%;
     text-align: center;
@@ -82,5 +81,4 @@
     margin-top: 10px;
 
 }
-
 
