@@ -36,7 +36,6 @@ namespace UNIverse.Models
         // Singleton pattern á DbContext.
         // Tryggir að við höfum alltaf bara eitt instance af contextinu og að við getum nálgast það beint úr ServiceWrapper
         private static ApplicationDbContext instance;
-
         public static ApplicationDbContext Instance
         {
             get

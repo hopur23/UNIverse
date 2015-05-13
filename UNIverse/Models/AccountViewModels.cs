@@ -56,7 +56,7 @@ namespace UNIverse.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        [RegularExpression("^\\w+([-+.']\\w+)*@ru.is$", ErrorMessage = "You must register with a university email")]
+        //[RegularExpression("^\\w+([-+.']\\w+)*@ru.is$", ErrorMessage = "You must register with a university email")]
         public string UserName { get; set; }
 
         [Required]

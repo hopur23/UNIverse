@@ -54,16 +54,17 @@ namespace UNIverse.Migrations
 
             #region Create University with groups
 
+            var university = new University()
+            {
+                Name = "Reykjavik University",
+                EmailEnding = "@ru.is",
+                Description = "Reykjavík University is the best university in the world!",
+            };
+
             if(!context.Universities.Any(u => u.Name == "Reykjavik University"))
             {
                 // Create the university
-                var university = new University()
-                {
-                    Id = 0,
-                    Name = "Reykjavik University",
-                    EmailEnding = "@ru.is",
-                    Description = "Reykjavík University is the best university in the world!",
-                };
+                
 
                 // Add groups to university
                 List<Group> groups = new List<Group>() {
@@ -126,13 +127,7 @@ namespace UNIverse.Migrations
                     Description = "A pretty cool guy!",
                     Email = "ragnar@ru.is",
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
-                    University = new University()
-                    {
-                        Id = 0,
-                        Name = "Reykjavik University",
-                        EmailEnding = "@ru.is",
-                        Description = "Reykjavík University is the best university in the world!",
-                    },
+                    University = university
                 };
                 context.Users.AddOrUpdate(user);
             }
@@ -149,13 +144,7 @@ namespace UNIverse.Migrations
                     Description = "A pretty cool gal!",
                     Email = "berglind@ru.is",
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
-                    University = new University()
-                    {
-                        Id = 0,
-                        Name = "Reykjavik University",
-                        EmailEnding = "@ru.is",
-                        Description = "Reykjavík University is the best university in the world!",
-                    }
+                    University = university
                 };
                 context.Users.AddOrUpdate(user);
             }
@@ -172,13 +161,7 @@ namespace UNIverse.Migrations
                     Description = "A pretty cool gal!",
                     Email = "elisa@ru.is",
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
-                    University = new University()
-                    {
-                        Id = 0,
-                        Name = "Reykjavik University",
-                        EmailEnding = "@ru.is",
-                        Description = "Reykjavík University is the best university in the world!",
-                    }
+                    University = university
                 };
                 context.Users.AddOrUpdate(user);
             }
@@ -195,13 +178,7 @@ namespace UNIverse.Migrations
                     Description = "A pretty cool gal!",
                     Email = "thorgerdur@ru.is",
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
-                    University = new University()
-                    {
-                        Id = 0,
-                        Name = "Reykjavik University",
-                        EmailEnding = "@ru.is",
-                        Description = "Reykjavík University is the best university in the world!",
-                    }
+                    University = university
                 };
                 context.Users.AddOrUpdate(user);
             }
@@ -218,13 +195,7 @@ namespace UNIverse.Migrations
                     Description = "A pretty cool gal!",
                     Email = "arnheidur@ru.is",
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
-                    University = new University()
-                    {
-                        Id = 0,
-                        Name = "Reykjavik University",
-                        EmailEnding = "@ru.is",
-                        Description = "Reykjavík University is the best university in the world!",
-                    }
+                    University = university
                 };
                 context.Users.AddOrUpdate(user);
             }

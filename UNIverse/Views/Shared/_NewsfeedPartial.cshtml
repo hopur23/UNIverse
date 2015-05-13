@@ -33,7 +33,7 @@
         }
         <small>@Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)</small>
 
-        @if (item.Tag != "")
+        @if (item.Tag != null)
         {
              <p>Tagged under: @item.Tag</p>
         }

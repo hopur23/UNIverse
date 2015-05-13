@@ -170,9 +170,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505122316016_more-users.cs" />
-    <Compile Include="Migrations\201505122316016_more-users.Designer.cs">
-      <DependentUpon>201505122316016_more-users.cs</DependentUpon>
+    <Compile Include="Migrations\201505131757170_aypapi.cs" />
+    <Compile Include="Migrations\201505131757170_aypapi.Designer.cs">
+      <DependentUpon>201505131757170_aypapi.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -194,6 +194,7 @@
     <Compile Include="Services\GroupService.cs" />
     <Compile Include="Services\PostService.cs" />
     <Compile Include="Services\ServiceWrapper.cs" />
+    <Compile Include="Services\UniversityService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -272,8 +273,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505122316016_more-users.resx">
-      <DependentUpon>201505122316016_more-users.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505131757170_aypapi.resx">
+      <DependentUpon>201505131757170_aypapi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

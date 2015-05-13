@@ -70,10 +70,17 @@
     margin: 0 auto;
 }
 
+.addFriend {
+    width: 100%;
+    text-align: center;
+}
+
 .addFriend .btn-default
 {
     background-color:#FF6600;
+    display: inline-block;
     margin-top: 10px;
-    margin-bottom: 10px;
 
 }
+
+
