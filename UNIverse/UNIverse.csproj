@@ -170,10 +170,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505122215444_seed.cs" />
-    <Compile Include="Migrations\201505122215444_seed.Designer.cs">
-      <DependentUpon>201505122215444_seed.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201505122316016_more-users.cs" />
     <Compile Include="Migrations\201505122316016_more-users.Designer.cs">
       <DependentUpon>201505122316016_more-users.cs</DependentUpon>
@@ -276,9 +272,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505122215444_seed.resx">
-      <DependentUpon>201505122215444_seed.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505122316016_more-users.resx">
       <DependentUpon>201505122316016_more-users.cs</DependentUpon>
     </EmbeddedResource>

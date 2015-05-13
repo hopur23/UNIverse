@@ -35,8 +35,15 @@ namespace UNIverse.Controllers
                     SentFriendRequests = ServiceWrapper.FriendService.GetSentFriendRequests(user.Id),
                     Friends = ServiceWrapper.FriendService.GetFriendsForUser(user.Id),
                     Posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(user.Id),
-                    Groups = user.Groups.OrderByDescending(g => g.Name).ToList()
+                    Groups = user.Groups.OrderByDescending(g => g.Name).ToList(),
+                    School = user.University,
+                    IsMyFriend = false
+                    
                 };
+             if(ServiceWrapper.FriendService.GetFriendsForUser(this.User.Identity.GetUserId()).Contains(user) == true)
+                    {
+                        viewModel.IsMyFriend = true;
+                    }
 
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 viewModel.Description = user.Description;

@@ -25,6 +25,10 @@ namespace UNIverse.Models.ViewModels
         public List<ApplicationUser> Friends { get; set; }
         public List<Group> Groups { get; set; }
         public University School { get; set; }
+<<<<<<< HEAD
+=======
+        public Department Department { get; set; }
 
+>>>>>>> 504b16d95f7fd0f1d5846cbe3616ab9c892fb408
     }
 }
