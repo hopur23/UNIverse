@@ -68,26 +68,26 @@
                 @RenderBody()
             </section>
                 <div id="sidebar" class="row col-md-3">
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <ul class="nav">
-                                <li>@Html.ActionLink("Newsfeed", "Index", "Home")</li>
-                                <li>@Html.ActionLink("Groups", "Index", "Group")</li>
-                                <ul class="navnav">
-                                    <li>List of goups</li>
+                    <div class="panel-group">
+                        <div class="sidebar" id="accordion">
+                            <div class="sidebar-texti">
+                                <ul>@Html.ActionLink("Newsfeed", "Index", "Home")</ul>
+                                <ul>@Html.ActionLink("Groups", "Index", "Group")</ul>
+                               <!--  <ul class="navnav">
+                                   <li>List of goups</li>
                                     <li>List of partygoups</li>
                                     <li>List of goups</li>
                                     <li>List of goups</li>
-                                </ul>
-                                <li>@Html.ActionLink("Userful Things","Index","Home")</li>  @*@Html.ActionLink("Useful Things", "#", )*@</li>
+                                </ul>-->
+                                <ul>@Html.ActionLink("Userful Things", "Index", "Home")</ul>
                                 <ul class="navnav">
-                                   <!--@* <li>@Html.ActionLink("Tilboð / Auglýsingar", "Index", "Tilbod")</li> *@-->
                                     <li><a href="http://tviund.com/afsl%C3%A6ttir/"> Tilboð </a></li>
                                     <li>@Html.ActionLink("Íbúðir í Reykjavík", "Index", "Ibudir")</li>
                                     <li><a href="http://hr.ingur.is/">HRingurinn</a></li>
                                     <li>@Html.ActionLink("Skiptibókamarkaður", "Index", "Skiptibok")</li>
-                                </ul>
-                            </ul>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                      </div>
                 </div>

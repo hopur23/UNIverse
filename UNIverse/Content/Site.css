@@ -4,6 +4,7 @@ font: "Trebuchet MS", Verdana, sans-serif;
 background-color: #5c87b2;
 color: #696969;
 margin: 0 auto;
+
 }
 
 h1
@@ -33,7 +34,7 @@ color: #034af3;
 #header
 {
 background-color: #ff6600;
-    height: 75px;
+    height: 80px;
     margin-top: 0;
     width: 100%;
 }
@@ -74,7 +75,7 @@ background-color: #ff6600;
 /*Sidebar.........*/
 #sidebar
 {
-    width: 25%;
+    width: 27%;
     float: left;
     margin-top: 40px;
     padding-left: 30px;
@@ -87,7 +88,7 @@ ul#menu
     float: right;
     font-size: 18px;
     color: black;
-    padding-top: 20px;
+    padding-top: 25px;
     position: relative;
 }
 
@@ -151,20 +152,56 @@ padding:3px;
 
 /* Navigation in sidebar */
 
-/*
-ul.nav
-{
-    margin-top: 7px;
-    color: black;
-    background-color: #FDD06A;
-    width: 100%;
-    border-top: 1px solid #FBB007;
+.sidebar{
+
+    background-color:#4AA0CF; 
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    list-style-type:none;
 }
+
+ul.navnav
+{
+    list-style-type:none;
+}
+
+.sidebar-texti ul a {
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    color: black;
+    padding: 3px 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.sidebar-texti ul.navnav li a
+{
+    padding-left: 30px;
+    border:none;
+    //padding: 3px 0;
+    font-weight:normal;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+
+/*
+        
+ul.nav ul.navnav li a 
+{
+    border: none;
+    color: black;
+    padding: 3px 0;
+    list-style-type:none;
+    text-decoration: none;
+}
+
+/*
 ul.nav li a 
 {
-    border-left: 1px solid #FBB007;
-    border-right: 1px solid #FBB007;
-    border-bottom: 1px solid #FBB007;
     color: black;
     padding: 5px 12px;
     text-decoration: none;
@@ -177,11 +214,12 @@ background-color: #ffffff;
 ul.nav ul.navnav
 {
     color: black;
-    background-color: #FEF1D2;
+    //background-color: #FEF1D2;
     width: 100%;
     list-style-type:none;
     /*border-top: 1px solid #FBB007;
 }
+
 ul.nav ul.navnav li a 
 {
     line-height: 9px;
@@ -198,9 +236,17 @@ ul.nav ul.navnav li a:hover
     color: #FF0000;
     background-color: #FEF1D2;
 } 
-    */
-.profilepic img
-{
+*/
+ /*
+nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: black;
+}
+ */
+
+.profilepic img{
     max-width: 300px;
     max-height: 200px;
     overflow: hidden;
