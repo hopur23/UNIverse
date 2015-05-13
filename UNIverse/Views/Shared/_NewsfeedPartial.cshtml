@@ -1,51 +1,67 @@
 ﻿@using Microsoft.AspNet.Identity;
 @model List<UNIverse.Models.Post>
 
-<!--<link href="@Url.Content("~/Content/Newsfeed.css")" rel="stylesheet" type="text/css" />-->
+<link href="@Url.Content("~/Content/Newsfeed.css")" rel="stylesheet" type="text/css" />
 @foreach (var item in Model)
 {
-    // TODO: Setja styling dót í sér skrá. Þetta er bara próf
-    <div class="news-item">
-        <div class="news-header">
-            <h4>
-                @Html.ActionLink(item.Author.FirstName + " " + item.Author.LastName, "Index", "User", new { userId = item.Author.Id }, null)
-            </h4>   
+    <div class="news-item col-md-12">
+        <div class="news-header col-md-12">
+            <div class="col-md-1">
+                <img src="@Url.Content(item.Author.ProfilePicturePath)" alt="Image not found" class="img-responsive profile-image" />
+            </div>
+            <div class="news-header-text col-md-11">
+                <h4 class="news-author">
+                    @Html.ActionLink(item.Author.FirstName + " " + item.Author.LastName, "Index", "User", new { userId = item.Author.Id }, null)
+                </h4>
+                <div class="news-date"><small>@item.DateCreated</small></div>
                 @if (item.ParentGroup != null)
                 {
-                    <div class="group">
-                        <p>Posted in group: @item.ParentGroup.Name</p>
+                    <div class="news-group">
+                        <small>Posted in <strong>@item.ParentGroup.Name</strong></small>
                     </div>
                 }
-            <div style="margin-top: -10px; margin-bottom: 10px;"><small>@item.DateCreated</small></div>
+                @if (item.Tag != null)
+                {
+                    <div class="news-tag">
+                        <small>Tag: @item.Tag</small>
+                    </div>
+                }
+                
+            </div>
         </div>
-        @if (item.ImagePath != null)
-        {
-            <div class="col-md-4">
-                <img src="@Url.Content(item.ImagePath)" alt="Image not found" class="img-responsive"/>
-            </div>
-        }
-        <p>@item.Body</p>
-        @if (item.Author.Id == User.Identity.GetUserId())
-        { 
-            <small>@Html.ActionLink("Edit", "Edit", "Post", new { Id = item.Id }, null)</small>
-    //<input type="button" value="Leave" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" />
-            <small><a href="@Url.Action("DeletePost", "Post", new { Id = item.Id })">Delete status</a></small>
-        }
-        <small>@Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)</small>
+        <div class="col-md-12 news-content">
+            @if (item.ImagePath != null)
+            {
+                <div class="news-image col-md-4">
+                    <img src="@Url.Content(item.ImagePath)" alt="Image not found" class="img-responsive" />
+                </div>
+            }
 
-        @if (item.Tag != null)
-        {
-             <p>Tagged under: @item.Tag</p>
-        }
-        
-        <hr />
-        @foreach (var comment in item.Comments)
-        {
-            
-            <div style="padding-bottom: 5px;">
-                <small><strong>@(comment.Author.FirstName + " " + comment.Author.LastName)</strong> @comment.Body</small><br />
+            <div class="news-body col-md-8">
+                @item.Body
             </div>
-        }
+        </div>
+
+        <div class="news-footer col-md-12" >
+            <ul class="list-inline">
+            @if(item.Author.Id == User.Identity.GetUserId())
+            {
+                <li><small>@Html.ActionLink("Edit", "Edit", "Post", new { Id = item.Id }, null)</small></li>
+                <li><small>@Html.ActionLink("Delete Post", "DeletePost", "Post", new { Id = item.Id }, null)</small></li>
+            }
+            <li><small>@Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)</small></li>
+            </ul>
+        </div>
+
+        <div class="news-comments col-md-12">
+            @foreach (var comment in item.Comments)
+            {
+                <div class="comment-item" style="padding-bottom: 5px;">
+                    <small><strong>@(comment.Author.FirstName + " " + comment.Author.LastName)</strong> @comment.Body</small><br />
+                </div>
+            }
+        </div>
+        
     </div>
 }
 
