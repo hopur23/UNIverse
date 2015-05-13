@@ -35,26 +35,18 @@ namespace UNIverse.Controllers
         {
             Post post = new Post();
 
-            post.Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
-
             if(viewModel.groupId.HasValue)
             {
                 int realId = viewModel.groupId.Value;
                 viewModel.ParentGroup = ServiceWrapper.GroupService.GetGroupById(realId);
             }
-            //post.ParentGroup = ServiceWrapper.GroupService.GetGroupById(1);
-            //post.Author = ServiceWrapper.Services.UserService.GetUserById(this.User.Identity.GetUserId());
+            post.Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
             post.Body = viewModel.Body;
             post.Comments = new List<Comment>();
             post.DateCreated = DateTime.Now;
             post.ParentGroup = viewModel.ParentGroup;
             post.ImagePath = viewModel.ImagePath;
             post.Tag = viewModel.Tag;
-
-            // TODO: Implement Groups
-           // post.ParentGroup = viewModel.Group;
-            // TODO: Implement Group Tags
-            //post.Tag = viewModel.Tag;
 
             ServiceWrapper.PostService.AddPost(post);
             //ServiceWrapper.Services.PostService.AddPost(post);

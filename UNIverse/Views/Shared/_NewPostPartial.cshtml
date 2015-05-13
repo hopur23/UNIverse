@@ -11,14 +11,15 @@
         <div class="form-group">
             @Html.HiddenFor(model => model.groupId) 
             <div class="col-md-12">
-                @Html.TextAreaFor(model => model.Body, new { @cols = "50", @rows = "4", @placeholder = "Enter status...", @style = "resize: none;"})
+                @Html.TextAreaFor(model => model.Body, new { @cols = "50", @rows = "4", @placeholder = "Enter status...", @style = "resize: none;"})<br />
+                @Html.TextAreaFor(model => model.ImagePath, new { @cols = "50", @rows = "1", @placeholder = "Optional - Enter an image path...", @style = "resize: none;" })<br />
+                @Html.LabelFor(model => model.Tag)
+                @Html.DropDownListFor(model => model.Tag, new List<SelectListItem>() {
+                                                                                new SelectListItem() { Text = "None", Value = "", Selected = true  },
+                                                                                new SelectListItem() { Text = "Books", Value = "Books", Selected = false },
+                                                                                new SelectListItem() { Text = "Party", Value = "Party", Selected = false }
+                                                                                })
                 @Html.ValidationMessageFor(model => model.Body)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ImagePath, new { @cols = "45", @rows = "1", @placeholder = "Optional - Enter an image path..." })
             </div>
         </div>
 
