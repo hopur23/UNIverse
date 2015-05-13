@@ -20,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="logo"><img src="http://i57.tinypic.com/2d1lieg.png" alt=" universe logo" /></div>
+                <div class="logo"><img src="http://i57.tinypic.com/2d1lieg.png" alt=" universe logo" id="logo" /></div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="menu" class="nav navbar-nav navbar-right"  >
                         <li>
@@ -79,9 +79,10 @@
                                     <li>List of goups</li>
                                     <li>List of goups</li>
                                 </ul>
-                                <li>@Html.ActionLink("Useful Things", "Index", "UsefulThings")</li>
+                                <li>@Html.ActionLink("Userful Things","Index","Home")</li>  @*@Html.ActionLink("Useful Things", "#", )*@</li>
                                 <ul class="navnav">
-                                    <li>@Html.ActionLink("Tilboð / Auglýsingar", "Index", "Tilbod")</li>
+                                   <!--@* <li>@Html.ActionLink("Tilboð / Auglýsingar", "Index", "Tilbod")</li> *@-->
+                                    <li><a href="http://tviund.com/afsl%C3%A6ttir/"> Tilboð </a></li>
                                     <li>@Html.ActionLink("Íbúðir í Reykjavík", "Index", "Ibudir")</li>
                                     <li><a href="http://hr.ingur.is/">HRingurinn</a></li>
                                     <li>@Html.ActionLink("Skiptibókamarkaður", "Index", "Skiptibok")</li>
