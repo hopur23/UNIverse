@@ -7,13 +7,13 @@ namespace UNIverse.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class moreusers : IMigrationMetadata
+    public sealed partial class party : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(moreusers));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(party));
         
         string IMigrationMetadata.Id
         {
-            get { return "201505122316016_more-users"; }
+            get { return "201505131638483_party"; }
         }
         
         string IMigrationMetadata.Source

@@ -170,9 +170,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505122316016_more-users.cs" />
-    <Compile Include="Migrations\201505122316016_more-users.Designer.cs">
-      <DependentUpon>201505122316016_more-users.cs</DependentUpon>
+    <Compile Include="Migrations\201505131638483_party.cs" />
+    <Compile Include="Migrations\201505131638483_party.Designer.cs">
+      <DependentUpon>201505131638483_party.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -202,6 +202,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\Search.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -272,8 +273,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505122316016_more-users.resx">
-      <DependentUpon>201505122316016_more-users.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505131638483_party.resx">
+      <DependentUpon>201505131638483_party.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
