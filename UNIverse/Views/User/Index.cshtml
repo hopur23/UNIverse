@@ -34,7 +34,7 @@
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
 
-            <input type="submit" value="Add Friend" class="btn btn-default" />
+            <input type="submit" value="Add Friend" class="btn btn-default"/>
             }
         }
        
@@ -47,7 +47,7 @@
         <h4>@Model.Description</h4>
     </div>
 
-    <div class="groupsAndFriends">
+    <div class="Groups">
         <h3>Groups</h3>
         @if (Model.Groups != null)
         {
@@ -58,6 +58,8 @@
                 </ul>
             }
         }
+     </div>
+     <div class="Friends">
         <h3>Friends</h3>
         @foreach (var friend in Model.Friends)
         {
@@ -96,7 +98,7 @@
     </div>
 </div>
 
-<div class="container col-md-6 col-md-pull-6 ragnar">
+<div class="container col-md-6 col-md-pull-6 newsfeed">
     @{Html.RenderPartial("_NewsfeedPartial", Model.Posts);}
 </div>
 
