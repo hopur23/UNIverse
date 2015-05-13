@@ -41,9 +41,9 @@ namespace UNIverse.Services
                          // My friends wall posts
                          || ((p.ParentGroup == null) && (
                          ((r.SenderId == p.Author.Id) && (r.ReceiverId == id)) 
-                         || ((r.ReceiverId == p.Author.Id) && (r.SenderId == id))
+                         || ((r.ReceiverId == p.Author.Id) && (r.SenderId == id)))
                          && (r.IsAccepted == true)
-                         ))
+                         )
                          //orderby p.DateCreated descending
                          select p).Distinct().OrderByDescending(m=>m.DateCreated).ToList();
             return posts;
