@@ -1,0 +1,6 @@
+﻿@model UNIverse.Models.ViewModels.PostViewModel
+
+@foreach (var item in Model.Posts)
+{
+    Html.RenderPartial("PostDisplay", item);
+}
