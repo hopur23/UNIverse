@@ -104,9 +104,10 @@ namespace UNIverse.Controllers
                 viewModel.Name = group.Name;
                 viewModel.Description = group.Description;
                 viewModel.Members = group.Members;
-                viewModel.Posts = group.Posts.Take(defaultEntryCount).ToList();
+                viewModel.Posts = group.Posts.Take(defaultEntryCount).OrderByDescending(m=>m.DateCreated).ToList();
                 viewModel.Id = group.Id;
                 viewModel.GroupPicturePath = group.GroupPicturePath;
+                viewModel.Administrator = group.Administrator;
 
                 ViewData["moreUrl"] = Url.Action("GetGroupPosts", "Group");
 

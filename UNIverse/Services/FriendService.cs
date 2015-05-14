@@ -76,6 +76,24 @@ namespace UNIverse.Services
             return requests;
         }
 
+        public List<ApplicationUser> GetPendingRequests(string id)
+        {
+            var pending = (from r in m_db.FriendRequests
+                            where (r.ReceiverId == id) && 
+                            (r.IsAccepted == false)
+                            select r.Sender).ToList();
+            return pending;
+        }
+
+        public List<ApplicationUser> GetSentRequests(string id)
+        {
+            var pending = (from r in m_db.FriendRequests
+                           where (r.SenderId == id) &&
+                           (r.IsAccepted == false)
+                           select r.Receiver).ToList();
+            return pending;
+        }
+
         /// <summary>
         /// Gets a list of all friends for a user, unordered.
         /// </summary>

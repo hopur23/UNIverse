@@ -37,7 +37,16 @@
         foreach (var item in Model.Members)
         {
             <ul>
-                <li>@item.FirstName @item.LastName</li>
+                <li>
+                    @if(@Model.Administrator != null && item == @Model.Administrator)
+                    {
+                        <p>*** @item.FirstName @item.LastName</p>
+                    }
+                    else
+                    {
+                        <p>@item.FirstName @item.LastName</p>
+                    }
+                </li>
             </ul>
         }
     }
@@ -57,7 +66,16 @@
         foreach (var item in Model.Members)
         {
             <ul>
-                <li>@item.FirstName @item.LastName</li>
+                <li>
+                    @if (Model.Administrator != null && item == Model.Administrator)
+                    {
+                        <p>(admin) @item.FirstName @item.LastName</p>
+                    }
+                    else
+                    {
+                        <p>(notAdmin) @item.FirstName @item.LastName</p>
+                    }
+                </li>
             </ul>
         }
     }
