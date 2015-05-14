@@ -16,15 +16,23 @@ namespace UNIverse.Controllers
 
         public ActionResult Index(string searchString)
         {
-            List<Group> model = new List<Group>();
+            var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
+            var model = new GroupViewModel();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                model = ServiceWrapper.GroupService.GetAllGroups(searchString);
+                model.search = true;
+                model.AllGroups = ServiceWrapper.GroupService.GetAllGroups(searchString);
                 return View(model);
             }
 
-            model = ServiceWrapper.GroupService.GetAllGroups();
+            model.AllGroups = ServiceWrapper.GroupService.GetAllGroups();
+            if (user.Groups != null)
+            {
+                model.GroupsUserIsIn = ServiceWrapper.GroupService.GetGroupsUserIsIn(user);
+                model.UserIsAdmin = ServiceWrapper.GroupService.GetGroupsUserIsAdmin(this.User.Identity.GetUserId());
+            }
+            model.search = false;
 
             return View(model); 
         }

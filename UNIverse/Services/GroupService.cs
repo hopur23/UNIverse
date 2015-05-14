@@ -35,6 +35,26 @@ namespace UNIverse.Services
             return groups;
         }
 
+        public List<Group> GetGroupsUserIsAdmin(string id)
+        {
+            var groups = (from p in m_db.Groups
+                          where p.Administrator.Id == id
+                          orderby p.Name ascending
+                          select p).ToList();
+            return groups;
+        }
+
+        public List<Group> GetGroupsUserIsIn(ApplicationUser user)
+        {
+            var groups = (from p in m_db.Groups
+                          where p.Administrator.Id != user.Id
+                          from r in p.Members
+                          where r.Id == user.Id
+                          orderby p.Name ascending
+                          select p).ToList();
+            return groups;
+        }
+
         public Group GetGroupById(int id)
         {
             var group = (from p in m_db.Groups
