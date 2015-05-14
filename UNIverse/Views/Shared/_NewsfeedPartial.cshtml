@@ -1,51 +1,15 @@
-﻿@using Microsoft.AspNet.Identity;
-@model List<UNIverse.Models.Post>
+﻿@model UNIverse.Models.ViewModels.PostViewModel
+<link href="@Url.Content("~/Content/Newsfeed.css")" rel="stylesheet" type="text/css" />
 
-<link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
-@foreach (var item in Model)
-{
-    // TODO: Setja styling dót í sér skrá. Þetta er bara próf
-    <div class="well">
-        <div>
-            <h4>
-                @Html.ActionLink(item.Author.FirstName + " " + item.Author.LastName, "Index", "User", new { userId = item.Author.Id }, null)
-            </h4>   
-                @if (item.ParentGroup != null)
-                {
-                    <div class="group">
-                        <p>Posted in group: @item.ParentGroup.Name</p>
-                    </div>
-                }
-            <div style="margin-top: -10px; margin-bottom: 10px;"><small>@item.DateCreated</small></div>
-        </div>
-        @if (item.ImagePath != null)
-        {
-            <div class="newsFeedPic">
-                <img src="@Url.Content(item.ImagePath)" alt="Image not found" />
-            </div>
-        }
-        <p>@item.Body</p>
-        @if (item.Author.Id == User.Identity.GetUserId())
-        { 
-            <small>@Html.ActionLink("Edit", "Edit", "Post", new { Id = item.Id }, null)</small>
-    //<input type="button" value="Leave" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" />
-            <small><a href="@Url.Action("DeletePost", "Post", new { Id = item.Id })">Delete status</a></small>
-        }
-        <small>@Html.ActionLink("Comment", "AddComment", "Post", new { postId = item.Id }, null)</small>
+<div id="wallPosts">
+    @foreach (var item in Model.Posts)
+    {
+        Html.RenderPartial("PostDisplay", item);
+    }
+</div>
 
-        @if (item.Tag != "")
-        {
-             <p>Tagged under: @item.Tag</p>
-        }
-        
-        <hr />
-        @foreach (var comment in item.Comments)
-        {
-            
-            <div style="padding-bottom: 5px;">
-                <small><strong>@(comment.Author.FirstName + " " + comment.Author.LastName)</strong> @comment.Body</small><br />
-            </div>
-        }
-    </div>
+
+@if (ViewData["moreUrl"] != null)
+{    
+    <a href='@ViewData["moreUrl"]' id="moreLink">More</a>
 }
-

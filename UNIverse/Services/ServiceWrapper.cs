@@ -61,5 +61,18 @@ namespace UNIverse.Services
                 return friendSvc;
             }
         }
+
+        private static UniversityService universitySvc;
+        public static UniversityService UniversityService
+        {
+            get
+            {
+                if (universitySvc == null)
+                {
+                    universitySvc = new UniversityService(context);
+                }
+                return universitySvc;
+            }
+        }
     }
 }

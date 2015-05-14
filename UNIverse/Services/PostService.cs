@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using UNIverse.Models;
+using UNIverse.Models.ViewModels;
 
 namespace UNIverse.Services
 {
@@ -22,6 +23,64 @@ namespace UNIverse.Services
                             select p).ToList();
             return posts;    
         }
+
+        public List<Post> GetAllPostsForProfileWall(string id)
+        {
+            var posts = (from p in m_db.Posts
+                         where (p.ParentGroup == null) && (p.Author.Id == id)
+                         orderby p.DateCreated descending
+                         select p).ToList();
+            return posts;
+        }
+
+        public List<Post> GetAllPostsFromFriends(string id)
+        {
+            var posts = (from p in m_db.Posts
+                         from r in m_db.FriendRequests
+                         // My own posts
+                         where (p.ParentGroup == null && p.Author.Id == id)
+                         // My friends wall posts
+                         || ((p.ParentGroup == null) && (
+                         ((r.SenderId == p.Author.Id) && (r.ReceiverId == id)) 
+                         || ((r.ReceiverId == p.Author.Id) && (r.SenderId == id)))
+                         && (r.IsAccepted == true)
+                         )
+                         //orderby p.DateCreated descending
+                         select p).Distinct().OrderByDescending(m=>m.DateCreated).ToList();
+            return posts;
+        }
+
+        public List<Post> PostsByTag(string tag)
+        {
+            var posts = (from p in m_db.Posts
+                         where (p.Tag == tag) && (p.ParentGroup == null)
+                         orderby p.DateCreated descending
+                         select p).ToList();
+            return posts;
+        }
+
+      /*  public List<Post> PostsByGroups(string id)
+        {
+            List<Group> AllGroups = ServiceWrapper.GroupService.GetAllGroups(id);
+       /*     foreach (var item in AllGroups)
+            {
+                item.Posts.ToList();
+            }
+            var posts = (from p in m_db.Posts
+                         where p.ParentGroup != null
+                         orderby p.DateCreated descending
+                         select p).ToList();
+            return posts;
+        }*/
+
+       /* public Post GetPostsByGroups(Group groups)
+        {
+            var post = (from p in groups.Posts
+                        where p.Gr == id
+                        select p).SingleOrDefault();
+
+            return post;
+        }*/
 
         public Post GetPostById(int id)
         {

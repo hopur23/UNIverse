@@ -1,33 +1,112 @@
-<<<<<<< HEAD
-﻿h2 {
-    color: red;
-}
-
-
-body {
-
-    color: blue;
-}
-
-
-#fullName {
-
-    color:green;
-}
-
-.profilepic img
-{
+﻿
+.profilepic img{
     max-width: 250px;
     max-height: 200px;
     overflow: hidden;
 }
 
 /*............Newsfeed........*/
-.newsFeedPic img
-{
+.newsFeedPic img{
     max-width: 90%;
     overflow: hidden;
 }
+
+<<<<<<< HEAD
+.info
+{
 =======
-﻿
->>>>>>> cd221c8d70199f091c9d2028b4345f4edaec5817
+.info{
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
+    background-color:#FF6600;
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+<<<<<<< HEAD
+.Groups
+{
+=======
+.Groups{
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
+    background-color:#FF6600;
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+<<<<<<< HEAD
+.Friends
+{
+=======
+.Friends{
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
+    background-color:#FF6600;
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+<<<<<<< HEAD
+.myRequests
+{
+=======
+.myRequests{
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
+    background-color:#FF6600;
+    border-radius: 25px 25px 25px 25px;
+    padding-right: 10px;
+    padding-left: 15px;
+    padding-bottom: 1px;
+    padding-top: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.profilepic img {
+<<<<<<< HEAD
+
+    margin: 0 auto;
+}
+
+.addFriend {
+    width: 100%;
+    text-align: center;
+}
+
+.addFriend .btn-default
+{
+    background-color:#FF6600;
+    display: inline-block;
+    margin-top: 10px;
+
+}
+
+
+=======
+    margin: 0 auto;
+}
+
+.addFriend .btn-default{
+    background-color:#FF6600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85

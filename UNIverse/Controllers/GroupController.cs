@@ -97,6 +97,7 @@ namespace UNIverse.Controllers
                 viewModel.Posts = group.Posts;
                 viewModel.Id = group.Id;
                 viewModel.GroupPicturePath = group.GroupPicturePath;
+                
 
                 return View(viewModel);
             }

@@ -1,102 +1,207 @@
-﻿@model UNIverse.Models.ViewModels.UserProfileViewModel
+﻿@using Microsoft.AspNet.Identity
+
+@model UNIverse.Models.ViewModels.UserProfileViewModel
+
 
 
 @{
     ViewBag.Title = "Index";
 }
 
-<<<<<<< HEAD
 <link href="@Url.Content("~/Content/Profile.css")" rel="stylesheet" type="text/css" />
-<p>Number of sent friend requests: @Model.SentFriendRequests.Count()</p>
-<p>Number of received friend requests: @Model.ReceivedFriendRequests.Count()</p>
-<p>Number of friends: @Model.Friends.Count()</p>
+<!--<p>Number of sent friend requests:@*@Model.SentFriendRequests.Count()*@ </p>-->
+<!--<p>Number of received friend requests:@*@Model.ReceivedFriendRequests.Count()*@</p> -->
 
-@using (Html.BeginForm("AddFriend", "User", new { userId = Model.userId }, FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-    
-    <input type="submit" value="Add Friend" class="btn btn-default" />
-}
-=======
-<link href="@Url.Content("~/Content/profile.css")" rel="stylesheet" type="text/css" />
->>>>>>> cd221c8d70199f091c9d2028b4345f4edaec5817
+
 
 <div class="col-md-6 col-md-push-6">
     <div class="profilepic">
+<<<<<<< HEAD
+        <img src="@Url.Content(Model.ProfilePicturePath)" class="img-responsive" alt="Profile pic not found" />
+    </div>
+
+    @if (User.Identity.GetUserId() != Model.userId && Model.IsMyFriend == false)
+    {
+        <div class="addFriend">
+            @using(Html.BeginForm("AddFriend", "User", new { userId = Model.userId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <input type="submit" value="Add Friend" class="btn btn-default"/>
+            }
+        </div>
+    }
+    
+    <div class="info">
+        <h2>@Model.Name</h2>
+        <h4>@Model.School.Name</h4>
+        <p>@Model.Description</p>
+    </div>
+
+    <div class="Groups">
+        <h3>Groups</h3>
+        @if (Model.Groups != null)
+            {
+                foreach (var item in Model.Groups)
+                {
+                    <ul>
+                        <li>@Html.ActionLink(@item.Name, "View", "Group", new { id = item.Id }, null)</li>
+                    </ul>
+                }
+            }
+    </div>
+    
+    @if(Model.IsMyFriend || Model.userId == this.User.Identity.GetUserId())
+    {
+        <div class="Friends">
+            <h3>Friends (@Model.Friends.Count())</h3>
+            @foreach (var friend in Model.Friends)
+            {
+                <h4>@(friend.FirstName + " " + friend.LastName)</h4>
+                <p>@friend.Email</p>
+                if(Model.userId == this.User.Identity.GetUserId())
+                {
+                    using (Html.BeginForm("RemoveFriend", "User", new { userId = friend.Id }, FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+    
+                        <input type="submit" value="Remove Friend" class="btn btn-default" />
+                    }
+                }
+                <hr />
+            }
+        </div>
+    }
+    
+    @if (Model.userId == this.User.Identity.GetUserId())
+    {
+        <div class="myRequests">
+            <h3>Sent friend requests</h3>
+            @foreach (var request in Model.SentFriendRequests)
+            {
+                <h4>@(request.Receiver.FirstName + " " + request.Receiver.LastName)</h4>
+                <p>Request since @request.RequestDate</p>
+                using (Html.BeginForm("RemoveFriend", "User", new { userId = request.Receiver.Id }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <input type="submit" value="Withdraw request" class="btn btn-default" />
+                }
+                <hr />
+            }
+
+            <h3>Received friend requests</h3>
+            @foreach (var request in Model.ReceivedFriendRequests)
+            {
+                <h4>@(request.Sender.FirstName + " " + request.Sender.LastName)</h4>
+                <p>Request since @request.RequestDate</p>
+                using (Html.BeginForm("AddFriend", "User", new { userId = request.Sender.Id }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <input type="submit" value="Accept Request" class="btn btn-default" />
+                }
+                using (Html.BeginForm("RemoveFriend", "User", new { userId = request.Sender.Id }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <input type="submit" value="Decline Request" class="btn btn-default" />
+                }
+                <hr />
+            }
+        </div>
+    }
+</div>
+
+@if(Model.IsMyFriend)
+{
+    <div class="container col-md-6 col-md-pull-6 newsfeed">
+        @{Html.RenderPartial("_NewsfeedPartial", Model.Posts);}
+    </div>
+}
+
+
+
+=======
         @if (Model.ProfilePicturePath != null)
         {
-            <img src="@Url.Content(Model.ProfilePicturePath)" alt="Profile pic not found" />
+            <img src="@Url.Content(Model.ProfilePicturePath)" class="img-responsive" alt="Profile pic not found" />
+
         }
         else
         {
-            <img src="https://findyourtrainer.com/static/images/avatar.jpg" alt="Profile pic not found" />
+            <img src="https://findyourtrainer.com/static/images/avatar.jpg" class="img-responsive" alt="Profile pic not found" />
         }
     </div>
-    <h2>@Model.Name</h2>
-<<<<<<< HEAD
-    <h4>Profile info goes here...</h4>
-
-    <p>Groups</p>
-    @if (Model.Groups != null)
-    {
-        foreach (var item in Model.Groups)
+    <div class="addFriend">
+        @if (User.Identity.GetUserId() != Model.userId && Model.IsMyFriend == false)
         {
-            <ul>
-                <li>@Html.ActionLink(@item.Name, "View", "Group", new { id=item.Id }, null)</li>
-            </ul>
+            using (Html.BeginForm("AddFriend", "User", new { userId = Model.userId }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <input type="submit" value="Add Friend" class="btn btn-default" />
+            }
         }
-    }
-    <h3>Friends</h3>
-    @foreach(var friend in Model.Friends)
-    {
-        <h4>@(friend.FirstName + " " + friend.LastName)</h4>
-        <p>@friend.Email</p>
-        <hr />
-    }
+    </div>
+    <div class="info">
+        <h2>@Model.Name</h2>
+        <h4>School placeholder</h4>
+        <h4>@Model.Description</h4>
+    </div>
 
-    <h3>Sent friend requests</h3>
-    @foreach (var request in Model.SentFriendRequests)
-    {
-        <h4>@(request.Receiver.FirstName + " " + request.Receiver.LastName)</h4>
-        <p>Request since @request.RequestDate</p>
-        <hr />
-    }
-
-    <h3>Received friend requests</h3>
-    @foreach (var request in Model.ReceivedFriendRequests)
-    {
-        <h4>@(request.Sender.FirstName + " " + request.Sender.LastName)</h4>
-        <p>Request since @request.RequestDate</p>
-        using (Html.BeginForm("AddFriend", "User", new { userId = request.Sender.Id }, FormMethod.Post))
+    <div class="groupsAndFriends">
+        <h3>Groups</h3>
+        @if (Model.Groups != null)
         {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
-    
-            <input type="submit" value="Add Friend" class="btn btn-default" />
+            foreach (var item in Model.Groups)
+            {
+                <ul>
+                    <li>@Html.ActionLink(@item.Name, "View", "Group", new { id = item.Id }, null)</li>
+                </ul>
+            }
         }
-        <small></small>
-        <hr />
-    }
-=======
-    <h4>Profile picture</h4>
-    <img src="@Model.ProfilePicturePath" alt="profile picture" width="80" height="80" />
-    <h4>School</h4>
-    <h4>School placeholder</h4>
-    <h4>Department</h4>
-    <h4>Department placeholder</h4>
-    <h4>About me</h4>
-    <h4>description placeholder</h4>
->>>>>>> cd221c8d70199f091c9d2028b4345f4edaec5817
+        <h3>Friends</h3>
+        @foreach (var friend in Model.Friends)
+        {
+            <h4>@(friend.FirstName + " " + friend.LastName)</h4>
+            <p>@friend.Email</p>
+            <hr />
+        }
+    </div>
 
+    <div class="myRequests">
+        <h3>Sent friend requests</h3>
+        @foreach (var request in Model.SentFriendRequests)
+        {
+            <h4>@(request.Receiver.FirstName + " " + request.Receiver.LastName)</h4>
+            <p>Request since @request.RequestDate</p>
+            <hr />
+        }
+
+        <h3>Received friend requests</h3>
+        @foreach (var request in Model.ReceivedFriendRequests)
+        {
+            <h4>@(request.Sender.FirstName + " " + request.Sender.LastName)</h4>
+            <p>Request since @request.RequestDate</p>
+            using (Html.BeginForm("AddFriend", "User", new { userId = request.Sender.Id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <input type="submit" value="Add Friend" class="btn btn-default" />
+            }
+            <small></small>
+            <hr />
+        }
+
+        <p>Number of friends: @Model.Friends.Count()</p>
+    </div>
 </div>
 
-<div class="container col-md-6 col-md-pull-6">
-    <h4>User posts</h4>
-    <!-- TODO: Nota partial view fyrir newsfeed og gera frekar RenderPartial.
-        Ef að Model.Posts verður breytt frá List<Post> yfir í List<PostViewModel>
-        er hægt að gera það svona: (at)Html.RenderPartial("_newsfeed", Model.Posts)-->
+<div class="container col-md-6 col-md-pull-6 ragnar">
     @{Html.RenderPartial("_NewsfeedPartial", Model.Posts);}
 </div>
-
-
+>>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85

@@ -25,7 +25,7 @@ namespace UNIverse.Models
         public string Description { get; set; }
         public string ProfilePicturePath { get; set; }
 
-        public virtual Department Department { get; set; }
+        public virtual University University { get; set; }
         public virtual List<Group> Groups { get; set; }
         public virtual List<Post> Posts { get; set; }
         public virtual List<FriendRequest> FriendRequests { get; set; }
@@ -36,7 +36,6 @@ namespace UNIverse.Models
         // Singleton pattern á DbContext.
         // Tryggir að við höfum alltaf bara eitt instance af contextinu og að við getum nálgast það beint úr ServiceWrapper
         private static ApplicationDbContext instance;
-
         public static ApplicationDbContext Instance
         {
             get
@@ -53,7 +52,6 @@ namespace UNIverse.Models
         public DbSet<Group> Groups { get; set; }
         public DbSet<University> Universities { get; set; }
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Department> Departments { get; set; }
         public DbSet<FriendRequest> FriendRequests { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

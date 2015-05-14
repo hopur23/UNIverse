@@ -12,17 +12,6 @@ namespace UNIverse.Controllers
 {
     public class PostController : Controller
     {
-        public List<SelectListItem> GetTags()
-        {
-            List<SelectListItem> TagList = new List<SelectListItem> {
-                new SelectListItem { Value = "", Text = "-Select-", Selected = true },
-                new SelectListItem { Value = "Baekur", Text = "Bækur" },
-                new SelectListItem { Value = "Party", Text = "Party" }
-            };
-            ViewBag.Tags = new SelectList(TagList, "Value", "Text", "");
-            return TagList;
-        }
-
         [HttpGet]
         public ActionResult New()
         {
@@ -35,26 +24,18 @@ namespace UNIverse.Controllers
         {
             Post post = new Post();
 
-            post.Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
-
             if(viewModel.groupId.HasValue)
             {
                 int realId = viewModel.groupId.Value;
                 viewModel.ParentGroup = ServiceWrapper.GroupService.GetGroupById(realId);
             }
-            //post.ParentGroup = ServiceWrapper.GroupService.GetGroupById(1);
-            //post.Author = ServiceWrapper.Services.UserService.GetUserById(this.User.Identity.GetUserId());
+            post.Author = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
             post.Body = viewModel.Body;
             post.Comments = new List<Comment>();
             post.DateCreated = DateTime.Now;
             post.ParentGroup = viewModel.ParentGroup;
             post.ImagePath = viewModel.ImagePath;
             post.Tag = viewModel.Tag;
-
-            // TODO: Implement Groups
-           // post.ParentGroup = viewModel.Group;
-            // TODO: Implement Group Tags
-            //post.Tag = viewModel.Tag;
 
             ServiceWrapper.PostService.AddPost(post);
             //ServiceWrapper.Services.PostService.AddPost(post);
@@ -159,7 +140,6 @@ namespace UNIverse.Controllers
 
                 ServiceWrapper.PostService.DeletePost(post);
             }
-            //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
             // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("Index", "Group");

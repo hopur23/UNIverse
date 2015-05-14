@@ -1,8 +1,21 @@
 ﻿@model UNIverse.Models.ViewModels.GroupViewModel
 
 <div class="col-md-6 col-md-push-6">
-    <h4>@Html.DisplayFor(model => model.Name)</h4>
+    @if (Model.isAdmin)
+    {
+        <p>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</p>
+    }
+    <h4>@Html.DisplayFor(model => model.Name)</h4> 
+    @if (Model.GroupPicturePath != null)
+    {
+        <img src="@Url.Content(Model.GroupPicturePath)" alt="Profile pic not found" />
+    }
+    else
+    {
+        <img src="https://findyourtrainer.com/static/images/avatar.jpg" alt="Profile pic not found" />
+    }
     <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Description)
@@ -12,9 +25,15 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
+    @Html.ActionLink("Back to List", "Index")
+
+    @if ((!Model.isAdmin) && Model.inGroup)
+    {
+        <span><input type="button" value="Leave group" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" /></span>
+    }
     @if (Model.inGroup)
     {
-        <p>Members</p>
+        <strong><p>Members</p></strong>
         foreach (var item in Model.Members)
         {
             <ul>
@@ -22,21 +41,6 @@
             </ul>
         }
     }
-
-
-    
-
-    @if (Model.isAdmin)
-    {
-        <p>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</p>
-    }
-
-    @if ((!Model.isAdmin) && Model.inGroup)
-    {
-        <input type="button" value="Leave" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" />
-    }
-
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 <div class="container col-md-6 col-md-pull-6">
@@ -44,7 +48,7 @@
     { 
         <h4>Group posts</h4>
         Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel() { groupId = Model.Id });
-        Html.RenderPartial("_NewsfeedPartial", Model.Posts);
+        Html.RenderPartial("_NewsfeedPartial", new UNIverse.Models.ViewModels.PostViewModel() { groupId = Model.Id, Posts = Model.Posts });
     }
 
     @if (!Model.inGroup)

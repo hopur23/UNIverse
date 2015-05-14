@@ -1,7 +1,15 @@
 ﻿@model UNIverse.Models.ViewModels.FriendListViewModel
+
 @{
-    ViewBag.Title = "Friends";
+    ViewBag.Title = "View1";
 }
 
 <h2>Friends</h2>
 
+@foreach(var item in Model.Friends)
+{
+    <div class="col-md-2">
+        <img src="@Url.Content(item.ProfilePicturePath)" alt="Profile Picture" class="img-responsive" />
+        <span>@(Html.ActionLink(item.FirstName + " " + item.LastName, "Index", new { userId = item.Id }))</span>
+    </div>
+}

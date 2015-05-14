@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using UNIverse.Models;
+using UNIverse.Services;
+using UNIverse.Models.Entities;
 
 namespace UNIverse.Controllers
 {
@@ -16,7 +18,7 @@ namespace UNIverse.Controllers
     public class AccountController : Controller
     {
         public AccountController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ApplicationDbContext.Instance)))
         {
         }
 
@@ -81,13 +83,30 @@ namespace UNIverse.Controllers
         {
             if (ModelState.IsValid)
             {
-                // TODO: Hafa val fyrir fæðingardag í register view, setja það í birthday.
+                string email = model.UserName;
+                string givenEmailEnding = email.Substring(email.LastIndexOf('@'));
+                var university = ServiceWrapper.UniversityService.GetUniByEnding(givenEmailEnding);
+
+                if(university == null)
+                {
+                    ModelState.AddModelError("UserName", "You must register with an accepted university email");
+                    return View(model);
+                }
+
                 var user = new ApplicationUser() { 
-                    Birthday = DateTime.Now,
-                    UserName = model.UserName,
-                    Email = model.UserName,
                     LastName = model.LastName,
-                    FirstName = model.FirstName
+                    FirstName = model.FirstName,
+                    // UserName acts also as email
+                    Email = model.UserName,
+                    UserName = model.UserName,
+                    University = university,
+                    // Birthday is used as a register date
+                    Birthday = DateTime.Now,
+                    FriendRequests = new List<FriendRequest>(),
+                    Posts = new List<Post>(),
+                    Groups = new List<Group>(),
+                    // Default placeholder for profile picture
+                    ProfilePicturePath = Url.Content("~/Content/images/no-profile.jpg")
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

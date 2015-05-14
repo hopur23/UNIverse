@@ -34,12 +34,18 @@ namespace UNIverse.Controllers
                     ReceivedFriendRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(user.Id),
                     SentFriendRequests = ServiceWrapper.FriendService.GetSentFriendRequests(user.Id),
                     Friends = ServiceWrapper.FriendService.GetFriendsForUser(user.Id),
-                    Posts = user.Posts.OrderByDescending(p => p.DateCreated).ToList(),
-                    Groups = user.Groups.OrderByDescending(g => g.Name).ToList()
-                };
+                    Posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(user.Id),
+                    Groups = user.Groups.OrderByDescending(g => g.Name).ToList(),
+                    School = user.University,
+                    IsMyFriend = false
+                    
+            };
+                if(ServiceWrapper.FriendService.GetFriendsForUser(this.User.Identity.GetUserId()).Contains(user)==true)
+                {
+                    viewModel.IsMyFriend = true;
+                }
 
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
-                viewModel.Department = user.Department;
                 viewModel.Description = user.Description;
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 
@@ -49,9 +55,16 @@ namespace UNIverse.Controllers
             
         }
 
-        public ActionResult Friends()
+        public ActionResult Friends(string userId)
         {
-            return View();
+            var viewModel = new FriendListViewModel()
+            {
+                Friends = ServiceWrapper.FriendService.GetFriendsForUser(userId),
+                ReceivedRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(userId),
+                SentRequests = ServiceWrapper.FriendService.GetSentFriendRequests(userId),
+            };
+
+            return View(viewModel);
         }
 
         [HttpGet]
@@ -88,7 +101,14 @@ namespace UNIverse.Controllers
                 user.LastName = model.LastName;
                 user.Description = model.Description;
                 user.Posts = model.Posts;
-                user.ProfilePicturePath = model.ProfilePicturePath;
+                // If user inputs nothing in the profile picture path box,
+                // use the placeholder image.
+                if(model.ProfilePicturePath == null) {
+                    user.ProfilePicturePath = "/Content/images/no-profile.jpg";
+                }
+                else {
+                    user.ProfilePicturePath = model.ProfilePicturePath;
+                }
                 user.Email = model.Email;
                 user.UserName = model.UserName;
                 ServiceWrapper.UserService.EditUser(user);
@@ -160,6 +180,23 @@ namespace UNIverse.Controllers
                     ServiceWrapper.FriendService.AddFriendRequest(request);
                 }
                 return RedirectToAction("Index", "Home");
+            }
+            return View("Error");
+        }
+
+        [HttpPost]
+        public ActionResult RemoveFriend(string userId)
+        {
+            if(userId != null)
+            {
+                // Find the request between the users
+                var request = ServiceWrapper.FriendService.FindRequestBetween(this.User.Identity.GetUserId(), userId);
+                // Check if the request exists. If so, remove it.
+                if(request != null)
+                {
+                    ServiceWrapper.FriendService.RemoveFriendRequest(request);
+                }
+                return RedirectToAction("Index", new { userId = userId });
             }
             return View("Error");
         }
