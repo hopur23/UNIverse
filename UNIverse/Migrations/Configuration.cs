@@ -117,7 +117,7 @@ namespace UNIverse.Migrations
 
             if(!context.Users.Any(u => u.UserName == "ragnarmh13@ru.is"))
             {
-                var user = new ApplicationUser()
+                var ragnar = new ApplicationUser()
                 {
                     UserName = "ragnar@ru.is",
                     PasswordHash = hasher.HashPassword("ragnar.123"),
@@ -132,12 +132,9 @@ namespace UNIverse.Migrations
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
                     University = university
                 };
-                context.Users.AddOrUpdate(user);
-            }
-
-            if (!context.Users.Any(u => u.UserName == "berglind@ru.is"))
-            {
-                var user = new ApplicationUser()
+                context.Users.AddOrUpdate(ragnar);
+            
+                var berglind = new ApplicationUser()
                 {
                     UserName = "berglind@ru.is",
                     PasswordHash = hasher.HashPassword("berglind.123"),
@@ -152,12 +149,9 @@ namespace UNIverse.Migrations
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
                     University = university
                 };
-                context.Users.AddOrUpdate(user);
-            }
+                context.Users.AddOrUpdate(berglind);
 
-            if (!context.Users.Any(u => u.UserName == "elisa@ru.is"))
-            {
-                var user = new ApplicationUser()
+                var elisa = new ApplicationUser()
                 {
                     UserName = "elisa@ru.is",
                     PasswordHash = hasher.HashPassword("elisa.123"),
@@ -172,12 +166,9 @@ namespace UNIverse.Migrations
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
                     University = university
                 };
-                context.Users.AddOrUpdate(user);
-            }
+                context.Users.AddOrUpdate(elisa);
 
-            if (!context.Users.Any(u => u.UserName == "thorgerdur@ru.is"))
-            {
-                var user = new ApplicationUser()
+                var thorgerdur = new ApplicationUser()
                 {
                     UserName = "thorgerdur@ru.is",
                     PasswordHash = hasher.HashPassword("thorgerdur.123"),
@@ -192,12 +183,9 @@ namespace UNIverse.Migrations
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
                     University = university
                 };
-                context.Users.AddOrUpdate(user);
-            }
+                context.Users.AddOrUpdate(thorgerdur);
 
-            if (!context.Users.Any(u => u.UserName == "arnheidur@ru.is"))
-            {
-                var user = new ApplicationUser()
+                var arnheidur = new ApplicationUser()
                 {
                     UserName = "arnheidur@ru.is",
                     PasswordHash = hasher.HashPassword("arnheidur.123"),
@@ -212,7 +200,20 @@ namespace UNIverse.Migrations
                     ProfilePicturePath = "/Content/images/no-profile.jpg",
                     University = university
                 };
-                context.Users.AddOrUpdate(user);
+                context.Users.AddOrUpdate(arnheidur);
+
+                #region Add friend request
+                var request = new FriendRequest() {
+                    Sender = ragnar,
+                    SenderId = ragnar.Id,
+                    Receiver = elisa,
+                    ReceiverId = elisa.Id,
+                    IsAccepted = true,
+                    RequestDate = DateTime.Now
+                };
+
+                context.FriendRequests.AddOrUpdate(request);
+                #endregion
             }
             
             #endregion

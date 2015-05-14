@@ -2,9 +2,93 @@
 }
 
 .news-item {
-
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0px 0px 3px -1px #000;
+    margin-bottom: 35px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .news-header {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow: auto;
+}
 
+.profile-image {
+    margin: 0 auto;
+}
+.news-header div img {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-left: 0;
+    max-height: 50px;
+}
+
+.news-header .news-group {
+    margin-top: -6px;
+}
+
+
+.news-header .news-tag {
+    margin-top: -4px;
+}
+
+.news-header .col-md-1 {
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.news-header .col-md-11 {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.news-date {
+    margin-top: -10px;
+}
+
+.news-content {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: auto;
+}
+
+.news-footer {
+    margin-top: 0;
+    clear: both;
+    padding-left: 10px;
+    margin-top: 0;
+}
+
+.news-footer .list-inline {
+    margin-bottom: 0;
+}
+
+.news-image {
+    //background-color: lightblue;
+}
+
+.news-comments {
+    border: 1px solid #ADDBDB;
+    background-color: #C8E1E1;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.news-comment-item {
+    padding-bottom: 10px;
 }

@@ -13,6 +13,8 @@ namespace UNIverse.Controllers
 {
     public class UserController : Controller
     {
+        private const int defaultEntryCount = 10;
+
         public ActionResult Index(string userId)
         {
             if (userId != null)
@@ -34,7 +36,7 @@ namespace UNIverse.Controllers
                     ReceivedFriendRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(user.Id),
                     SentFriendRequests = ServiceWrapper.FriendService.GetSentFriendRequests(user.Id),
                     Friends = ServiceWrapper.FriendService.GetFriendsForUser(user.Id),
-                    Posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(user.Id),
+                    Posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(user.Id).Take(defaultEntryCount).ToList(),
                     Groups = user.Groups.OrderByDescending(g => g.Name).ToList(),
                     School = user.University,
                     IsMyFriend = false
@@ -48,11 +50,27 @@ namespace UNIverse.Controllers
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 viewModel.Description = user.Description;
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
-                
+
+                ViewData["moreUrl"] = Url.Action("GetUserPosts", "User");
+
                 return View(viewModel);
             }
             return View("Error");
             
+        }
+
+        public ActionResult GetUserPosts(int postToID)
+        {
+            
+                var posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(this.User.Identity.GetUserId());
+                //Retrieve the page specified by the page variable with a page size o defaultEntryCount
+
+                PostViewModel pagedEntries = new PostViewModel
+                {
+                    Posts = posts.Where(p => p.Id < postToID).Take(defaultEntryCount).OrderByDescending(m => m.Id).ToList()
+                };
+
+                return PartialView("PostPage", pagedEntries);    
         }
 
         public ActionResult Friends(string userId)
@@ -70,7 +88,7 @@ namespace UNIverse.Controllers
         [HttpGet]
         public ActionResult Edit(string userId)
         {
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(userId) && userId == this.User.Identity.GetUserId())
             {
                 var model = ServiceWrapper.UserService.GetUserById(userId);
 

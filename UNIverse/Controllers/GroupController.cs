@@ -12,6 +12,8 @@ namespace UNIverse.Controllers
 {
     public class GroupController : Controller
     {
+        private const int defaultEntryCount = 3;
+
         public ActionResult Index(string searchString)
         {
             var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
@@ -97,9 +99,11 @@ namespace UNIverse.Controllers
                 viewModel.Name = group.Name;
                 viewModel.Description = group.Description;
                 viewModel.Members = group.Members;
-                viewModel.Posts = group.Posts;
+                viewModel.Posts = group.Posts.Take(defaultEntryCount).ToList();
                 viewModel.Id = group.Id;
                 viewModel.GroupPicturePath = group.GroupPicturePath;
+
+                ViewData["moreUrl"] = Url.Action("GetGroupPosts", "Group");
 
                 return View(viewModel);
             }
@@ -107,6 +111,20 @@ namespace UNIverse.Controllers
             {
                 return View("Error");
             }
+        }
+
+        public ActionResult GetGroupPosts(int postToID, int groupId)
+        {
+            Group group = ServiceWrapper.GroupService.GetGroupById(groupId);
+            var posts = group.Posts;
+            //Retrieve the page specified by the page variable with a page size o defaultEntryCount
+
+            PostViewModel pagedEntries = new PostViewModel
+            {
+                Posts = posts.Where(p => p.Id < postToID).Take(defaultEntryCount).OrderByDescending(m => m.Id).ToList()
+            };
+
+            return PartialView("PostPage", pagedEntries);
         }
 
         [HttpGet]

@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNet.Identity
-
 @model UNIverse.Models.ViewModels.UserProfileViewModel
 
 @{
@@ -95,6 +94,7 @@
 
                     <input type="submit" value="Accept Request" class="btn btn-default" />
                 }
+
                 using (Html.BeginForm("RemoveFriend", "User", new { userId = request.Sender.Id }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
@@ -109,7 +109,7 @@
 
 @if (Model.IsMyFriend || User.Identity.GetUserId() == Model.userId)
 {
-    <div class="container col-md-6 col-md-pull-6 newsfeed">
-        @{Html.RenderPartial("_NewsfeedPartial", Model.Posts);}
+    <div class="container-fluid col-md-6 col-md-pull-6 newsfeed">
+        @{Html.RenderPartial("_NewsfeedPartial", new UNIverse.Models.ViewModels.PostViewModel() { Posts = Model.Posts });}        
     </div>
 }

@@ -22,6 +22,8 @@ namespace UNIverse.Models.ViewModels
 
         public int? groupId { get; set; }
         public string ImagePath { get; set; }
-        public List<SelectListItem> Tags { get; set; }        
+        public List<SelectListItem> Tags { get; set; }
+        public List<Post> Posts { get; set; }
+        public int currentPageNumber { get; set; }
     }
 }
