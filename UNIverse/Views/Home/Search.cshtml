@@ -6,11 +6,12 @@
 
 <link href="@Url.Content("~/Content/Search.css")" rel="stylesheet" type="text/css" />
 
+
 <div class="searchBox">
     @using (Html.BeginForm())
     {
         <p>
-            @Html.TextBox("SearchString")
+            @Html.TextBox("SearchString", "", new { placeholder="Search for a group or friend..." })
             <input type="submit" value="Search" class="btn btn-primary searchButton" />
         </p>
     }

@@ -20,7 +20,7 @@ namespace UNIverse.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(PostViewModel viewModel)
+        public ActionResult New(PostViewModel viewModel, string returnUrl)
         {
             Post post = new Post();
 
@@ -38,16 +38,13 @@ namespace UNIverse.Controllers
             post.Tag = viewModel.Tag;
 
             ServiceWrapper.PostService.AddPost(post);
-            //ServiceWrapper.Services.PostService.AddPost(post);
 
-            // TODO: Ákveða hvert á að redirecta user
-            return RedirectToAction("Index", "Home");
+            return Redirect(returnUrl);
         }
 
         [HttpGet]
         public ActionResult AddComment(int? postId)
         {
-            
             if(postId.HasValue)
             {
                 var viewModel = new CommentViewModel()
@@ -55,7 +52,6 @@ namespace UNIverse.Controllers
                     AuthorId = this.User.Identity.GetUserId(),
                     ParentId = postId.Value,
                 };
-
                 return View(viewModel);
             }
             // TODO: Flottari error síða eða flottari villumeðhöndlun
@@ -63,7 +59,7 @@ namespace UNIverse.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddComment(CommentViewModel model)
+        public ActionResult AddComment(CommentViewModel model, string returnUrl)
         {
             if(ModelState.IsValid)
             {
@@ -77,9 +73,11 @@ namespace UNIverse.Controllers
                 ServiceWrapper.PostService.AddComment(comment);
 
                 // TODO: Redirect til baka í póstinn sjálfann. Á eftir að útfæra single post view (þar sem hægt er að sjá post og öll komment sem fylgja).
-                return RedirectToAction("Index", "Home");
+                return Redirect(returnUrl);
+
+                //return RedirectToAction("Index", "Home");
             }
-            return View(model);
+            return Redirect(returnUrl);
         }
 
         [HttpGet]
@@ -131,7 +129,7 @@ namespace UNIverse.Controllers
             }
         }
 
-        public ActionResult DeletePost(int? id)
+        public ActionResult DeletePost(int? id, string returnUrl)
         {
             if (id.HasValue)
             {
@@ -141,8 +139,7 @@ namespace UNIverse.Controllers
                 ServiceWrapper.PostService.DeletePost(post);
             }
 
-            // TODO: Ákveða hvert á að redirecta user
-            return RedirectToAction("Index", "Group");
+            return Redirect(returnUrl);
         }
     }
 }

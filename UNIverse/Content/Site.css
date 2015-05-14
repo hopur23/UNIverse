@@ -222,4 +222,12 @@ button.navbar-toggle {
   overflow: hidden;
   margin-right: 75%;
   margin-left: 21%;
+
+
+a[href^="/Group/"]{
+    color: black;
+}
+
+#SearchString input[type="text"]:focus{
+    clear:none;
 }
