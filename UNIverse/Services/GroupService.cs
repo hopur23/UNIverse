@@ -24,6 +24,7 @@ namespace UNIverse.Services
             return groups;
         }
 
+        // Search for groups
         public List<Group> GetAllGroups(string searchString)
         {
             var groups = (from p in m_db.Groups
@@ -31,6 +32,26 @@ namespace UNIverse.Services
                             orderby p.Name ascending
                             select p).ToList();
                 
+            return groups;
+        }
+
+        public List<Group> GetGroupsUserIsAdmin(string id)
+        {
+            var groups = (from p in m_db.Groups
+                          where p.Administrator.Id == id
+                          orderby p.Name ascending
+                          select p).ToList();
+            return groups;
+        }
+
+        public List<Group> GetGroupsUserIsIn(ApplicationUser user)
+        {
+            var groups = (from p in m_db.Groups
+                          where p.Administrator.Id != user.Id
+                          from r in p.Members
+                          where r.Id == user.Id
+                          orderby p.Name ascending
+                          select p).ToList();
             return groups;
         }
 

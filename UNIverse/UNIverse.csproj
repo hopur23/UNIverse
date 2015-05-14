@@ -201,6 +201,7 @@
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\Search.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

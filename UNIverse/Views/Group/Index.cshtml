@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UNIverse.Models.Group>
+﻿@model UNIverse.Models.ViewModels.GroupViewModel
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -6,40 +6,114 @@
 
 @using (Html.BeginForm())
 {
-    <p>
-        @Html.TextBox("SearchString", null, new { placeholder = "Search for a group..." })
-        <input type="submit" value="Search"/>
+    <p> 
+        @Html.TextBox("SearchString", "", new { placeholder="Search for groups" })
+        <input type="submit" value="Search" class="btn btn-primary searchButton" />
     </p>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+@if (!Model.search)
+{ 
+    <p>I am an admin of.....</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor( model => model.Name )
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "View", new { id = item.Id }) 
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Administrator.FirstName)
-        </td>
-        <td>
-          @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
-           @* @Html.ActionLink("View info", "View", new { id=item.Id }) *@
-           @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-        </td>
-    </tr>
+        @foreach (var item in Model.UserIsAdmin)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "View", new { id = item.Id })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Administrator.FirstName)
+                </td>
+                <td>
+                    @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
+             
+                    @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <p>I am a member of.....</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.GroupsUserIsIn)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "View", new { id = item.Id } )
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Administrator.FirstName)
+                </td>
+                <td>
+                    @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
+                    @Html.ActionLink("View Info", "View", new { id = item.Id })
+                    @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+                </td>
+            </tr>
+        }
+
+     </table>
 }
 
-</table>
+else
+{ 
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model.AllGroups) {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "View", new { id=item.Id } )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Administrator.FirstName)
+            </td>
+            <td>
+              @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
+           
+               @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            </td>
+        </tr>
+    }
+
+    </table>
+}

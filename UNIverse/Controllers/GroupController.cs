@@ -12,17 +12,27 @@ namespace UNIverse.Controllers
 {
     public class GroupController : Controller
     {
+        private const int defaultEntryCount = 3;
+
         public ActionResult Index(string searchString)
         {
-            List<Group> model = new List<Group>();
+            var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
+            var model = new GroupViewModel();
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                model = ServiceWrapper.GroupService.GetAllGroups(searchString);
+                model.search = true;
+                model.AllGroups = ServiceWrapper.GroupService.GetAllGroups(searchString);
                 return View(model);
             }
 
-            model = ServiceWrapper.GroupService.GetAllGroups();
+            model.AllGroups = ServiceWrapper.GroupService.GetAllGroups();
+            if (user.Groups != null)
+            {
+                model.GroupsUserIsIn = ServiceWrapper.GroupService.GetGroupsUserIsIn(user);
+                model.UserIsAdmin = ServiceWrapper.GroupService.GetGroupsUserIsAdmin(this.User.Identity.GetUserId());
+            }
+            model.search = false;
 
             return View(model); 
         }
@@ -94,10 +104,11 @@ namespace UNIverse.Controllers
                 viewModel.Name = group.Name;
                 viewModel.Description = group.Description;
                 viewModel.Members = group.Members;
-                viewModel.Posts = group.Posts;
+                viewModel.Posts = group.Posts.Take(defaultEntryCount).ToList();
                 viewModel.Id = group.Id;
                 viewModel.GroupPicturePath = group.GroupPicturePath;
-                
+
+                ViewData["moreUrl"] = Url.Action("GetGroupPosts", "Group");
 
                 return View(viewModel);
             }
@@ -105,6 +116,20 @@ namespace UNIverse.Controllers
             {
                 return View("Error");
             }
+        }
+
+        public ActionResult GetGroupPosts(int postToID, int groupId)
+        {
+            Group group = ServiceWrapper.GroupService.GetGroupById(groupId);
+            var posts = group.Posts;
+            //Retrieve the page specified by the page variable with a page size o defaultEntryCount
+
+            PostViewModel pagedEntries = new PostViewModel
+            {
+                Posts = posts.Where(p => p.Id < postToID).Take(defaultEntryCount).OrderByDescending(m => m.Id).ToList()
+            };
+
+            return PartialView("PostPage", pagedEntries);
         }
 
         [HttpGet]

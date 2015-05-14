@@ -24,11 +24,11 @@ namespace UNIverse.Services
             return user;
         }
 
+        // Search for users by names
         public List<ApplicationUser> GetAllUsers(string searchString)
         {
             var users = (from p in m_db.Users
-                          where p.FirstName.Contains(searchString) || 
-                          p.LastName.Contains(searchString)
+                          where (p.FirstName + " " + p.LastName).Contains(searchString)
                           orderby p.FirstName ascending
                           select p).ToList();
 

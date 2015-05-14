@@ -2,16 +2,31 @@
     $('body').on("click", '#moreLink', function (e) {
         e.preventDefault();
 
-        var tempLinkText = $(this).html();
+        var eLink = $(this);
+
+        var tempLinkText = eLink.html();
         //$(this).html("<img src='/images/ajax-loader.gif' />");
-        $(this).html('loading');
+        eLink.html('loading');
 
         var url = $(this).prop('href');
         var data = { postToID: $('#wallPosts > div:last').data('postref') };
+        if ($('#groupId').length) {
+            data.groupId = $('#groupId').val();
+        }
+        if ($('#Tag').length) {
+            data.Tag = $('#Tag').val();
+        }
 
         $.post(url, data, function (response) {
-            $('#wallPosts').append(response);
-            $(this).html(tempLinkText);
+
+            if (response == '') {
+                eLink.replaceWith("<div>All posts loaded</div>")
+            }
+            else {
+                $('#wallPosts').append(response);
+                eLink.html(tempLinkText);
+            }
+
         });
 
     });

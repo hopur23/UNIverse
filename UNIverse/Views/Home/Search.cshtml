@@ -4,67 +4,62 @@
     ViewBag.Title = "Search";
 }
 
-@using (Html.BeginForm())
+<link href="@Url.Content("~/Content/Search.css")" rel="stylesheet" type="text/css" />
+
+
+<div class="searchBox">
+    @using (Html.BeginForm())
+    {
+        <p>
+            @Html.TextBox("SearchString", "", new { placeholder="Search for a group or friend..." })
+            <input type="submit" value="Search" class="btn btn-primary searchButton" />
+        </p>
+    }
+</div>
+
+@if(Model.Groups != null && Model.Users != null)
 {
-    <p>
-        @Html.TextBox("SearchString", new { placeholder = "Search for a user or group.." })
-        <input type="submit" value="Search"/>
-    </p>
+    <h4>Groups</h4>
+    <table class="table">
+         @if(Model.Groups != null)
+         { 
+             foreach (var item in Model.Groups)
+             {
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Name, "View", "Group", new { id = item.Id }, null)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Administrator.FirstName)
+                    </td>
+                
+                </tr>
+            }
+        }
+        
+    </table>
+
+
+    <h4>Users</h4>
+    <table class="table">
+        @if(Model.Users != null)
+        { 
+            foreach (var item in Model.Users)
+            {
+                <tr>
+                    <td>
+                    
+                        @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id}, null)
+                    
+                    </td>
+                
+                </tr>
+            }
+        }
+      
+    </table>
+
 }
-
-<h4>Groups</h4>
-<table class="table">
-    @if(Model.Groups != null)
-    { 
-    foreach (var item in Model.Groups)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Administrator.FirstName)
-            </td>
-            <td>
-                @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
-                @Html.ActionLink("View Info", "View", new { id = item.Id })
-                @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-            </td>
-        </tr>
-    }
-    }
-    else
-    {
-        <h6>No search results</h6>
-    }
-
-</table>
-
-<h4>Users</h4>
-<table class="table">
-    @if(Model.Users != null)
-    { 
-    foreach (var item in Model.Users)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
-                @Html.ActionLink("View Info", "Index", "User", new { userId = item.Id }, null)
-                @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-            </td>
-        </tr>
-    }
-    }
-    else
-    {
-       <h6>No search results</h6>
-    }
-
-</table>
-

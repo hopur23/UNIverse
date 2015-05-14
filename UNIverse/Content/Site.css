@@ -227,3 +227,12 @@ nav > li > a {
     margin-bottom: 5px;
 }
 
+a[href^="/Group/"]
+{
+    color: black;
+}
+
+#SearchString input[type="text"]:focus
+{
+    clear:none;
+}
