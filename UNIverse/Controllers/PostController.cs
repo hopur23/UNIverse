@@ -12,17 +12,6 @@ namespace UNIverse.Controllers
 {
     public class PostController : Controller
     {
-        public List<SelectListItem> GetTags()
-        {
-            List<SelectListItem> TagList = new List<SelectListItem> {
-                new SelectListItem { Value = "", Text = "-Select-", Selected = true },
-                new SelectListItem { Value = "Baekur", Text = "Bækur" },
-                new SelectListItem { Value = "Party", Text = "Party" }
-            };
-            ViewBag.Tags = new SelectList(TagList, "Value", "Text", "");
-            return TagList;
-        }
-
         [HttpGet]
         public ActionResult New()
         {
@@ -151,7 +140,6 @@ namespace UNIverse.Controllers
 
                 ServiceWrapper.PostService.DeletePost(post);
             }
-            //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
             // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("Index", "Group");
