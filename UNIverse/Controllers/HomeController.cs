@@ -36,15 +36,6 @@ namespace UNIverse.Controllers
             return View("Index", entries);
         }
 
-     /*   {
-            // TODO: Sækja frekar latest posts frekar en alla. Implementa filters
-        //    var modeld = ServiceWrapper.PostService.GetAllPostsFromFriends(this.User.Identity.GetUserId());
-            var model = GetModel(0);
-            return View("Index", model);
-        
-           // return View(model);
-        }*/
-
         private void AddMoreUrlToViewData()
         {
             ViewData["moreUrl"] = Url.Action("Index", "Home");
