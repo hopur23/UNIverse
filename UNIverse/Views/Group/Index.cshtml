@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UNIverse.Models.Group>
+﻿@model UNIverse.Models.ViewModels.GroupViewModel
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -23,7 +23,7 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.AllGroups) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
