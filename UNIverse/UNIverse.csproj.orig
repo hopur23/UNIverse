@@ -163,6 +163,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BasePagingController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -171,12 +172,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
 <<<<<<< HEAD
-    <Compile Include="Migrations\201505131757170_aypapi.cs" />
-    <Compile Include="Migrations\201505131757170_aypapi.Designer.cs">
-      <DependentUpon>201505131757170_aypapi.cs</DependentUpon>
-    </Compile>
 =======
->>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
+    <Compile Include="Migrations\201505131638483_party.cs" />
+    <Compile Include="Migrations\201505131638483_party.Designer.cs">
+      <DependentUpon>201505131638483_party.cs</DependentUpon>
+    </Compile>
+>>>>>>> 9604c62541be1345543267a19921844db1bc1768
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -204,8 +205,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\Search.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -221,6 +224,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\paging.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -263,9 +267,12 @@
     <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Friends.cshtml" />
+    <Content Include="Views\Shared\PostDisplay.cshtml" />
+    <Content Include="Views\Shared\PostPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BasePaging\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
@@ -276,13 +283,13 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
 <<<<<<< HEAD
+=======
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505131757170_aypapi.resx">
-      <DependentUpon>201505131757170_aypapi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505131638483_party.resx">
+      <DependentUpon>201505131638483_party.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-=======
->>>>>>> 39290fd42259f33a4fffa405348da8fef57d6c85
+>>>>>>> 9604c62541be1345543267a19921844db1bc1768
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
