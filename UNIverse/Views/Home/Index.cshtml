@@ -11,8 +11,6 @@
     Get posts sorted by Tag (from all members): @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, null) | @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, null)
 </p>
 
-@Html.ActionLink("View Users", "AllUsers")
-
 @{Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel());}
 
 @{Html.RenderPartial("_NewsfeedPartial", Model);}

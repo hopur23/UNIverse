@@ -156,65 +156,6 @@ ul.navnav{
     text-decoration: none;
 }
 
-
-/*
-        
-ul.nav ul.navnav li a 
-{
-    border: none;
-    color: black;
-    padding: 3px 0;
-    list-style-type:none;
-    text-decoration: none;
-}
-
-/*
-ul.nav li a 
-{
-    color: black;
-    padding: 5px 12px;
-    text-decoration: none;
-}
-ul.nav li a:hover
-{
-background-color: #ffffff;
-} 
-
-ul.nav ul.navnav
-{
-    color: black;
-    //background-color: #FEF1D2;
-    width: 100%;
-    list-style-type:none;
-    /*border-top: 1px solid #FBB007;
-}
-
-ul.nav ul.navnav li a 
-{
-    line-height: 9px;
-}
-ul.nav ul.navnav li a 
-{
-    border: none;
-    color: black;
-    padding: 3px 0;
-    text-decoration: none;
-}
-ul.nav ul.navnav li a:hover
-{
-    color: #FF0000;
-    background-color: #FEF1D2;
-} 
-*/
- /*
-nav > li > a {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-    color: black;
-}
- */
-
 .profilepic img{
     max-width: 300px;
     max-height: 200px;
@@ -225,4 +166,28 @@ nav > li > a {
 {
     font-weight: bold;
     margin-bottom: 5px;
+}
+
+.post-text-box, .post-image-box, .post-tag-box {
+    max-width: 300px;
+}
+
+.post-text-box {
+
+}
+
+.post-image-box {
+    resize: none;
+}
+
+.post-button {
+    border-radius: 1px;
+    margin-left: -10px;
+    margin-top: -20px;
+    padding-left: 0;
+}
+
+.new-post {
+    margin-left: 10px;
+    padding-left: 0;
 }

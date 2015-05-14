@@ -1,33 +1,23 @@
 ﻿@model UNIverse.Models.ViewModels.PostViewModel
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("New", "Post", new { returnUrl = this.Request.RawUrl }, FormMethod.Post, new { @autocomplete = "off" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true)
+    @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.HiddenFor(model => model.groupId) 
-            @Html.HiddenFor(model => model.Tag)
-            <div class="col-md-12">
-                @Html.TextAreaFor(model => model.Body, new { @cols = "50", @rows = "4", @placeholder = "Enter status...", @style = "resize: none;"})<br />
-                @Html.TextAreaFor(model => model.ImagePath, new { @cols = "50", @rows = "1", @placeholder = "Optional - Enter an image path...", @style = "resize: none;" })<br />
-                @Html.LabelFor(model => model.Tag)
-                @Html.DropDownListFor(model => model.Tag, new List<SelectListItem>() {
-                                                                                new SelectListItem() { Text = "None", Value = "", Selected = true  },
-                                                                                new SelectListItem() { Text = "Books", Value = "Books", Selected = false },
-                                                                                new SelectListItem() { Text = "Party", Value = "Party", Selected = false }
-                                                                                })
-                @Html.ValidationMessageFor(model => model.Body)
-            </div>
-        </div>
+    @Html.HiddenFor(model => model.groupId) 
+    <div class="container-fluid form-group post-input"  >
+        @Html.TextAreaFor(model => model.Body, new { @placeholder = "Enter status...", @class = "form-control post-text-box"})
+        @Html.DropDownListFor(model => model.Tag, new List<SelectListItem>() {
+                                                                        new SelectListItem() { Text = "Select tag", Value = "", Selected = true  },
+                                                                        new SelectListItem() { Text = "Books", Value = "Books", Selected = false },
+                                                                        new SelectListItem() { Text = "Party", Value = "Party", Selected = false }
+                                                                        }, new { @class = "form-control post-tag-box" })
+        @Html.TextBoxFor(model => model.ImagePath, new { @placeholder = "Optional - Enter an image path...", @class = "form-control post-image-box" })
+        @Html.ValidationMessageFor(model => model.Body)
+    </div>
 
-        <div class="form-group">
-            <div class="col-md-12">
-                <input type="submit" value="Post" formaction="@Url.Action("New", "Post", new { returnUrl = this.Request.RawUrl })"/>
-            </div>
-        </div>
+    <div class="form-group">
+            <input class="btn btn-primary post-button" type="submit" value="Post"/>
     </div>
 }
