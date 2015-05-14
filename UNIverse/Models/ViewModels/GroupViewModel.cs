@@ -16,6 +16,7 @@ namespace UNIverse.Models.ViewModels
 
         public bool isAdmin { get; set; }
         public bool inGroup { get; set; }
+        public bool search { get; set; }
         public int Id { get; set; }
         public List<Group> AllGroups { get; set; }
         public List<Group> UserIsAdmin { get; set; }

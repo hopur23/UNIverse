@@ -47,8 +47,9 @@ namespace UNIverse.Services
         public List<Group> GetGroupsUserIsIn(ApplicationUser user)
         {
             var groups = (from p in m_db.Groups
-                          where (p.Administrator.Id != user.Id) &&
-                          (p.Members.Contains(user))
+                          where p.Administrator.Id != user.Id
+                          from r in p.Members
+                          where r.Id == user.Id
                           orderby p.Name ascending
                           select p).ToList();
             return groups;
