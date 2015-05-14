@@ -7,8 +7,8 @@
 @using (Html.BeginForm())
 {
     <p>
-        Find group: @Html.TextBox("SearchString")
-        <input type="submit" value="Search" />
+        @Html.TextBox("SearchString", new { placeholder = "Search for a user or group.." })
+        <input type="submit" value="Search"/>
     </p>
 }
 
