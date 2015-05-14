@@ -53,14 +53,21 @@
             </ul>
         </div>
 
-        <div class="news-comments col-md-12">
+        @if(item.Comments.Count() > 0)
+        {
+            <div class="news-comments col-md-12">
             @foreach (var comment in item.Comments)
             {
-                <div class="comment-item" style="padding-bottom: 5px;">
-                    <small><strong>@(comment.Author.FirstName + " " + comment.Author.LastName)</strong> @comment.Body</small><br />
+                <div class="comment-item comment-author">
+
+                    <small><strong>@Html.ActionLink(comment.Author.FirstName + " " + comment.Author.LastName, "Index", "User", new { userId = comment.Author.Id }, null)</strong></small>
+                </div>
+                <div class="comment-item">
+                    <small>@comment.Body</small><br />
                 </div>
             }
         </div>
+        }
         
     </div>
 }

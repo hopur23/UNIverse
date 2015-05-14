@@ -109,7 +109,7 @@
 
 @if (Model.IsMyFriend || User.Identity.GetUserId() == Model.userId)
 {
-    <div class="container col-md-6 col-md-pull-6 newsfeed">
+    <div class="container-fluid col-md-6 col-md-pull-6 newsfeed">
         @{Html.RenderPartial("_NewsfeedPartial", Model.Posts);}
     </div>
 }
