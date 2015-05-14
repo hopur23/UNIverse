@@ -1,0 +1,35 @@
+﻿@model UNIverse.Models.ViewModels.PostViewModel
+<link href="@Url.Content("~/Content/Newsfeed.css")" rel="stylesheet" type="text/css" />
+
+<div id="wallPosts">
+    @foreach (var item in Model.Posts)
+    {
+        Html.RenderPartial("PostDisplay", item);
+    }
+</div>
+
+
+<<<<<<< HEAD
+        @if(item.Comments.Count() > 0)
+        {
+            <div class="news-comments col-md-12">
+            @foreach (var comment in item.Comments)
+            {
+                <div class="comment-item comment-author">
+
+                    <small><strong>@Html.ActionLink(comment.Author.FirstName + " " + comment.Author.LastName, "Index", "User", new { userId = comment.Author.Id }, null)</strong></small>
+                </div>
+                <div class="comment-item">
+                    <small>@comment.Body</small><br />
+                </div>
+            }
+        </div>
+        }
+        
+    </div>
+=======
+@if (ViewData["moreUrl"] != null)
+{    
+    <a href='@ViewData["moreUrl"]' id="moreLink">More</a>
+>>>>>>> 6cc0decf871fd66ea8100b800587ea0904e0f921
+}
