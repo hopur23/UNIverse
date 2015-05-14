@@ -24,6 +24,7 @@ namespace UNIverse.Services
             return groups;
         }
 
+        // Search for groups
         public List<Group> GetAllGroups(string searchString)
         {
             var groups = (from p in m_db.Groups

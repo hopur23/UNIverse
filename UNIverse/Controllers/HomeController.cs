@@ -36,6 +36,15 @@ namespace UNIverse.Controllers
             return View("Index", entries);
         }
 
+     /*   {
+            // TODO: Sækja frekar latest posts frekar en alla. Implementa filters
+        //    var modeld = ServiceWrapper.PostService.GetAllPostsFromFriends(this.User.Identity.GetUserId());
+            var model = GetModel(0);
+            return View("Index", model);
+        
+           // return View(model);
+        }*/
+
         private void AddMoreUrlToViewData()
         {
             ViewData["moreUrl"] = Url.Action("Index", "Home");
@@ -98,9 +107,10 @@ namespace UNIverse.Controllers
             PostViewModel viewModel = new PostViewModel();
             if (!String.IsNullOrEmpty(tag))
             {
-                var posts = ServiceWrapper.PostService.PostsByTag(tag);
-                viewModel = GetView(posts);
+                viewModel.Posts = ServiceWrapper.PostService.PostsByTag(tag).Take(defaultEntryCount).ToList();
             }
+
+            ViewData["moreUrl"] = Url.Action("GetTaggedPosts", "Home");
 
             return View("Index", viewModel);
         }
@@ -113,16 +123,17 @@ namespace UNIverse.Controllers
             return View("Index", viewModel);
         }*/
 
-        public PostViewModel GetView(List<Post> list)
+        public ActionResult GetTaggedPosts(int postToID, string Tag)
         {
-            if (list != null)
+            var posts = ServiceWrapper.PostService.PostsByTag(Tag);
+
+            // Retrieve the page correct page
+            PostViewModel pagedEntries = new PostViewModel
             {
-                return new PostViewModel
-                {
-                    Posts = list.ToList()
-                };
-            }
-            return new PostViewModel();
+                Posts = posts.Where(p => p.Id < postToID).Take(defaultEntryCount).OrderByDescending(m => m.Id).ToList()
+            };
+
+            return PartialView("PostPage", pagedEntries);
         }
     }
 }

@@ -13,10 +13,12 @@
         if ($('#groupId').length) {
             data.groupId = $('#groupId').val();
         }
+        if ($('#Tag').length) {
+            data.Tag = $('#Tag').val();
+        }
 
         $.post(url, data, function (response) {
 
-            console.log(response);
             if (response == '') {
                 eLink.replaceWith("<div>All posts loaded</div>")
             }
