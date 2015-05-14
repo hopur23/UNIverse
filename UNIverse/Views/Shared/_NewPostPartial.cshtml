@@ -26,7 +26,7 @@
 
         <div class="form-group">
             <div class="col-md-12">
-                <input type="submit" value="Post" formaction="@Url.Action("New", "Post")" style="margin-top: -18px;" class="btn btn-default" />
+                <input type="submit" value="Post" formaction="@Url.Action("New", "Post", new { returnUrl = this.Request.RawUrl })"/>
             </div>
         </div>
     </div>

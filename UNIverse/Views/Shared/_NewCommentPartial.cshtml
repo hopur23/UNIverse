@@ -1,0 +1,16 @@
+﻿@model UNIverse.Models.ViewModels.CommentViewModel
+
+@using (Html.BeginForm("AddComment", "Post", new { returnUrl = this.Request.RawUrl }, FormMethod.Post, new { @class = "form-inline", @autocomplete = "off" } ))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.AuthorId)
+    @Html.HiddenFor(model => model.ParentId)
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.Body, new { @placeholder = "Write comment...", @class = "form-control comment-text-box" })
+    </div>
+    <input class="btn btn-primary news-comment-button" type="submit" value="Post"/>
+    
+}

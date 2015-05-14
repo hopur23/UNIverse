@@ -171,10 +171,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505141646129_start.cs" />
-    <Compile Include="Migrations\201505141646129_start.Designer.cs">
-      <DependentUpon>201505141646129_start.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -204,6 +200,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\Newsfeed.css" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\Search.css" />
     <Content Include="favicon.ico" />
@@ -266,11 +263,10 @@
     <Content Include="Views\User\Friends.cshtml" />
     <Content Include="Views\Shared\PostDisplay.cshtml" />
     <Content Include="Views\Shared\PostPage.cshtml" />
+    <Content Include="Views\Shared\_NewCommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BasePaging\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -278,11 +274,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505141646129_start.resx">
-      <DependentUpon>201505141646129_start.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
