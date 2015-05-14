@@ -7,10 +7,10 @@
     
     <div class="form-horizontal">
         @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.groupId) 
 
         <div class="form-group">
             @Html.HiddenFor(model => model.groupId) 
+            @Html.HiddenFor(model => model.Tag)
             <div class="col-md-12">
                 @Html.TextAreaFor(model => model.Body, new { @cols = "50", @rows = "4", @placeholder = "Enter status...", @style = "resize: none;"})<br />
                 @Html.TextAreaFor(model => model.ImagePath, new { @cols = "50", @rows = "1", @placeholder = "Optional - Enter an image path...", @style = "resize: none;" })<br />
