@@ -3,12 +3,7 @@
     max-width: 250px;
     max-height: 200px;
     overflow: hidden;
-}
-
-/*............Newsfeed........*/
-.newsFeedPic img {
-    max-width: 90%;
-    overflow: hidden;
+    margin: 0 auto;
 }
 
 .info{
@@ -57,10 +52,6 @@
     margin-top: 10px;
     margin-bottom: 10px;
 
-}
-
-.profilepic img {
-    margin: 0 auto;
 }
 
 .addFriend .btn-default{

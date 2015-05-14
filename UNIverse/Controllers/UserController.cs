@@ -88,7 +88,7 @@ namespace UNIverse.Controllers
         [HttpGet]
         public ActionResult Edit(string userId)
         {
-            if (!String.IsNullOrEmpty(userId))
+            if (!String.IsNullOrEmpty(userId) && userId == this.User.Identity.GetUserId())
             {
                 var model = ServiceWrapper.UserService.GetUserById(userId);
 
