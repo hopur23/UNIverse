@@ -105,8 +105,8 @@ ul#menu li a {
     color: #4AA0CF;
 }
 ul#menu li a:hover{
-    background-color: #ffffff; /*spurning med thetta*/
-    border-radius: 2px;
+    background-color: #ff6600; /*spurning med thetta*/
+    border-radius: 1px;
 } 
 
 .glyphicon{

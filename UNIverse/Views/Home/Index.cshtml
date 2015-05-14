@@ -2,10 +2,10 @@
 <!--TODO: Mögulega búa til FrontPageViewModel-->
 @{ViewBag.Title = "Home Page";}
 
-<h3>
+<h4>
     See posts from @Html.ActionLink("Friends", "Index", "Home") | @Html.ActionLink("Groups", "Groups", "Home")
     Get posts sorted by Tag (from all members): @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, null) | @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, null)
-</h3>
+</h4>
 
 @Html.ActionLink("View Users", "AllUsers")
 
