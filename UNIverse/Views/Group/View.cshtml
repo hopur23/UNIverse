@@ -45,7 +45,7 @@
 
 <div class="container-fluid col-md-6 col-md-pull-6">
     @if (Model.inGroup)
-    { 
+    {
         <h4>Group posts</h4>
         Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel() { groupId = Model.Id });
         Html.RenderPartial("_NewsfeedPartial", new UNIverse.Models.ViewModels.PostViewModel() { groupId = Model.Id, Posts = Model.Posts });
