@@ -1,14 +1,14 @@
 ﻿
 .profilepic img {
-    max-width: 250px;
-    max-height: 200px;
+    max-width: 300px;
+    max-height: 400px;
     overflow: hidden;
     margin: 0 auto;
 }
 
 .info{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
@@ -20,7 +20,7 @@
 
 .Groups{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
@@ -33,7 +33,7 @@
 
 .Friends{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
@@ -45,7 +45,7 @@
 
 .myRequests{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
@@ -74,3 +74,21 @@
 
 }
 
+.Groups ul li {
+    list-style-type:none;
+}
+.Groups a{
+    text-decoration:none;
+    color:black;
+}
+.Groups a:hover{
+    color:orange;
+}
+
+.userProfile{
+    border-radius:5px;
+}
+
+.info h2{
+    color:black;
+}

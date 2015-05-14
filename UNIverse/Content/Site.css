@@ -105,7 +105,7 @@ ul#menu li a {
     color: #4AA0CF;
 }
 ul#menu li a:hover{
-    background-color: #ff6600; /*spurning med thetta*/
+    background-color: lightblue; /*spurning med thetta*/
     border-radius: 1px;
 } 
 
@@ -147,7 +147,7 @@ table.data td {
 
 .sidebar{
     background-color:#4AA0CF; 
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -207,8 +207,19 @@ button.navbar-toggle {
     overflow: hidden;
 }
 
-.group
-{
+.group{
     font-weight: bold;
     margin-bottom: 5px;
+}
+
+.noMargin{
+    margin-top:0px;
+}
+
+.picpreview img{
+  max-width: 250px;
+  max-height: 300px;
+  overflow: hidden;
+  margin-right: 75%;
+  margin-left: 21%;
 }

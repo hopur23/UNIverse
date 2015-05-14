@@ -1,22 +1,18 @@
 ﻿@model UNIverse.Models.ViewModels.GroupViewModel
 
 <div class="col-md-6 col-md-push-6">
-    @if (Model.isAdmin)
-    {
-        <p>@Html.ActionLink("Edit", "Edit", new { id = Model.Id })</p>
-    }
-    <h4>@Html.DisplayFor(model => model.Name)</h4> 
+    <h3 class="noMargin">@Html.DisplayFor(model => model.Name)</h3> 
     @if (Model.GroupPicturePath != null)
-    {
-        <img src="@Url.Content(Model.GroupPicturePath)" alt="Profile pic not found" />
-    }
-    else
-    {
-        <img src="https://findyourtrainer.com/static/images/avatar.jpg" alt="Profile pic not found" />
+{
+    <img src="@Url.Content(Model.GroupPicturePath)" class="img-responsive" alt="Profile pic not found" />
+}
+else
+{
+        <img src="https://findyourtrainer.com/static/images/avatar.jpg" class="img-responsive" alt="Profile pic not found" />
     }
     <hr />
 
-    <dl class="dl-horizontal">
+    <dl class=" info" >
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -25,35 +21,41 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
-    @Html.ActionLink("Back to List", "Index")
 
+    @if (Model.isAdmin)
+    {
+        <span><input type="button" id="EditGroup" value="Edit Group" onclick="location.href='@Url.Action("Edit", "Group", new { id= Model.Id})'" /></span>
+    }
     @if ((!Model.isAdmin) && Model.inGroup)
     {
-        <span><input type="button" value="Leave group" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" /></span>
+        <span><input type="button" id="LeaveGroup" value="Leave group" onclick="location.href='@Url.Action("Leave", "Group", new { id = Model.Id })'" /></span>
     }
     @if (Model.inGroup)
     {
         <strong><p>Members</p></strong>
         foreach (var item in Model.Members)
         {
-            <ul>
-                <li>@item.FirstName @item.LastName</li>
+            <ul class="">
+                @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null)
             </ul>
         }
     }
+    <div class="BackToList">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
 
 <div class="container-fluid col-md-6 col-md-pull-6">
     @if (Model.inGroup)
     {
-        <h4>Group posts</h4>
+        <h3 class="noMargin">Group posts</h3>
         Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel() { groupId = Model.Id });
         Html.RenderPartial("_NewsfeedPartial", new UNIverse.Models.ViewModels.PostViewModel() { groupId = Model.Id, Posts = Model.Posts });
     }
 
     @if (!Model.inGroup)
     {
-        <h4>Members <input type="button" value="Join" onclick="location.href='@Url.Action("Join", "Group", new { id = Model.Id })'" /></h4>
+        <h4>Members <input type="button" id="J" value="Join" onclick="location.href='@Url.Action("Join", "Group", new { id = Model.Id })'" /></h4>
         foreach (var item in Model.Members)
         {
             <ul>
