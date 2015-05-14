@@ -28,6 +28,33 @@ namespace UNIverse.Controllers
                     return View("Error");
                 }
 
+                // Check user's friend status toward me.
+                bool areFriends = false;
+                bool hasRequestFromMe = false;
+                bool hasSentRequest = false;
+
+                FriendRequest request = ServiceWrapper.FriendService.FindRequestBetween(userId, this.User.Identity.GetUserId());
+                // If it exists,
+                if(request != null)
+                {
+                    // Check if we're already friends
+                    if (request.IsAccepted == true)
+                    {
+                        areFriends = true;
+                    }
+                    // Check if I was the sender
+                    else if(request.SenderId == this.User.Identity.GetUserId())
+                    {
+                        hasRequestFromMe = true;
+                    }
+                    // If I was the receiver
+                    else if(request.SenderId == userId)
+                    {
+                        hasSentRequest = true;
+                    }
+                }
+
+
                 var viewModel = new UserProfileViewModel()
                 {
                     userId = user.Id,
@@ -39,8 +66,9 @@ namespace UNIverse.Controllers
                     Posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(user.Id).Take(defaultEntryCount).ToList(),
                     Groups = user.Groups.OrderByDescending(g => g.Name).ToList(),
                     School = user.University,
-                    IsMyFriend = false
-                    
+                    IsMyFriend = areFriends,
+                    HasRequestFromMe = hasRequestFromMe,
+                    HaveRequestFromHim = hasSentRequest
             };
                 if(ServiceWrapper.FriendService.GetFriendsForUser(this.User.Identity.GetUserId()).Contains(user)==true)
                 {
@@ -141,7 +169,7 @@ namespace UNIverse.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddFriend(string userId)
+        public ActionResult AddFriend(string userId, string returnUrl)
         {
             if (userId != null)
             {
@@ -199,13 +227,13 @@ namespace UNIverse.Controllers
 
                     ServiceWrapper.FriendService.AddFriendRequest(request);
                 }
-                return RedirectToAction("Index", "Home");
+                return Redirect(returnUrl);
             }
             return View("Error");
         }
 
         [HttpPost]
-        public ActionResult RemoveFriend(string userId)
+        public ActionResult RemoveFriend(string userId, string returnUrl)
         {
             if(userId != null)
             {
@@ -216,7 +244,7 @@ namespace UNIverse.Controllers
                 {
                     ServiceWrapper.FriendService.RemoveFriendRequest(request);
                 }
-                return RedirectToAction("Index", new { userId = userId });
+                return Redirect(returnUrl);
             }
             return View("Error");
         }

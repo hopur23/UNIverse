@@ -2,10 +2,7 @@
 }
 
 .news-item {
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-    border-bottom-left-radius: 2px;
-    border-bottom-right-radius: 2px;
+    border-radius: 2px;
     background-color: #fff;
     box-shadow: 0px 0px 3px -1px #000;
     margin-bottom: 35px;
@@ -82,6 +79,7 @@
 }
 
 .news-comments {
+    clear: both;
     border: 1px solid #ADDBDB;
     background-color: #C8E1E1;
     margin: 0;
@@ -91,4 +89,31 @@
 
 .news-comment-item {
     padding-bottom: 10px;
+}
+
+.news-comment-input {
+    display: inline;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+}
+
+.news-comment-button {
+    border-radius: 1px;
+    margin-left: -4px;
+    padding-left: 0;
+}
+
+.form-control {
+    border-left: none;
+    border-right: none;
+    border: none;
+    border-top: 1px solid #E6E6E6;
+    box-shadow: none;
+    border-radius: 0;
+    margin-left: -10px;
+}
+
+.comment-text-box {
+    height: 30px;
 }
