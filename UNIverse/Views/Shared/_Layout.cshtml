@@ -9,18 +9,16 @@
     @RenderSection("styles", required: false)
 </head>
 <body>
+    <div class="overlay"></div>
     <div class="wrapper">
         <div class="container-fluid">
             <div id="header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class=" glyphicon glypicon-menu-hamburger"></span>
                 </button>
                 <div class="logo"><img src="http://i57.tinypic.com/2d1lieg.png" alt=" universe logo" id="logo" /></div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul id="menu" class="nav navbar-nav navbar-right"  >
+                    <ul id="menu" class="nav navbar-nav navbar-right">
                         <li>
                             <a href="@Url.Action("Friends", "User", new { userId = User.Identity.GetUserId() })">
                                 <i class="glyphicon glyphicon-th-list">Friends</i>
@@ -34,7 +32,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Search", "Home")">
+                            <!--@*  <a href="@Url.Action("Search", "Home")"> *@-->
+                            <a href="@Url.Action("Search","Home")">
+                                <!-- #myModal"data-toggle="modal" id="1" data-target="#myModal">-->
                                 <i class="glyphicon glyphicon-search"></i>
                                 <span class="sr-only">Search</span>
                             </a>
@@ -65,38 +65,34 @@
             <section id="main" class="col-md-6">
                 @RenderBody()
             </section>
+            <div class="container-fluid" id="accordion" role="tablist" aria-multiselectable="true">
                 <div id="sidebar" class="row col-md-3">
                     <div class="panel-group">
-                        <div class="sidebar" id="accordion">
+                        <div class="sidebar">
                             <div class="sidebar-texti">
                                 <ul>@Html.ActionLink("Newsfeed", "Index", "Home")</ul>
                                 <ul>@Html.ActionLink("Groups", "Index", "Group")</ul>
-                               <!--  <ul class="navnav">
-                                   <li>List of goups</li>
-                                    <li>List of partygoups</li>
-                                    <li>List of goups</li>
-                                    <li>List of goups</li>
-                                </ul>-->
-                                <ul>@Html.ActionLink("Userful Things", "Index", "Home")</ul>
-                                <ul class="navnav">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                                    <ul class="useful"> Useful Things </ul>
+                                </a>
+                                <ul id="collapsetwo" class=" navnav panel-collapse collapse in" role="tabpanel" aria-labelledby="headingtwo">
                                     <li><a href="http://tviund.com/afsl%C3%A6ttir/"> Tilboð </a></li>
                                     <li>@Html.ActionLink("Íbúðir í Reykjavík", "Index", "Ibudir")</li>
                                     <li><a href="http://hr.ingur.is/">HRingurinn</a></li>
                                     <li>@Html.ActionLink("Skiptibókamarkaður", "Index", "Skiptibok")</li>
-                                    </ul>
-                                </div>
+                                </ul>
                             </div>
                         </div>
-                     </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="footer">
-            <div class="container-fluid">
-                <p>Hópur 23 - Verklegt Námskeið 2 | 2015 | Háskólinn í Reykjavík</p>
-            </div>
+    </div>
+    <div id="footer">
+        <div class="container-fluid">
+            <p>Hópur 23 - Verklegt Námskeið 2 | 2015 | Háskólinn í Reykjavík</p>
         </div>
-
+    </div>
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
