@@ -88,7 +88,7 @@
 }
 
 .news-comment-item {
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .news-comment-input {
@@ -116,4 +116,9 @@
 
 .comment-text-box {
     height: 30px;
+}
+
+.comment-date {
+    margin-top: -5px;
+    padding-bottom: 2px;
 }

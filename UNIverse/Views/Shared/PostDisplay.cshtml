@@ -63,6 +63,9 @@
             <div class="comment-author">
                 <small><strong>@Html.ActionLink(comment.Author.FirstName + " " + comment.Author.LastName, "Index", "User", new { userId = comment.Author.Id }, null)</strong></small>
             </div>
+            <div class="comment-date">
+                <small>- @comment.DateCreated</small>
+            </div>
             <div class="comment-item">
                 <small>@comment.Body</small>
             </div>

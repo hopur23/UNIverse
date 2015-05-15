@@ -68,6 +68,7 @@ namespace UNIverse.Controllers
                     Body = model.Body,
                     Author = ServiceWrapper.UserService.GetUserById(model.AuthorId),
                     Parent = ServiceWrapper.PostService.GetPostById(model.ParentId),
+                    DateCreated = DateTime.Now
                 };
 
                 ServiceWrapper.PostService.AddComment(comment);
