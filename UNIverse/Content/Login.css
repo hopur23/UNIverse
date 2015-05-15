@@ -2,35 +2,30 @@
     background: #eeeeee;
 }
 
-.logo-container
-{
+.logo-container {
     width:400px;
     margin: auto;
     margin-top: 20px;
 }
 
-.logo-container img
-{
+.logo-container img {
     margin: 0 auto;
     max-width: 150px;
 
 }
 
-#loginform
-{
+#loginform {
     width:400px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
 }
 
-h2
-{
+h2 {
     color: #2C607C;
 }
 
-#login
-{
+#login {
     background-color: orange;
     padding: 10px;
     border-radius: 25px 25px 25px 25px;
@@ -40,16 +35,14 @@ h2
 }
 
 
-#registerform
-{
+#registerform {
     width:400px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
 }
 
-#register
-{
+#register {
     background-color: #4AA0CF;
     padding: 10px;
     border-radius: 25px 25px 25px 25px;
