@@ -4,7 +4,7 @@
     <h3 class="noMargin">@Html.DisplayFor(model => model.Name)</h3>
     @if (Model.GroupPicturePath != null)
     {
-        <img src="@Url.Content(Model.GroupPicturePath)" alt="Profile pic not found" />
+        <img src="@Url.Content(Model.GroupPicturePath)" alt="Profile pic not found" class="img-responsive" />
     }
     else
     {

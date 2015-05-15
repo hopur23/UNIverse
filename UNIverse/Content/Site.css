@@ -249,6 +249,15 @@ button.navbar-toggle {
 }
 
 
+.table a[href^="/Group/"] {
+    color: #0033CC;
+}
+
+a[href^="/Group/"]
+{
+    color: black;
+}
+
 .noMargin{
     margin-top:0px;
 }
@@ -259,11 +268,6 @@ button.navbar-toggle {
     overflow: hidden;
     margin-right: 75%;
     margin-left: 21%;
-}
-
-a[href^="/Group/"]
-{
-    color: black;
 }
 
 #SearchString input[type="text"]:focus

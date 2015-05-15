@@ -104,7 +104,7 @@ namespace UNIverse.Services
             var requests = (from r in m_db.FriendRequests
                             where (r.ReceiverId == id || r.SenderId == id)
                             && r.IsAccepted == true
-                            select r);
+                            select r).ToList();
 
             var friends = new List<ApplicationUser>();
 

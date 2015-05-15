@@ -58,8 +58,8 @@
     background-color:#FF6600;
     margin-top: 10px;
     margin-bottom: 10px;
-
 }
+
 .addFriend {
     width: 100%;
     text-align: center;
@@ -71,6 +71,27 @@
     display: inline-block;
     margin-top: 10px;
 
+}
+
+.friendList
+{
+    min-height: 5px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.friendList .btn-default
+{
+    background-color:#FF6600;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.groupsButton .btn-default {
+    background-color: #FF6600;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .Groups ul li {
