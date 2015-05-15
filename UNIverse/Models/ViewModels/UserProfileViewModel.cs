@@ -16,7 +16,6 @@ namespace UNIverse.Models.ViewModels
         public string Email { get; set; }
         public string Description { get; set; }
         public string ProfilePicturePath { get; set; }
-        public int Age { get; set; }
         public bool IsMyFriend { get; set; }
         public bool HasRequestFromMe { get; set; }
         public bool HaveRequestFromHim { get; set; }

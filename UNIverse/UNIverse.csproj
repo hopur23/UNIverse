@@ -171,9 +171,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505151007093_begin.cs" />
-    <Compile Include="Migrations\201505151007093_begin.Designer.cs">
-      <DependentUpon>201505151007093_begin.cs</DependentUpon>
+    <Compile Include="Migrations\201505151128127_begin.cs" />
+    <Compile Include="Migrations\201505151128127_begin.Designer.cs">
+      <DependentUpon>201505151128127_begin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -189,7 +189,6 @@
     <Compile Include="Models\ViewModels\PostViewModel.cs" />
     <Compile Include="Models\ViewModels\SearchViewModel.cs" />
     <Compile Include="Models\ViewModels\UserProfileViewModel.cs" />
-    <Compile Include="Models\ViewModels\WallViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FriendService.cs" />
     <Compile Include="Services\GroupService.cs" />
@@ -270,6 +269,8 @@
     <Content Include="Views\Shared\PostDisplay.cshtml" />
     <Content Include="Views\Shared\PostPage.cshtml" />
     <Content Include="Views\Shared\_NewCommentPartial.cshtml" />
+    <Content Include="Views\Shared\UserNotFoundError.cshtml" />
+    <Content Include="Views\Shared\GroupNotFoundError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -282,8 +283,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505151007093_begin.resx">
-      <DependentUpon>201505151007093_begin.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505151128127_begin.resx">
+      <DependentUpon>201505151128127_begin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

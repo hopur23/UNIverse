@@ -10,6 +10,7 @@ using UNIverse.Services;
 
 namespace UNIverse.Controllers
 {
+    [Authorize]
     public class GroupController : Controller
     {
         private const int defaultEntryCount = 3;
@@ -57,7 +58,7 @@ namespace UNIverse.Controllers
 
                 return View(g);
             }
-            return View("Error");
+            return View("GroupNotFoundError");
         }
 
         [HttpPost]
@@ -115,7 +116,7 @@ namespace UNIverse.Controllers
             }
             else
             {
-                return View("Error");
+                return View("GroupNotFoundError");
             }
         }
 
@@ -170,9 +171,13 @@ namespace UNIverse.Controllers
             var group = ServiceWrapper.GroupService.GetGroupById(id);
             var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
 
-            ServiceWrapper.GroupService.AddMemberToGroup(group, user);
-
-            return RedirectToAction("View", "Group", new { id = group.Id });
+            if(group != null && user != null)
+            {
+                ServiceWrapper.GroupService.AddMemberToGroup(group, user);
+                return RedirectToAction("View", "Group", new { id = group.Id });
+            }
+            
+            return View("GroupNotFoundError");
         }
 
         [HttpGet]
@@ -186,9 +191,13 @@ namespace UNIverse.Controllers
                 return RedirectToAction("Index", "Group");
             }
 
-            ServiceWrapper.GroupService.RemoveMemberFromGroup(group, user);
+            if(group != null && user != null)
+            {
+                ServiceWrapper.GroupService.RemoveMemberFromGroup(group, user);
+                return RedirectToAction("Index", "Group");
+            }
 
-            return RedirectToAction("Index", "Group");
+            return View("GroupNotFoundError");
         }
 
         

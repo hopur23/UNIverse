@@ -25,7 +25,7 @@ namespace UNIverse.Controllers
                 if(user == null)
                 {
                     // TODO: Hafa flotta 404 síðu
-                    return View("Error");
+                    return View("UserNotFoundError");
                 }
 
                 // Check user's friend status toward me.
@@ -83,7 +83,7 @@ namespace UNIverse.Controllers
 
                 return View(viewModel);
             }
-            return View("Error");
+            return View("UserNotFoundError");
             
         }
 

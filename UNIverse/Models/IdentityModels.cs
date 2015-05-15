@@ -19,9 +19,6 @@ namespace UNIverse.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0: yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime Birthday { get; set; }
         public string Description { get; set; }
         public string ProfilePicturePath { get; set; }
 
@@ -33,8 +30,7 @@ namespace UNIverse.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        // Singleton pattern á DbContext.
-        // Tryggir að við höfum alltaf bara eitt instance af contextinu og að við getum nálgast það beint úr ServiceWrapper
+        // Keep an instance alive from the first get for the duration of the program. Ensures no dual-context problems.
         private static ApplicationDbContext instance;
         public static ApplicationDbContext Instance
         {
