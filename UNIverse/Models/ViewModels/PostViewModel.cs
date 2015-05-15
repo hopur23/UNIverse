@@ -11,7 +11,7 @@ namespace UNIverse.Models.ViewModels
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You can't make an empty post")]
         [Display(Name = "Post")]
         public string Body { get; set; }
 

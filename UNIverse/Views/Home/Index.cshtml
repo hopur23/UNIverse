@@ -6,10 +6,10 @@
 
 <h1>Welcome to UNIverse</h1>
 
-<p>
-    See posts from @Html.ActionLink("Friends", "Index", "Home") | @Html.ActionLink("Groups", "Groups", "Home")
+<div>
+    See posts from @Html.ActionLink("Friends", "Index", "Home") | @Html.ActionLink("Groups", "Groups", "Home")<br />
     Get posts sorted by Tag (from all members): @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, null) | @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, null)
-</p>
+</div>
 
 @{Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel());}
 
