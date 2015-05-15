@@ -78,7 +78,7 @@ namespace UNIverse.Models
         }
 
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("LocalDatabase")
         {
         }
     }

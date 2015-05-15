@@ -4,11 +4,13 @@
 <!--TODO: Mögulega búa til FrontPageViewModel-->
 @{ViewBag.Title = "Home Page";}
 
-<p>
-    <span>See posts from @Html.ActionLink("Friends", "Index", "Home")</span>
-    <span>Get posts sorted by Tag (from all members): @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, null) | @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, null)</span>
-</p>
+<h4 class="noMargin">
+    @Html.ActionLink("Friends", "Index", "Home", null, new { @class = "btn btn-success btn-large" })
+    @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, new { @class = "btn btn-success btn-large" })
+    @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, new { @class = "btn btn-success btn-large" })
+</h4>
 
+  
 @{Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel());}
 
 @{Html.RenderPartial("_NewsfeedPartial", Model);}
