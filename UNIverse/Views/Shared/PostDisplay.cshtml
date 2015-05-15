@@ -65,6 +65,10 @@
             <div class="comment-item">
                 <small>@comment.Body</small>
             </div>
+            if (@comment.Author.Id == this.User.Identity.GetUserId())
+            {
+                <small>@Html.ActionLink("Delete Comment", "DeleteComment", "Post", new { Id = comment.Id, returnUrl = this.Request.RawUrl }, null)</small>
+            }
         }
         </div>
     }

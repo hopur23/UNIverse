@@ -141,5 +141,21 @@ namespace UNIverse.Controllers
 
             return Redirect(returnUrl);
         }
+
+        public ActionResult DeleteComment(int? id, string returnUrl)
+        {
+            if (id.HasValue)
+            {
+                int realId = id.Value;
+                var comment = ServiceWrapper.PostService.GetCommentById(realId);
+
+                if (comment.Author.Id == this.User.Identity.GetUserId())
+                {
+                    ServiceWrapper.PostService.DeleteComment(comment);
+                }
+            }
+
+            return Redirect(returnUrl);
+        }
     }
 }

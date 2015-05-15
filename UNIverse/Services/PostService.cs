@@ -91,6 +91,15 @@ namespace UNIverse.Services
             return post;
         }
 
+        public Comment GetCommentById(int id)
+        {
+            var comment = (from p in m_db.Comments
+                        where p.Id == id
+                        select p).SingleOrDefault();
+
+            return comment;
+        }
+
         public void EditPost(Post post)
         {
             Post g = ServiceWrapper.PostService.GetPostById(post.Id);
@@ -106,6 +115,12 @@ namespace UNIverse.Services
         public void AddComment(Comment comment)
         {
             m_db.Comments.Add(comment);
+            m_db.SaveChanges();
+        }
+
+        public void DeleteComment(Comment comment)
+        {
+            m_db.Comments.Remove(comment);
             m_db.SaveChanges();
         }
 
