@@ -104,7 +104,11 @@ namespace UNIverse.Controllers
                 viewModel.Name = group.Name;
                 viewModel.Description = group.Description;
                 viewModel.Members = group.Members;
+<<<<<<< HEAD
                 viewModel.Posts = group.Posts.OrderByDescending(m => m.DateCreated).Take(defaultEntryCount).ToList();
+=======
+                viewModel.Posts = group.Posts.OrderByDescending(m=>m.DateCreated).Take(defaultEntryCount).ToList();
+>>>>>>> 922d69eceae0b3783c43149512f599cba5b3779a
                 viewModel.Id = group.Id;
                 viewModel.GroupPicturePath = group.GroupPicturePath;
                 viewModel.Administrator = group.Administrator;

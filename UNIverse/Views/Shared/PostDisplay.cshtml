@@ -32,10 +32,11 @@
         @if (Model.ImagePath != null)
         {
             <div class="news-image col-md-4">
-                <img src="@Url.Content(Model.ImagePath)" alt="Image not found" class="img-responsive" />
+                <a href="@Url.Content(Model.ImagePath)">
+                    <img src="@Url.Content(Model.ImagePath)" alt="Image not found" class="img-responsive" />
+                </a>
             </div>
         }
-
         <div class="news-body col-md-8">
             @Model.Body
         </div>

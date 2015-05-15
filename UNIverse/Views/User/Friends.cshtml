@@ -13,7 +13,7 @@
         <div class="col-md-2">
             <img src="@Url.Content(item.ProfilePicturePath)" alt="Profile Picture" class="img-responsive" />
             <span>@(Html.ActionLink(item.FirstName + " " + item.LastName, "Index", new { userId = item.Id }))</span>
-            @using (Html.BeginForm("AddFriend", "User", new { userId = item.Id }, FormMethod.Post))
+            @using (Html.BeginForm("AddFriend", "User", new { userId = item.Id, returnUrl = this.Request.RawUrl }, FormMethod.Post))
             {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
@@ -21,7 +21,7 @@
             <input type="submit" value="Accept Request" class="btn btn-default" />
             }
 
-            @using (Html.BeginForm("RemoveFriend", "User", new { userId = item.Id }, FormMethod.Post))
+            @using (Html.BeginForm("RemoveFriend", "User", new { userId = item.Id, returnUrl = this.Request.RawUrl }, FormMethod.Post))
             {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
@@ -39,7 +39,7 @@
         <div class="col-md-2">
             <img src="@Url.Content(item.ProfilePicturePath)" alt="Profile Picture" class="img-responsive" />
             <span>@(Html.ActionLink(item.FirstName + " " + item.LastName, "Index", new { userId = item.Id }))</span>
-            @using (Html.BeginForm("RemoveFriend", "User", new { userId = item.Id }, FormMethod.Post))
+            @using (Html.BeginForm("RemoveFriend", "User", new { userId = item.Id, returnUrl = this.Request.RawUrl }, FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
