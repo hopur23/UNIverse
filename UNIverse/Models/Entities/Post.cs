@@ -10,6 +10,7 @@ namespace UNIverse.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Post cannot be empty")]
         public string Body { get; set; }
         public string Tag { get; set; }
         public System.DateTime DateCreated { get; set; }
