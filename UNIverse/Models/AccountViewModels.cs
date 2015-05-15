@@ -56,8 +56,6 @@ namespace UNIverse.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        //[RegularExpression("^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\b$", 
-                                    //ErrorMessage = "You must register with a valid email")]
         public string UserName { get; set; }
 
         [Required]
