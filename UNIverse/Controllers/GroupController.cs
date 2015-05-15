@@ -143,24 +143,23 @@ namespace UNIverse.Controllers
         [HttpPost]
         public ActionResult Create(GroupViewModel viewModel)
         {
-            var group = new Group();
-
-            group.Id = group.Id;
-            group.Name = viewModel.Name;
-            group.Description = viewModel.Description;
-            group.Members = new List<ApplicationUser>();
-            group.Posts = new List<Post>();
-            group.Administrator = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
-            group.GroupPicturePath = viewModel.GroupPicturePath;
-           
+            if(viewModel.GroupPicturePath == null)
+            {
+                viewModel.GroupPicturePath = Url.Content("~/Content/images/no-group-img.jpg");
+            }
+            var group = new Group()
+            {
+                Name = viewModel.Name,
+                Description = viewModel.Description,
+                Members = new List<ApplicationUser>(),
+                Posts = new List<Post>(),
+                Administrator = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()),
+                GroupPicturePath = viewModel.GroupPicturePath
+            };
             group.Members.Add(ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()));
 
             ServiceWrapper.GroupService.AddGroup(group);
 
-            // Add the group to the group list of User
-           // ServiceWrapper.UserService.AddGroupToUser(group, ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()));
-
-            // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("View", "Group", new { id = group.Id });
         }
 
@@ -172,9 +171,7 @@ namespace UNIverse.Controllers
             var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
 
             ServiceWrapper.GroupService.AddMemberToGroup(group, user);
-          //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
-            // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("View", "Group", new { id = group.Id });
         }
 
@@ -190,9 +187,7 @@ namespace UNIverse.Controllers
             }
 
             ServiceWrapper.GroupService.RemoveMemberFromGroup(group, user);
-            //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
-            // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("Index", "Group");
         }
 

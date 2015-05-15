@@ -71,37 +71,37 @@ namespace UNIverse.Migrations
                                         new Group() {
                                             Name = "School of Science and Engineering",
                                             Description = "The science and engineering department",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "School of Law",
                                             Description = "The law department",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "School of Business",
                                             Description = "The business department",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "Nemendafélagið Tvíund",
                                             Description = "Tvíund rocks!",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "Nemendafélagið Lögrétta",
                                             Description = "Mostly snobs",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "/sys/tur",
                                             Description = "Nerdy girls",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         }
                                     };
