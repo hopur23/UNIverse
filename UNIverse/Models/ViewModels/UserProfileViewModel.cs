@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using UNIverse.Models.Entities;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace UNIverse.Models.ViewModels
 {

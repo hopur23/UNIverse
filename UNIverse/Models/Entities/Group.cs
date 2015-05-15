@@ -14,6 +14,7 @@ namespace UNIverse.Models
         [Required(ErrorMessage = "The group must have a name")]
         public string Name { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Image path")]
         public string GroupPicturePath { get; set; }
 
         public virtual University ParentUniversity { get; set; }

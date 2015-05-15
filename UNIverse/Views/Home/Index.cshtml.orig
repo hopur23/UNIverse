@@ -5,19 +5,19 @@
 @{ViewBag.Title = "Home Page";}
 
 <<<<<<< HEAD
-<h1>Welcome to UNIverse</h1>
-
 <div>
-    See posts from @Html.ActionLink("Friends", "Index", "Home") | @Html.ActionLink("Groups", "Groups", "Home")<br />
-    Get posts sorted by Tag (from all members): @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, null) | @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, null)
-</div>
-=======
-<p>
     <span>See posts from @Html.ActionLink("Friends", "Index", "Home")</span>
     <span>Get posts sorted by Tag (from all members): @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, null) | @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, null)</span>
-</p>
->>>>>>> 0c0d464140ad76e1cebc68712c7386a570e4e594
+</div>
+=======
+<h4 class="noMargin">
+    @Html.ActionLink("Friends", "Index", "Home", null, new { @class = "btn btn-success btn-large" })
+    @Html.ActionLink("Books", "Tag", "Home", new { tag = "Books" }, new { @class = "btn btn-success btn-large" })
+    @Html.ActionLink("Party", "Tag", "Home", new { tag = "Party" }, new { @class = "btn btn-success btn-large" })
+</h4>
+>>>>>>> d15610a064745ba224bad8ccf6e44ed08ef32e0c
 
+  
 @{Html.RenderPartial("_NewPostPartial", new UNIverse.Models.ViewModels.PostViewModel());}
 
 @{Html.RenderPartial("_NewsfeedPartial", Model);}

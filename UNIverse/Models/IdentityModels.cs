@@ -22,6 +22,7 @@ namespace UNIverse.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Image path")]
         public string ProfilePicturePath { get; set; }
 
         public virtual University University { get; set; }
@@ -80,7 +81,7 @@ namespace UNIverse.Models
         }
 
         public ApplicationDbContext()
-            : base("DefaultConnection")
+            : base("LocalDatabase")
         {
         }
     }
