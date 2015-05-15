@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using UNIverse.Models.Entities;
 
@@ -15,6 +16,7 @@ namespace UNIverse.Models.ViewModels
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Image Path")]
         public string ProfilePicturePath { get; set; }
         public int Age { get; set; }
         public bool IsMyFriend { get; set; }
