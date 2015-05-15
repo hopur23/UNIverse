@@ -17,8 +17,10 @@ namespace UNIverse.Models
     public class ApplicationUser : IdentityUser
     {
         [Required(ErrorMessage = "You must have a first name.")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "You must have a last name.")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Description { get; set; }
