@@ -1,4 +1,8 @@
-﻿body{
+﻿html,body{
+    min-height:100%;
+}
+
+body{
     font: "Trebuchet MS", Verdana, sans-serif;
     background-color: #E6E6E6;
     color: #696969;
@@ -26,8 +30,11 @@ a{
 }
 
 #header{
-background-color: #ff6600;
-    height: 80px;
+ /*background-color: #ff6600;*/
+    background-color:black;
+    background-image: url("http://i59.tinypic.com/21drh2r.jpg");
+    background-image: url("http://premiumcoding.com/wp-content/uploads/2014/02/space-background1.png");
+    height: 90px;
     margin-top: 0;
     width: 100%;
 }
@@ -52,7 +59,8 @@ background-color: #ff6600;
 }
 
 #logo{
-    padding-left:20px
+    padding-left:20px;
+    padding-top: 10px;
 }
 
 .logo{
@@ -68,14 +76,19 @@ background-color: #ff6600;
     margin-top: 40px;
     padding-left: 30px;
 }
-
+.sidebar-texti ul a:hover{
+    color:#ff6600;
+}
+.sidebar-texti ul.useful:hover{
+    color:#ff6600;
+}
 
 /* Menu Styles ------------------------------*/ 
 ul#menu{
     float: right;
     font-size: 18px;
     color: black;
-    padding-top: 25px;
+    padding-top: 30px;
     position: relative;
 }
 
@@ -86,12 +99,16 @@ ul#menu li{
 ul#menu li a {
     padding: 1px 12px;
     text-decoration: none;
-    color: black;
+    color: #4AA0CF;
 }
 ul#menu li a:hover{
-    background-color: #ffffff;
-    border-radius: 4px;
+    background-color: lightblue; /*spurning med thetta*/
+    border-radius: 1px;
 } 
+
+.glyphicon{
+    color:#4AA0CF;
+}
 /* Forms Styles ------------------------------*/ 
 fieldset{
     padding-left: 12px;
@@ -127,7 +144,7 @@ table.data td {
 
 .sidebar{
     background-color:#4AA0CF; 
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -138,14 +155,27 @@ ul.navnav{
     list-style-type:none;
 }
 
+.sidebar-texti ul.useful{
+    text-decoration:none;
+    font-size: 17px;
+}
+
 .sidebar-texti ul a {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     border: none;
     color: black;
     padding: 3px 0;
     list-style-type: none;
     text-decoration: none;
+}
+.sidebar-texti ul li a {
+    font-size: 15px;
+    
+}
+
+.sidebar-texti ul.useful:hover{
+    text-decoration:none;
 }
 
 .sidebar-texti ul.navnav li a{
@@ -155,6 +185,26 @@ ul.navnav{
     list-style-type: none;
     text-decoration: none;
 }
+
+ul.useful{
+    color:black;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+/* navbar collapse black button */
+
+button.navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    background: #000000;
+}
+
 
 .profilepic img{
     max-width: 300px;
@@ -187,9 +237,28 @@ ul.navnav{
     padding-left: 0;
 }
 
+
+.group {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 .new-post {
     margin-left: 10px;
     padding-left: 0;
+}
+
+
+.noMargin{
+    margin-top:0px;
+}
+
+.picpreview img {
+    max-width: 250px;
+    max-height: 300px;
+    overflow: hidden;
+    margin-right: 75%;
+    margin-left: 21%;
 }
 
 a[href^="/Group/"]

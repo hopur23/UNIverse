@@ -40,11 +40,11 @@
                 <li>
                     @if(@Model.Administrator != null && item == @Model.Administrator)
                     {
-                        <p>*** @item.FirstName @item.LastName</p>
+                        <p>*** @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null)</p>
                     }
                     else
                     {
-                        <p>@item.FirstName @item.LastName</p>
+                        <p>@Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null)</p>
                     }
                 </li>
             </ul>

@@ -62,24 +62,23 @@
         }
     </div>
     
-    @if(Model.IsMyFriend || Model.userId == this.User.Identity.GetUserId())
+   @if(Model.IsMyFriend || Model.userId == this.User.Identity.GetUserId())
     {
         <div class="Friends">
             <h3>Friends (@Model.Friends.Count())</h3>
-            @foreach (var friend in Model.Friends)
+        </div>
+        
+        <div class="addFriend">
+            @if (Model.IsMyFriend && User.Identity.GetUserId() != Model.userId)
             {
-                <h4>@(friend.FirstName + " " + friend.LastName)</h4>
-                <p>@friend.Email</p>
-                if(Model.userId == this.User.Identity.GetUserId())
-                {
-                    using (Html.BeginForm("RemoveFriend", "User", new { userId = friend.Id, returnUrl = this.Request.RawUrl }, FormMethod.Post))
+                <div class="removeFriend">
+                    @using (Html.BeginForm("RemoveFriend", "User", new { userId = Model.userId, returnUrl = this.Request.RawUrl }, FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true)
                         <input type="submit" value="Remove Friend" class="btn btn-default" />
                     }
-                }
-                <hr />
+                </div>
             }
         </div>
     }
