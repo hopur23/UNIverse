@@ -106,6 +106,8 @@ namespace UNIverse.Controllers
             var viewModel = new FriendListViewModel()
             {
                 Friends = ServiceWrapper.FriendService.GetFriendsForUser(userId),
+                PendingReceived = ServiceWrapper.FriendService.GetPendingRequests(userId),
+                PendingSent = ServiceWrapper.FriendService.GetSentRequests(userId),
                 ReceivedRequests = ServiceWrapper.FriendService.GetReceivedFriendRequests(userId),
                 SentRequests = ServiceWrapper.FriendService.GetSentFriendRequests(userId),
             };

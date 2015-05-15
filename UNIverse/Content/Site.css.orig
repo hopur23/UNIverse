@@ -187,9 +187,15 @@ ul.navnav{
     padding-left: 0;
 }
 
+<<<<<<< HEAD
 .new-post {
     margin-left: 10px;
     padding-left: 0;
+=======
+.group
+{
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 a[href^="/Group/"]
@@ -200,4 +206,5 @@ a[href^="/Group/"]
 #SearchString input[type="text"]:focus
 {
     clear:none;
+>>>>>>> 922d69eceae0b3783c43149512f599cba5b3779a
 }
