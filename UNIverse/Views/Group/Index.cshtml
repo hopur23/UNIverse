@@ -1,5 +1,10 @@
 ﻿@model UNIverse.Models.ViewModels.GroupViewModel
 
+<a href="@Url.Action("Create", "Group")">
+    <i class="glyphicon glyphicon-plus-sign"></i>
+    <span class="sr-only">CreateGroup</span>
+</a>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

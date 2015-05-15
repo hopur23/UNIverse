@@ -160,10 +160,11 @@ ul.navnav{
 
 .sidebar-texti ul.useful{
     text-decoration:none;
+    font-size: 17px;
 }
 
 .sidebar-texti ul a {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: bold;
     border: none;
     color: black;
@@ -171,6 +172,11 @@ ul.navnav{
     list-style-type: none;
     text-decoration: none;
 }
+.sidebar-texti ul li a {
+    font-size: 15px;
+    
+}
+
 .sidebar-texti ul.useful:hover{
     text-decoration:none;
 }
