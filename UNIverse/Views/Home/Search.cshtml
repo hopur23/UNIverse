@@ -20,46 +20,23 @@
 @if(Model.Groups != null && Model.Users != null)
 {
     <h4>Groups</h4>
-    <table class="table">
-         @if(Model.Groups != null)
-         { 
-             foreach (var item in Model.Groups)
-             {
-                <tr>
-                    <td>
-                        @Html.ActionLink(item.Name, "View", "Group", new { id = item.Id }, null)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Administrator.FirstName)
-                    </td>
-                
-                </tr>
-            }
-        }
-        
-    </table>
+    if(Model.Groups != null)
+    {
+        Html.RenderPartial("_GroupsList", Model.Groups);
+    }
 
 
     <h4>Users</h4>
-    <table class="table">
-        @if(Model.Users != null)
-        { 
+        if (Model.Users != null)
+        {
             foreach (var item in Model.Users)
             {
-                <tr>
-                    <td>
-                    
-                        @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id}, null)
-                    
-                    </td>
-                
-                </tr>
+                <div class="col-md-2">
+                     <a href='@Url.Action("Index", "User", new { userId = item.Id })'>
+                         <img alt="Profile Picture" class="img-responsive" src='@Url.Content(item.ProfilePicturePath)' />
+                    </a>
+                    <span>@(Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null))</span>
+                </div>
             }
-        }
-      
-    </table>
-
+        }      
 }

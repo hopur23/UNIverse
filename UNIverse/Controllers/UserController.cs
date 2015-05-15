@@ -13,7 +13,7 @@ namespace UNIverse.Controllers
 {
     public class UserController : Controller
     {
-        private const int defaultEntryCount = 10;
+        private const int defaultEntryCount = 8;
 
         public ActionResult Index(string userId)
         {
@@ -77,7 +77,6 @@ namespace UNIverse.Controllers
 
                 viewModel.ProfilePicturePath = user.ProfilePicturePath;
                 viewModel.Description = user.Description;
-                viewModel.ProfilePicturePath = user.ProfilePicturePath;
 
                 ViewData["moreUrl"] = Url.Action("GetUserPosts", "User");
 

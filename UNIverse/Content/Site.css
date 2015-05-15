@@ -192,6 +192,11 @@ ul.navnav{
     padding-left: 0;
 }
 
+.table a[href^="/Group/"]
+{
+    color: #0033CC;
+}
+
 a[href^="/Group/"]
 {
     color: black;

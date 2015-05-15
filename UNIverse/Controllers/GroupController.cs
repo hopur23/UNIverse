@@ -12,19 +12,12 @@ namespace UNIverse.Controllers
 {
     public class GroupController : Controller
     {
-        private const int defaultEntryCount = 3;
+        private const int defaultEntryCount = 8;
 
-        public ActionResult Index(string searchString)
+        public ActionResult Index()
         {
             var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
             var model = new GroupViewModel();
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                model.search = true;
-                model.AllGroups = ServiceWrapper.GroupService.GetAllGroups(searchString);
-                return View(model);
-            }
 
             model.AllGroups = ServiceWrapper.GroupService.GetAllGroups();
             if (user.Groups != null)
@@ -35,6 +28,23 @@ namespace UNIverse.Controllers
             model.search = false;
 
             return View(model); 
+        }
+
+        public ActionResult SeeAllGroups(string searchString)
+        {
+            var groups = new GroupViewModel();
+            groups.search = false;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                groups.search = true;
+                groups.AllGroups = ServiceWrapper.GroupService.GetAllGroups(searchString);
+                return View("SeeAll", groups);
+            }
+
+            groups.AllGroups = ServiceWrapper.GroupService.GetAllGroups();
+
+            return View("SeeAll", groups);
         }
 
         [HttpGet]

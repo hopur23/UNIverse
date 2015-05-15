@@ -13,7 +13,7 @@ namespace UNIverse.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private const int defaultEntryCount = 3;
+        private const int defaultEntryCount = 8;
 
         public ActionResult Index(int? postToID)
         {
@@ -25,7 +25,7 @@ namespace UNIverse.Controllers
                 //Retrieve the page specified by the page variable with a page size o defaultEntryCount
                 PostViewModel pagedEntries = GetModel(postToID.Value);        
         
-                return PartialView("PostPage", pagedEntries);
+                return PartialView("_PostPage", pagedEntries);
             }
 
             //Retrieve the first page with a page size of entryCount
@@ -35,15 +35,6 @@ namespace UNIverse.Controllers
 
             return View("Index", entries);
         }
-
-     /*   {
-            // TODO: Sækja frekar latest posts frekar en alla. Implementa filters
-        //    var modeld = ServiceWrapper.PostService.GetAllPostsFromFriends(this.User.Identity.GetUserId());
-            var model = GetModel(0);
-            return View("Index", model);
-        
-           // return View(model);
-        }*/
 
         private void AddMoreUrlToViewData()
         {
@@ -63,6 +54,7 @@ namespace UNIverse.Controllers
 
             return View(model); 
         }
+
 
         public ActionResult About()
         {

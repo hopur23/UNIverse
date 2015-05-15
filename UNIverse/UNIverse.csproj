@@ -171,10 +171,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201505150245517_comment.cs" />
-    <Compile Include="Migrations\201505150245517_comment.Designer.cs">
-      <DependentUpon>201505150245517_comment.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Comment.cs" />
@@ -267,9 +263,11 @@
     <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Friends.cshtml" />
-    <Content Include="Views\Shared\PostDisplay.cshtml" />
-    <Content Include="Views\Shared\PostPage.cshtml" />
+    <Content Include="Views\Shared\_PostDisplay.cshtml" />
+    <Content Include="Views\Shared\_PostPage.cshtml" />
     <Content Include="Views\Shared\_NewCommentPartial.cshtml" />
+    <Content Include="Views\Shared\_GroupsList.cshtml" />
+    <Content Include="Views\Group\SeeAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,11 +278,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201505150245517_comment.resx">
-      <DependentUpon>201505150245517_comment.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
