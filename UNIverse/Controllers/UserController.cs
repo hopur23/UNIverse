@@ -20,11 +20,10 @@ namespace UNIverse.Controllers
             if (userId != null)
             {
                 var user = ServiceWrapper.UserService.GetUserById(userId);
-                // Hér er userinn aðeins kominn með þær friend requests sem hann sjálfur hefur sent.
+                // Here, the user only has on him his own sent friend requests.
 
                 if(user == null)
                 {
-                    // TODO: Hafa flotta 404 síðu
                     return View("UserNotFoundError");
                 }
 
@@ -53,7 +52,7 @@ namespace UNIverse.Controllers
                         hasSentRequest = true;
                     }
                 }
-
+                // If the user request didn't exist, all the above bool values are false.
 
                 var viewModel = new UserProfileViewModel()
                 {
@@ -90,8 +89,8 @@ namespace UNIverse.Controllers
         {
             
                 var posts = ServiceWrapper.PostService.GetAllPostsForProfileWall(this.User.Identity.GetUserId());
-                //Retrieve the page specified by the page variable with a page size o defaultEntryCount
 
+                //Retrieve the page specified by the page variable with a page size o defaultEntryCount
                 PostViewModel pagedEntries = new PostViewModel
                 {
                     Posts = posts.Where(p => p.Id < postToID).Take(defaultEntryCount).OrderByDescending(m => m.Id).ToList()

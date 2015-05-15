@@ -5,7 +5,6 @@
         var eLink = $(this);
 
         var tempLinkText = eLink.html();
-        //$(this).html("<img src='/images/ajax-loader.gif' />");
         eLink.html('loading');
 
         var url = $(this).prop('href');

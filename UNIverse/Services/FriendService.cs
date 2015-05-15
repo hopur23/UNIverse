@@ -76,6 +76,11 @@ namespace UNIverse.Services
             return requests;
         }
 
+        /// <summary>
+        /// Get a list if all friend requests that have been received by the user and not accepted (pending)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<ApplicationUser> GetPendingRequests(string id)
         {
             var pending = (from r in m_db.FriendRequests
@@ -85,6 +90,11 @@ namespace UNIverse.Services
             return pending;
         }
 
+        /// <summary>
+        /// Get a list of all friend requests that have been sent by the user, that are not accepted (pending)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<ApplicationUser> GetSentRequests(string id)
         {
             var pending = (from r in m_db.FriendRequests
@@ -108,7 +118,6 @@ namespace UNIverse.Services
 
             var friends = new List<ApplicationUser>();
 
-            // Ítra gegnum öll friend requestin. Ef að ID notandans er í Sender, þá er Receiver vinur hans, og öfugt.
             foreach(var request in requests)
             {
                 if(request.SenderId == id) {

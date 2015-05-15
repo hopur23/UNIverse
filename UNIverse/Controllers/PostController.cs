@@ -54,7 +54,6 @@ namespace UNIverse.Controllers
                 };
                 return View(viewModel);
             }
-            // TODO: Flottari error síða eða flottari villumeðhöndlun
             return View("Error");
         }
 
@@ -73,10 +72,7 @@ namespace UNIverse.Controllers
 
                 ServiceWrapper.PostService.AddComment(comment);
 
-                // TODO: Redirect til baka í póstinn sjálfann. Á eftir að útfæra single post view (þar sem hægt er að sjá post og öll komment sem fylgja).
                 return Redirect(returnUrl);
-
-                //return RedirectToAction("Index", "Home");
             }
             return Redirect(returnUrl);
         }

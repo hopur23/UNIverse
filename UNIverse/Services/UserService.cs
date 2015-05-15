@@ -16,6 +16,10 @@ namespace UNIverse.Services
             m_db = context;
         }
 
+        /// <summary>
+        /// Gets a list of all users in the system, ordered by first name.
+        /// </summary>
+        /// <returns></returns>
         public List<ApplicationUser> GetAllUsers()
         {
             var user = (from u in m_db.Users
@@ -24,7 +28,11 @@ namespace UNIverse.Services
             return user;
         }
 
-        // Search for users by names
+        /// <summary>
+        /// Gets a list of all users matching the specified search string.
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
         public List<ApplicationUser> GetAllUsers(string searchString)
         {
             var users = (from p in m_db.Users
@@ -35,6 +43,11 @@ namespace UNIverse.Services
             return users;
         }
 
+        /// <summary>
+        /// Gets a specified user by its ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ApplicationUser GetUserById(string id)
         {
             var user = (from u in m_db.Users
@@ -44,6 +57,10 @@ namespace UNIverse.Services
             return user;
         }
 
+        /// <summary>
+        /// Updates specified user in the system
+        /// </summary>
+        /// <param name="user"></param>
         public void EditUser(ApplicationUser user)
         {
             ApplicationUser upd = GetUserById(user.Id);
@@ -57,12 +74,22 @@ namespace UNIverse.Services
             }
         }
 
+        /// <summary>
+        /// Adds specified user to specified group
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="user"></param>
         public void AddGroupToUser(Group group, ApplicationUser user)
         {
             user.Groups.Add(group);
             m_db.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets a single user by his email. If none is found, returns null.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public ApplicationUser GetUserByEmail(string email)
         {
             var user = (from u in m_db.Users

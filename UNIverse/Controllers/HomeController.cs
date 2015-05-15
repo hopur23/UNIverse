@@ -13,6 +13,7 @@ namespace UNIverse.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        // Specifies the number of posts to display on the feed.
         private const int defaultEntryCount = 8;
 
         public ActionResult Index(int? postToID)
@@ -108,19 +109,11 @@ namespace UNIverse.Controllers
             return View("Index", viewModel);
         }
 
-       /* public ActionResult Groups()
-        {
-            var posts = ServiceWrapper.PostService.PostsByGroups(this.User.Identity.GetUserId());
-            PostViewModel viewModel = GetView(posts);
-
-            return View("Index", viewModel);
-        }*/
-
         public ActionResult GetTaggedPosts(int postToID, string Tag)
         {
             var posts = ServiceWrapper.PostService.PostsByTag(Tag);
 
-            // Retrieve the page correct page
+            // Retrieve the correct page
             PostViewModel pagedEntries = new PostViewModel
             {
                 Posts = posts.Where(p => p.Id < postToID).Take(defaultEntryCount).OrderByDescending(m => m.Id).ToList()

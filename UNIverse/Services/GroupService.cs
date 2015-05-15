@@ -15,6 +15,10 @@ namespace UNIverse.Services
             m_db = context;
         }
 
+        /// <summary>
+        /// Get a list of all the groups in the system.
+        /// </summary>
+        /// <returns></returns>
         public List<Group> GetAllGroups()
         {
             var groups = (from p in m_db.Groups
@@ -24,7 +28,11 @@ namespace UNIverse.Services
             return groups;
         }
 
-        // Search for groups
+        /// <summary>
+        /// Search for groups with given search string.
+        /// </summary>
+        /// <param name="searchString"></param>
+        /// <returns></returns>
         public List<Group> GetAllGroups(string searchString)
         {
             var groups = (from p in m_db.Groups
@@ -35,6 +43,11 @@ namespace UNIverse.Services
             return groups;
         }
 
+        /// <summary>
+        /// Get a list of all groups where the user is an admin.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<Group> GetGroupsUserIsAdmin(string id)
         {
             var groups = (from p in m_db.Groups
@@ -44,6 +57,11 @@ namespace UNIverse.Services
             return groups;
         }
 
+        /// <summary>
+        /// Get a list of all groups the user is a member of.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public List<Group> GetGroupsUserIsIn(ApplicationUser user)
         {
             var groups = (from p in m_db.Groups
@@ -55,6 +73,11 @@ namespace UNIverse.Services
             return groups;
         }
 
+        /// <summary>
+        /// Get a specified group.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Group GetGroupById(int id)
         {
             var group = (from p in m_db.Groups
@@ -64,12 +87,23 @@ namespace UNIverse.Services
             return group;
         }
 
+        /// <summary>
+        /// Get a list of all members within the specified group.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<ApplicationUser> GetUsersByGroupId(int id)
         {
             var group = GetGroupById(id);
             return group.Members;
         }
 
+        /// <summary>
+        /// Returns true if the specified user is a member of the specified group, otherwise returns false.
+        /// </summary>
+        /// <param name="GroupId"></param>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
         public bool UserInGroup(int GroupId, string UserId)
         {
             List<ApplicationUser> allUsers = GetUsersByGroupId(GroupId);
@@ -85,12 +119,20 @@ namespace UNIverse.Services
             return false;
         }
 
+        /// <summary>
+        /// Adds a group to the system.
+        /// </summary>
+        /// <param name="group"></param>
         public void AddGroup(Group group)
         {
             m_db.Groups.Add(group);
             m_db.SaveChanges();
         }
 
+        /// <summary>
+        /// Updates the specified group.
+        /// </summary>
+        /// <param name="group"></param>
         public void EditGroup(Group group)
         {
             Group g = ServiceWrapper.GroupService.GetGroupById(group.Id);
@@ -103,12 +145,22 @@ namespace UNIverse.Services
             }
         }
 
+        /// <summary>
+        /// Adds the specified member to the specified group.
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="user"></param>
         public void AddMemberToGroup(Group group, ApplicationUser user)
         {
             group.Members.Add(user);
             m_db.SaveChanges();
         }
 
+        /// <summary>
+        /// Removes the specified member from the specified group.
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="user"></param>
         public void RemoveMemberFromGroup(Group group, ApplicationUser user)
         {
             group.Members.Remove(user);

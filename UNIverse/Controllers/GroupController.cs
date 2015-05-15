@@ -13,6 +13,7 @@ namespace UNIverse.Controllers
     [Authorize]
     public class GroupController : Controller
     {
+        // Specifies how many posts to display per page
         private const int defaultEntryCount = 8;
 
         public ActionResult Index()
@@ -134,8 +135,8 @@ namespace UNIverse.Controllers
         {
             Group group = ServiceWrapper.GroupService.GetGroupById(groupId);
             var posts = group.Posts;
-            //Retrieve the page specified by the page variable with a page size o defaultEntryCount
 
+            //Retrieve the page specified by the page variable with a page size o defaultEntryCount
             PostViewModel pagedEntries = new PostViewModel
             {
                 Posts = posts.Where(p => p.Id < postToID).OrderByDescending(m => m.Id).Take(defaultEntryCount).ToList()
@@ -209,8 +210,5 @@ namespace UNIverse.Controllers
 
             return View("GroupNotFoundError");
         }
-
-        
-
     }
 }
