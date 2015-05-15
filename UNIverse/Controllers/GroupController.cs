@@ -104,7 +104,7 @@ namespace UNIverse.Controllers
                 viewModel.Name = group.Name;
                 viewModel.Description = group.Description;
                 viewModel.Members = group.Members;
-                viewModel.Posts = group.Posts.Take(defaultEntryCount).ToList();
+                viewModel.Posts = group.Posts.OrderByDescending(m => m.DateCreated).Take(defaultEntryCount).ToList();
                 viewModel.Id = group.Id;
                 viewModel.GroupPicturePath = group.GroupPicturePath;
 
@@ -126,7 +126,7 @@ namespace UNIverse.Controllers
 
             PostViewModel pagedEntries = new PostViewModel
             {
-                Posts = posts.Where(p => p.Id < postToID).Take(defaultEntryCount).OrderByDescending(m => m.Id).ToList()
+                Posts = posts.Where(p => p.Id < postToID).OrderByDescending(m => m.Id).Take(defaultEntryCount).ToList()
             };
 
             return PartialView("PostPage", pagedEntries);
