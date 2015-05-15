@@ -68,6 +68,7 @@ namespace UNIverse.Controllers
                     Body = model.Body,
                     Author = ServiceWrapper.UserService.GetUserById(model.AuthorId),
                     Parent = ServiceWrapper.PostService.GetPostById(model.ParentId),
+                    DateCreated = DateTime.Now
                 };
 
                 ServiceWrapper.PostService.AddComment(comment);
@@ -137,6 +138,22 @@ namespace UNIverse.Controllers
                 var post = ServiceWrapper.PostService.GetPostById(realId);
 
                 ServiceWrapper.PostService.DeletePost(post);
+            }
+
+            return Redirect(returnUrl);
+        }
+
+        public ActionResult DeleteComment(int? id, string returnUrl)
+        {
+            if (id.HasValue)
+            {
+                int realId = id.Value;
+                var comment = ServiceWrapper.PostService.GetCommentById(realId);
+
+                if (comment.Author.Id == this.User.Identity.GetUserId())
+                {
+                    ServiceWrapper.PostService.DeleteComment(comment);
+                }
             }
 
             return Redirect(returnUrl);

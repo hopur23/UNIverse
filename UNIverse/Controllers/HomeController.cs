@@ -13,7 +13,7 @@ namespace UNIverse.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private const int defaultEntryCount = 10;
+        private const int defaultEntryCount = 3;
 
         public ActionResult Index(int? postToID)
         {

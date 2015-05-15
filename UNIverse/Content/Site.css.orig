@@ -1,8 +1,4 @@
-﻿html,body{
-    min-height:100%;
-}
-
-body{
+﻿body{
     font: "Trebuchet MS", Verdana, sans-serif;
     background-color: #E6E6E6;
     color: #696969;
@@ -17,14 +13,12 @@ h1{
 
 #main{
     padding-top: 40px;
-    /*background-color:#E6E6E6;*/
     width: 75%;
     float: right;
     margin-left: auto;
     margin-right: auto;
     padding-left: 15px;
     min-height: 300px;
-   /* color:black;*/
 }
 
 a{
@@ -32,11 +26,8 @@ a{
 }
 
 #header{
- /*background-color: #ff6600;*/
-    background-color:black;
-    background-image: url("http://i59.tinypic.com/21drh2r.jpg");
-    background-image: url("http://premiumcoding.com/wp-content/uploads/2014/02/space-background1.png");
-    height: 90px;
+background-color: #ff6600;
+    height: 80px;
     margin-top: 0;
     width: 100%;
 }
@@ -61,8 +52,7 @@ a{
 }
 
 #logo{
-    padding-left:20px;
-    padding-top: 10px;
+    padding-left:20px
 }
 
 .logo{
@@ -78,12 +68,6 @@ a{
     margin-top: 40px;
     padding-left: 30px;
 }
-.sidebar-texti ul a:hover{
-    color:#ff6600;
-}
-.sidebar-texti ul.useful:hover{
-    color:#ff6600;
-}
 
 
 /* Menu Styles ------------------------------*/ 
@@ -91,7 +75,7 @@ ul#menu{
     float: right;
     font-size: 18px;
     color: black;
-    padding-top: 30px;
+    padding-top: 25px;
     position: relative;
 }
 
@@ -102,16 +86,12 @@ ul#menu li{
 ul#menu li a {
     padding: 1px 12px;
     text-decoration: none;
-    color: #4AA0CF;
+    color: black;
 }
 ul#menu li a:hover{
-    background-color: lightblue; /*spurning med thetta*/
-    border-radius: 1px;
+    background-color: #ffffff;
+    border-radius: 4px;
 } 
-
-.glyphicon{
-    color:#4AA0CF;
-}
 /* Forms Styles ------------------------------*/ 
 fieldset{
     padding-left: 12px;
@@ -147,7 +127,7 @@ table.data td {
 
 .sidebar{
     background-color:#4AA0CF; 
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 25px 25px 25px 25px;
     padding-right: 10px;
     padding-bottom: 5px;
     padding-top: 5px;
@@ -158,27 +138,14 @@ ul.navnav{
     list-style-type:none;
 }
 
-.sidebar-texti ul.useful{
-    text-decoration:none;
-    font-size: 17px;
-}
-
 .sidebar-texti ul a {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: bold;
     border: none;
     color: black;
     padding: 3px 0;
     list-style-type: none;
     text-decoration: none;
-}
-.sidebar-texti ul li a {
-    font-size: 15px;
-    
-}
-
-.sidebar-texti ul.useful:hover{
-    text-decoration:none;
 }
 
 .sidebar-texti ul.navnav li a{
@@ -187,25 +154,6 @@ ul.navnav{
     font-weight:normal;
     list-style-type: none;
     text-decoration: none;
-}
-
-ul.useful{
-    color:black;
-    font-weight:bold;
-    text-decoration:none;
-}
-
-/* navbar collapse black button */
-
-button.navbar-toggle {
-    position: relative;
-    float: right;
-    padding: 9px 10px;
-    margin-top: 8px;
-    margin-right: 15px;
-    margin-bottom: 8px;
-    border-radius: 4px;
-    background: #000000;
 }
 
 .profilepic img{
@@ -239,32 +187,24 @@ button.navbar-toggle {
     padding-left: 0;
 }
 
-.group {
+<<<<<<< HEAD
+.new-post {
+    margin-left: 10px;
+    padding-left: 0;
+=======
+.group
+{
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.new-post{
-    margin-left: 10px;
-    padding-left: 0;
-}
-
-.noMargin{
-    margin-top:0px;
-}
-
-.picpreview img {
-    max-width: 250px;
-    max-height: 300px;
-    overflow: hidden;
-    margin-right: 75%;
-    margin-left: 21%;
-}
-
-a[href^="/Group/"]{
+a[href^="/Group/"]
+{
     color: black;
 }
 
-#SearchString input[type="text"]:focus{
+#SearchString input[type="text"]:focus
+{
     clear:none;
+>>>>>>> 922d69eceae0b3783c43149512f599cba5b3779a
 }

@@ -104,7 +104,11 @@ namespace UNIverse.Controllers
                 viewModel.Name = group.Name;
                 viewModel.Description = group.Description;
                 viewModel.Members = group.Members;
+<<<<<<< HEAD
                 viewModel.Posts = group.Posts.OrderByDescending(m => m.DateCreated).Take(defaultEntryCount).ToList();
+=======
+                viewModel.Posts = group.Posts.OrderByDescending(m=>m.DateCreated).Take(defaultEntryCount).ToList();
+>>>>>>> 922d69eceae0b3783c43149512f599cba5b3779a
                 viewModel.Id = group.Id;
                 viewModel.GroupPicturePath = group.GroupPicturePath;
                 viewModel.Administrator = group.Administrator;
@@ -143,23 +147,24 @@ namespace UNIverse.Controllers
         [HttpPost]
         public ActionResult Create(GroupViewModel viewModel)
         {
-            if(viewModel.GroupPicturePath == null)
-            {
-                viewModel.GroupPicturePath = Url.Content("~/Content/images/no-group-img.jpg");
-            }
-            var group = new Group()
-            {
-                Name = viewModel.Name,
-                Description = viewModel.Description,
-                Members = new List<ApplicationUser>(),
-                Posts = new List<Post>(),
-                Administrator = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()),
-                GroupPicturePath = viewModel.GroupPicturePath
-            };
+            var group = new Group();
+
+            group.Id = group.Id;
+            group.Name = viewModel.Name;
+            group.Description = viewModel.Description;
+            group.Members = new List<ApplicationUser>();
+            group.Posts = new List<Post>();
+            group.Administrator = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
+            group.GroupPicturePath = viewModel.GroupPicturePath;
+           
             group.Members.Add(ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()));
 
             ServiceWrapper.GroupService.AddGroup(group);
 
+            // Add the group to the group list of User
+           // ServiceWrapper.UserService.AddGroupToUser(group, ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId()));
+
+            // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("View", "Group", new { id = group.Id });
         }
 
@@ -171,7 +176,9 @@ namespace UNIverse.Controllers
             var user = ServiceWrapper.UserService.GetUserById(this.User.Identity.GetUserId());
 
             ServiceWrapper.GroupService.AddMemberToGroup(group, user);
+          //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
+            // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("View", "Group", new { id = group.Id });
         }
 
@@ -187,7 +194,9 @@ namespace UNIverse.Controllers
             }
 
             ServiceWrapper.GroupService.RemoveMemberFromGroup(group, user);
+            //  ServiceWrapper.UserService.AddGroupToUser(group, user);
 
+            // TODO: Ákveða hvert á að redirecta user
             return RedirectToAction("Index", "Group");
         }
 

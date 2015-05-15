@@ -14,5 +14,6 @@ namespace UNIverse.Models.ViewModels
 
         public string AuthorId { get; set; }
         public int ParentId { get; set; }
+        public System.DateTime DateCreated { get; set; }
     }
 }

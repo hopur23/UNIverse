@@ -32,11 +32,21 @@ else
     }
     @if (Model.inGroup)
     {
-        <strong><p>Members</p></strong>
+        <strong>Members</strong>
         foreach (var item in Model.Members)
         {
-            <ul class="">
-                @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null)
+            @*    @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null) *@
+            <ul>
+                <li>
+                    @if(@Model.Administrator != null && item == @Model.Administrator)
+                    {
+                        <p>*** @item.FirstName @item.LastName</p>
+                    }
+                    else
+                    {
+                        <p>@item.FirstName @item.LastName</p>
+                    }
+                </li>
             </ul>
         }
     }
@@ -59,7 +69,16 @@ else
         foreach (var item in Model.Members)
         {
             <ul>
-                <li>@item.FirstName @item.LastName</li>
+                <li>
+                    @if (Model.Administrator != null && item == Model.Administrator)
+                    {
+                        <p>(admin) @item.FirstName @item.LastName</p>
+                    }
+                    else
+                    {
+                        <p>(notAdmin) @item.FirstName @item.LastName</p>
+                    }
+                </li>
             </ul>
         }
     }

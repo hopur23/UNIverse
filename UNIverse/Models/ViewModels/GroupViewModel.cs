@@ -8,12 +8,8 @@ namespace UNIverse.Models.ViewModels
 {
     public class GroupViewModel
     {
-        [Required]
         public string Name { get; set; }
-
         public string Description { get; set; }
-
-        [Display(Name = "Image Path")]
         public string GroupPicturePath { get; set; }
 
         public List<Post> Posts { get; set; }

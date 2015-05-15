@@ -130,7 +130,7 @@
     }
 </div>
 
-@if (Model.IsMyFriend || User.Identity.GetUserId() == Model.userId)
+@if ((Model.IsMyFriend || User.Identity.GetUserId() == Model.userId) && Model.Posts.ToList().Count != 0)
 {
     <div class="container-fluid col-md-6 col-md-pull-6 newsfeed">
         @{Html.RenderPartial("_NewsfeedPartial", new UNIverse.Models.ViewModels.PostViewModel() { Posts = Model.Posts });}        

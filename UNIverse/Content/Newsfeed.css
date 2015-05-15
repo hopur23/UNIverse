@@ -87,8 +87,9 @@
     padding-bottom: 10px;
 }
 
-.news-comment-item {
-    padding-bottom: 10px;
+.comment-item {
+    border-bottom: 1px solid #ADDBDB;
+    padding-bottom: 5px;
 }
 
 .news-comment-input {
@@ -116,4 +117,8 @@
 
 .comment-text-box {
     height: 30px;
+}
+
+.comment-date {
+    font-size: smaller;
 }

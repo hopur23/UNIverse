@@ -5,6 +5,7 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
+<<<<<<< HEAD
     @Html.HiddenFor(model => model.groupId) 
     <div class="container-fluid form-group post-input"  >
         @Html.TextAreaFor(model => model.Body, new { @placeholder = "Enter status...", @class = "form-control post-text-box"})
@@ -16,6 +17,23 @@
         @Html.TextBoxFor(model => model.ImagePath, new { @placeholder = "Optional - Enter an image path...", @class = "form-control post-image-box" })
         @Html.ValidationMessageFor(model => model.Body)
     </div>
+=======
+        <div class="form-group">
+            @Html.HiddenFor(model => model.groupId) 
+
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Body, new { @cols = "50", @rows = "4", @placeholder = "Enter status...", @style = "resize: none;"})<br />
+                @Html.TextAreaFor(model => model.ImagePath, new { @cols = "50", @rows = "1", @placeholder = "Optional - Enter an image path...", @style = "resize: none;" })<br />
+                @Html.LabelFor(model => model.Tag)
+                @Html.DropDownListFor(model => model.Tag, new List<SelectListItem>() {
+                                                                                new SelectListItem() { Text = "None", Value = "", Selected = true  },
+                                                                                new SelectListItem() { Text = "Books", Value = "Books", Selected = false },
+                                                                                new SelectListItem() { Text = "Party", Value = "Party", Selected = false }
+                                                                                })
+                @Html.ValidationMessageFor(model => model.Body)
+            </div>
+        </div>
+>>>>>>> 922d69eceae0b3783c43149512f599cba5b3779a
 
     <div class="form-group">
             <input class="btn btn-primary post-button" type="submit" value="Post"/>
