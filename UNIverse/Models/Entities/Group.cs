@@ -11,7 +11,6 @@ namespace UNIverse.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "The group must have a name")]
         public string Name { get; set; }
         public string Description { get; set; }
         [Display(Name = "Image path")]

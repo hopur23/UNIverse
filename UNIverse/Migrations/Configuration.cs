@@ -33,11 +33,11 @@ namespace UNIverse.Migrations
                 var userRole = new IdentityRole() { Name = roleName, Id = roleId };
                 context.Roles.Add(userRole);
             }
-
+            context.SaveChanges();
             var hasher = new PasswordHasher();
 
             // Create the user.
-            if(!context.Roles.Any(u => u.Name == userName))
+            if(!context.Users.Any(u => u.UserName == userName))
             {
                 var user = new ApplicationUser()
                 {
@@ -49,9 +49,10 @@ namespace UNIverse.Migrations
                 context.Users.Add(user);
             }
             #endregion
-
+            context.SaveChanges();
             #region Create University with groups
 
+            // Create the university
             var university = new University()
             {
                 Name = "Reykjavik University",
@@ -61,9 +62,6 @@ namespace UNIverse.Migrations
 
             if(!context.Universities.Any(u => u.Name == "Reykjavik University"))
             {
-                // Create the university
-                
-
                 // Add groups to university
                 List<Group> groups = new List<Group>() {
                                         new Group() {
@@ -106,11 +104,10 @@ namespace UNIverse.Migrations
                 university.Groups = groups;
 
                 context.Universities.Add(university);
-                context.SaveChanges();
             }
             
             #endregion
-
+            context.SaveChanges();
             #region Create Users
 
             if(!context.Users.Any(u => u.UserName == "ragnarmh13@ru.is"))

@@ -29,7 +29,6 @@ namespace UNIverse.Models
         public virtual List<Group> Groups { get; set; }
         public virtual List<Post> Posts { get; set; }
         public virtual List<FriendRequest> FriendRequests { get; set; }
-        public virtual List<Comment> Comments { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -81,7 +80,7 @@ namespace UNIverse.Models
         }
 
         public ApplicationDbContext()
-            : base("LocalDatabase")
+            : base("DefaultConnection")
         {
         }
     }
