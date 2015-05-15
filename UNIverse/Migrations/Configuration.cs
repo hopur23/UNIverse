@@ -42,8 +42,6 @@ namespace UNIverse.Migrations
                 var user = new ApplicationUser()
                 {
                     UserName = userName,
-                    // DateTime column in table cannot be null.
-                    Birthday = DateTime.Now,
                     PasswordHash = hasher.HashPassword(userName),
                     SecurityStamp = Guid.NewGuid().ToString()
                 };
@@ -71,37 +69,37 @@ namespace UNIverse.Migrations
                                         new Group() {
                                             Name = "School of Science and Engineering",
                                             Description = "The science and engineering department",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "School of Law",
                                             Description = "The law department",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "School of Business",
                                             Description = "The business department",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "Nemendafélagið Tvíund",
                                             Description = "Tvíund rocks!",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "Nemendafélagið Lögrétta",
                                             Description = "Mostly snobs",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         },
                                         new Group() {
                                             Name = "/sys/tur",
                                             Description = "Nerdy girls",
-                                            GroupPicturePath = "/Content/images/no-profile.jpg",
+                                            GroupPicturePath = "/Content/images/no-group-img.jpg",
                                             ParentUniversity = university
                                         }
                                     };
@@ -123,7 +121,6 @@ namespace UNIverse.Migrations
                     PasswordHash = hasher.HashPassword("ragnar.123"),
                     FirstName = "Ragnar",
                     LastName = "Halldorsson",
-                    Birthday = DateTime.Now,
                     Groups = new List<Group>(),
                     FriendRequests = new List<FriendRequest>(),
                     Posts = new List<Post>(),
@@ -140,7 +137,6 @@ namespace UNIverse.Migrations
                     PasswordHash = hasher.HashPassword("berglind.123"),
                     FirstName = "Berglind",
                     LastName = "Björnsdóttir",
-                    Birthday = DateTime.Now,
                     Groups = new List<Group>(),
                     FriendRequests = new List<FriendRequest>(),
                     Posts = new List<Post>(),
@@ -157,7 +153,6 @@ namespace UNIverse.Migrations
                     PasswordHash = hasher.HashPassword("elisa.123"),
                     FirstName = "Elísa",
                     LastName = "Hermundardóttir",
-                    Birthday = DateTime.Now,
                     Groups = new List<Group>(),
                     FriendRequests = new List<FriendRequest>(),
                     Posts = new List<Post>(),
@@ -174,7 +169,6 @@ namespace UNIverse.Migrations
                     PasswordHash = hasher.HashPassword("thorgerdur.123"),
                     FirstName = "Þorgerður",
                     LastName = "Eiríksdóttir",
-                    Birthday = DateTime.Now,
                     Groups = new List<Group>(),
                     FriendRequests = new List<FriendRequest>(),
                     Posts = new List<Post>(),
@@ -191,7 +185,6 @@ namespace UNIverse.Migrations
                     PasswordHash = hasher.HashPassword("arnheidur.123"),
                     FirstName = "Arnheiður",
                     LastName = "Sigurðardóttir",
-                    Birthday = DateTime.Now,
                     Groups = new List<Group>(),
                     FriendRequests = new List<FriendRequest>(),
                     Posts = new List<Post>(),

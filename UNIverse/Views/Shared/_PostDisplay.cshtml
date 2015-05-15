@@ -61,18 +61,19 @@
         @foreach (var comment in Model.Comments)
         {
             <div class="comment-author">
-                <small><strong>@Html.ActionLink(comment.Author.FirstName + " " + comment.Author.LastName, "Index", "User", new { userId = comment.Author.Id }, null)</strong></small>
-            </div>
-            <div class="comment-date">
-                <small>- @comment.DateCreated</small>
+                <small>
+                    <strong>@Html.ActionLink(comment.Author.FirstName + " " + comment.Author.LastName, "Index", "User", new { userId = comment.Author.Id }, null)</strong>
+                    <span class="comment-date">- @comment.DateCreated</span>
+                </small>
             </div>
             <div class="comment-item">
                 <small>@comment.Body</small>
+
+                @if (@comment.Author.Id == this.User.Identity.GetUserId())
+                {
+                    <div class="comment-footer"><small>@Html.ActionLink("Delete Comment", "DeleteComment", "Post", new { Id = comment.Id, returnUrl = this.Request.RawUrl }, null)</small></div>
+                }
             </div>
-            if (@comment.Author.Id == this.User.Identity.GetUserId())
-            {
-                <small>@Html.ActionLink("Delete Comment", "DeleteComment", "Post", new { Id = comment.Id, returnUrl = this.Request.RawUrl }, null)</small>
-            }
         }
         </div>
     }

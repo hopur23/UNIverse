@@ -87,7 +87,8 @@
     padding-bottom: 10px;
 }
 
-.news-comment-item {
+.comment-item {
+    border-bottom: 1px solid #ADDBDB;
     padding-bottom: 5px;
 }
 
@@ -119,6 +120,5 @@
 }
 
 .comment-date {
-    margin-top: -5px;
-    padding-bottom: 2px;
+    font-size: smaller;
 }

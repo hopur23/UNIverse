@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,8 +8,11 @@ namespace UNIverse.Models.ViewModels
 {
     public class GroupViewModel
     {
+        [Required]
         public string Name { get; set; }
         public string Description { get; set; }
+
+        [Display(Name = "Image path")]
         public string GroupPicturePath { get; set; }
         public List<Post> Posts { get; set; }
         public List<ApplicationUser> Members { get; set; }

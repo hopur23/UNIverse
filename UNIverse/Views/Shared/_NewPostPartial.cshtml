@@ -7,13 +7,13 @@
 
     @Html.HiddenFor(model => model.groupId) 
     <div class="container-fluid form-group post-input"  >
-        @Html.TextAreaFor(model => model.Body, new { @placeholder = "Enter status...", @class = "form-control post-text-box"})
+        @Html.TextAreaFor(model => model.Body, new { @placeholder = "Enter status...", @class = "form-control post-text-box input-lg"})
         @Html.DropDownListFor(model => model.Tag, new List<SelectListItem>() {
                                                                         new SelectListItem() { Text = "Select tag", Value = "", Selected = true  },
                                                                         new SelectListItem() { Text = "Books", Value = "Books", Selected = false },
                                                                         new SelectListItem() { Text = "Party", Value = "Party", Selected = false }
                                                                         }, new { @class = "form-control post-tag-box" })
-        @Html.TextBoxFor(model => model.ImagePath, new { @placeholder = "Optional - Enter an image path...", @class = "form-control post-image-box" })
+        @Html.TextBoxFor(model => model.ImagePath, new { @placeholder = "Optional - Enter an image path...", @class = "form-control post-image-box input-sm" })
         @Html.ValidationMessageFor(model => model.Body)
     </div>
 

@@ -83,6 +83,7 @@ namespace UNIverse.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Checking if the email ending matches an accepted university
                 string email = model.UserName;
                 string givenEmailEnding = email.Substring(email.LastIndexOf('@'));
                 var university = ServiceWrapper.UniversityService.GetUniByEnding(givenEmailEnding);
@@ -100,8 +101,6 @@ namespace UNIverse.Controllers
                     Email = model.UserName,
                     UserName = model.UserName,
                     University = university,
-                    // Birthday is used as a register date
-                    Birthday = DateTime.Now,
                     FriendRequests = new List<FriendRequest>(),
                     Posts = new List<Post>(),
                     Groups = new List<Group>(),
