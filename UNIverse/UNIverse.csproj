@@ -266,9 +266,11 @@
     <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Friends.cshtml" />
-    <Content Include="Views\Shared\PostDisplay.cshtml" />
-    <Content Include="Views\Shared\PostPage.cshtml" />
+    <Content Include="Views\Shared\_PostDisplay.cshtml" />
+    <Content Include="Views\Shared\_PostPage.cshtml" />
     <Content Include="Views\Shared\_NewCommentPartial.cshtml" />
+    <Content Include="Views\Shared\_GroupsList.cshtml" />
+    <Content Include="Views\Group\SeeAll.cshtml" />
     <Content Include="Views\Shared\UserNotFoundError.cshtml" />
     <Content Include="Views\Shared\GroupNotFoundError.cshtml" />
   </ItemGroup>

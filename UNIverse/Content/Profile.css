@@ -1,65 +1,65 @@
-﻿
-.profilepic img {
-    max-width: 250px;
-    max-height: 200px;
+﻿.profilepic img {
+    max-width: 300px;
+    max-height: 400px;
     overflow: hidden;
     margin: 0 auto;
 }
 
 .info{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
     padding-top: 1px;
     margin-top: 10px;
     margin-bottom: 10px;
-
+    color:black;
 }
 
 .Groups{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
     padding-top: 1px;
     margin-top: 10px;
     margin-bottom: 10px;
+    color:black;
 
 }
 
 .Friends{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
     padding-top: 1px;
     margin-top: 10px;
     margin-bottom: 10px;
-
+    color:black;
 }
 
 .myRequests{
     background-color:#FF6600;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
     padding-left: 15px;
     padding-bottom: 1px;
     padding-top: 1px;
     margin-top: 10px;
     margin-bottom: 10px;
-
+    color:black
 }
 
 .addFriend .btn-default{
     background-color:#FF6600;
     margin-top: 10px;
     margin-bottom: 10px;
-
 }
+
 .addFriend {
     width: 100%;
     text-align: center;
@@ -73,3 +73,42 @@
 
 }
 
+.friendList
+{
+    min-height: 5px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.friendList .btn-default
+{
+    background-color:#FF6600;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.groupsButton .btn-default {
+    background-color: #FF6600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Groups ul li {
+    list-style-type:none;
+}
+.Groups a{
+    text-decoration:none;
+    color:black;
+}
+.Groups a:hover{
+    color:orange;
+}
+
+.userProfile{
+    border-radius:5px;
+}
+
+.info h2{
+    color:black;
+}

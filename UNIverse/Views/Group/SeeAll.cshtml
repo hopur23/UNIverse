@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNet.Identity;
+@model UNIverse.Models.ViewModels.GroupViewModel
+
+@{ViewBag.Title = "All Groups";}
+
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.TextBox("SearchString", "", new { placeholder = "Search for groups" })
+        <input type="submit" value="Search" class="btn btn-primary searchButton" />
+    </p>
+}
+
+@{Html.RenderPartial("_GroupsList", Model.AllGroups);}
+
+<div class="groupsButton">
+    @Html.ActionLink("Back to your groups", "Index", "Group", null, new { @class = "btn btn-default btn-large" })
+</div>

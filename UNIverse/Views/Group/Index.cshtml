@@ -1,119 +1,23 @@
 ﻿@model UNIverse.Models.ViewModels.GroupViewModel
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@{ViewBag.Title = "Groups";}
 
 @using (Html.BeginForm())
 {
-    <p> 
-        @Html.TextBox("SearchString", "", new { placeholder="Search for groups" })
-        <input type="submit" value="Search" class="btn btn-primary searchButton" />
-    </p>
+    <div> 
+        @Html.ActionLink("Create New", "Create", "Group", null, new { @class = "btn btn-success btn-large" }) 
+        @Html.ActionLink("See All Groups", "SeeAllGroups", "Group", new { @class = "btn btn-primary btn-large" })
+    </div>
 }
 
-@if (!Model.search)
-{ 
-    <p>I am an admin of.....</p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor( model => model.Name )
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.UserIsAdmin)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.Name, "View", new { id = item.Id })
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Administrator.FirstName)
-                </td>
-                <td>
-                    @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
-             
-                    @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-                </td>
-            </tr>
-        }
-
-    </table>
-
-    <p>I am a member of.....</p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.GroupsUserIsIn)
-        {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.Name, "View", new { id = item.Id } )
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Administrator.FirstName)
-                </td>
-                <td>
-                    @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
-                    @Html.ActionLink("View Info", "View", new { id = item.Id })
-                    @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-                </td>
-            </tr>
-        }
-
-     </table>
-}
-
-else
-{ 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-
-    @foreach (var item in Model.AllGroups) {
-        <tr>
-            <td>
-                @Html.ActionLink(item.Name, "View", new { id=item.Id } )
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Administrator.FirstName)
-            </td>
-            <td>
-              @*  @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | *@
-           
-               @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
-            </td>
-        </tr>
+<h4>Groups you are managing</h4>
+    @if (Model.UserIsAdmin != null)
+    {
+        Html.RenderPartial("_GroupsList", Model.UserIsAdmin);
     }
 
-    </table>
+<h4>Groups you are a member of</h4>
+@if (Model.UserIsAdmin != null)
+{
+    Html.RenderPartial("_GroupsList", Model.GroupsUserIsIn);
 }

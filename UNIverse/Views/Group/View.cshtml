@@ -8,7 +8,7 @@
     <h4>@Html.DisplayFor(model => model.Name)</h4> 
     @if (Model.GroupPicturePath != null)
     {
-        <img src="@Url.Content(Model.GroupPicturePath)" alt="Profile pic not found" />
+        <img src="@Url.Content(Model.GroupPicturePath)" alt="Profile pic not found" class="img-responsive" />
     }
     else
     {
@@ -40,11 +40,11 @@
                 <li>
                     @if(@Model.Administrator != null && item == @Model.Administrator)
                     {
-                        <p>*** @item.FirstName @item.LastName</p>
+                        <p>*** @Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null)</p>
                     }
                     else
                     {
-                        <p>@item.FirstName @item.LastName</p>
+                        <p>@Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null)</p>
                     }
                 </li>
             </ul>

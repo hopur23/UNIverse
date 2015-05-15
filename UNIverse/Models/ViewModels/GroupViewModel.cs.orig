@@ -8,7 +8,11 @@ namespace UNIverse.Models.ViewModels
 {
     public class GroupViewModel
     {
+<<<<<<< HEAD
         [Required(ErrorMessage = "Your group must have a name")]
+=======
+        [Required]
+>>>>>>> 0c0d464140ad76e1cebc68712c7386a570e4e594
         public string Name { get; set; }
         public string Description { get; set; }
 
