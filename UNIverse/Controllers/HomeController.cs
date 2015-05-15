@@ -80,6 +80,7 @@ namespace UNIverse.Controllers
         protected PostViewModel GetModel(int toID = 0)
         {
             var posts = ServiceWrapper.PostService.GetAllPostsFromFriends(this.User.Identity.GetUserId());
+
             if (toID == 0)
             {
                 return new PostViewModel
