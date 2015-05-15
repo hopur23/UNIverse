@@ -13,6 +13,7 @@ namespace UNIverse.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Image path")]
         public string GroupPicturePath { get; set; }
 
         public virtual University ParentUniversity { get; set; }
