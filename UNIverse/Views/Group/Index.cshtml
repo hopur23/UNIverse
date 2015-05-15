@@ -6,7 +6,7 @@
 {
     <div> 
         @Html.ActionLink("Create New", "Create", "Group", null, new { @class = "btn btn-success btn-large" }) 
-        @Html.ActionLink("See All Groups", "SeeAllGroups", "Group", new { @class = "btn btn-primary btn-large" })
+        @Html.ActionLink("See All Groups", "SeeAllGroups","Group", new { @class = "btn btn-primary btn-large" })
     </div>
 }
 
@@ -17,7 +17,5 @@
     }
 
 <h4>Groups you are a member of</h4>
-@if (Model.UserIsAdmin != null)
-{
-    Html.RenderPartial("_GroupsList", Model.GroupsUserIsIn);
-}
+    @{Html.RenderPartial("_GroupsList", Model.GroupsUserIsIn);}
+   

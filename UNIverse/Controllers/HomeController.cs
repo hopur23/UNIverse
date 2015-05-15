@@ -107,14 +107,6 @@ namespace UNIverse.Controllers
             return View("Index", viewModel);
         }
 
-       /* public ActionResult Groups()
-        {
-            var posts = ServiceWrapper.PostService.PostsByGroups(this.User.Identity.GetUserId());
-            PostViewModel viewModel = GetView(posts);
-
-            return View("Index", viewModel);
-        }*/
-
         public ActionResult GetTaggedPosts(int postToID, string Tag)
         {
             var posts = ServiceWrapper.PostService.PostsByTag(Tag);
