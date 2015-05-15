@@ -25,18 +25,17 @@
         Html.RenderPartial("_GroupsList", Model.Groups);
     }
 
-
     <h4>Users</h4>
-        if (Model.Users != null)
+    if (Model.Users != null)
+    {
+        foreach (var item in Model.Users)
         {
-            foreach (var item in Model.Users)
-            {
-                <div class="col-md-2">
-                     <a href='@Url.Action("Index", "User", new { userId = item.Id })'>
-                         <img alt="Profile Picture" class="img-responsive" src='@Url.Content(item.ProfilePicturePath)' />
-                    </a>
-                    <span>@(Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null))</span>
-                </div>
-            }
-        }      
+            <div class="col-md-2">
+                    <a href='@Url.Action("Index", "User", new { userId = item.Id })'>
+                        <img alt="Profile Picture" class="img-responsive" src='@Url.Content(item.ProfilePicturePath)' />
+                </a>
+                <span>@(Html.ActionLink(item.FirstName + " " + item.LastName, "Index", "User", new { userId = item.Id }, null))</span>
+            </div>
+        }
+    }      
 }

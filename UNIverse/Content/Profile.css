@@ -5,7 +5,7 @@
     margin: 0 auto;
 }
 
-.info{
+.info {
     background-color:#FF6600;
     border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
@@ -17,7 +17,7 @@
     color:black;
 }
 
-.Groups{
+.Groups {
     background-color:#FF6600;
     border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
@@ -30,7 +30,7 @@
 
 }
 
-.Friends{
+.Friends {
     background-color:#FF6600;
     border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
@@ -42,7 +42,7 @@
     color:black;
 }
 
-.myRequests{
+.myRequests {
     background-color:#FF6600;
     border-radius: 10px 10px 10px 10px;
     padding-right: 10px;
@@ -54,7 +54,7 @@
     color:black
 }
 
-.addFriend .btn-default{
+.addFriend .btn-default {
     background-color:#FF6600;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -65,24 +65,20 @@
     text-align: center;
 }
 
-.addFriend .btn-default
-{
+.addFriend .btn-default {
     background-color:#FF6600;
     display: inline-block;
     margin-top: 10px;
-
 }
 
-.friendList
-{
+.friendList {
     min-height: 5px;
     display: inline-block;
     width: 100%;
     margin-bottom: 10px;
 }
 
-.friendList .btn-default
-{
+.friendList .btn-default {
     background-color:#FF6600;
     display: inline-block;
     margin-bottom: 5px;
@@ -97,18 +93,18 @@
 .Groups ul li {
     list-style-type:none;
 }
-.Groups a{
+.Groups a {
     text-decoration:none;
     color:black;
 }
-.Groups a:hover{
+.Groups a:hover {
     color:orange;
 }
 
-.userProfile{
+.userProfile {
     border-radius:5px;
 }
 
-.info h2{
+.info h2 {
     color:black;
 }
